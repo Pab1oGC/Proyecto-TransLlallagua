@@ -1,0 +1,639 @@
+﻿<Window x:Class="TransLlallaguaWPF.Menus.winAdminMenu"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TransLlallaguaWPF.Menus"
+        mc:Ignorable="d"
+        Title="winAdminMenu" Height="600" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+    <Window.Resources>
+
+        <!--// Toggle Button Style Template //-->
+
+        <ImageBrush x:Key="tb_mouse_over"
+                ImageSource="/Assets/tgBtn_MouseOver.png"/>
+
+        <!--// Text font style //-->
+        <FontFamily x:Key="fuente">/Fonts/#Quattrocento-Bold</FontFamily>
+        <Style x:Key="font_style" TargetType="TextBlock">
+
+            <Setter Property="VerticalAlignment"
+                Value="Center"/>
+
+            <Setter Property="HorizontalAlignment"
+                Value="Left"/>
+
+            <Setter Property="Foreground"
+                Value="White"/>
+
+            <Setter Property="FontSize"
+                Value="20"/>
+
+        </Style>
+
+        <!--// Tooltip Style Template //-->
+
+        <Style TargetType="ToolTip" x:Key="tt_style">
+
+            <Setter Property="Placement" Value="Right"/>
+            <Setter Property="Height" Value="40"/>
+            <Setter Property="Width" Value="100"/>
+            <Setter Property="Margin" Value="20,0,0,0"/>
+            <Setter Property="Background" Value="#FFE66781"/>
+            <Setter Property="BorderBrush" Value="Transparent"/>
+            <Setter Property="Foreground" Value="White"/>
+            <Setter Property="FontFamily" Value="Fonts/Roboto-Light.ttf #Roboto"/>
+            <Setter Property="FontSize" Value="16"/>
+            <Setter Property="PlacementRectangle" Value="60,0,0,0"/>
+            <Setter Property="HorizontalOffset" Value="15"/>
+            <Setter Property="VerticalOffset" Value="6"/>
+            <Setter Property="HasDropShadow" Value="True"/>
+            <Setter Property="HorizontalContentAlignment" Value="Center"/>
+
+        </Style>
+
+        <!--// App Close Button Style Template //-->
+
+        <ImageBrush x:Key="CloseBtn_MouseOver" ImageSource="/Assets/closeBtn_MouseOver.png"/>
+
+        <Style x:Key="Close_btn" TargetType="{x:Type Button}">
+
+            <Setter Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="{x:Type Button}">
+
+                        <Border x:Name="button"
+                            BorderThickness="0"
+                            Background="{TemplateBinding Background}"
+                            SnapsToDevicePixels="True">
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsMouseOver"
+                                 Value="True">
+
+                                <Setter Property="Background"
+                                    TargetName="button"
+                                    Value="{StaticResource CloseBtn_MouseOver}"/>
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+
+            </Setter>
+
+        </Style>
+
+
+
+
+        <Style x:Key="tb_style" TargetType="{x:Type ToggleButton}">
+
+            <Setter Property="Template">
+
+                <Setter.Value>
+
+                    <ControlTemplate TargetType="{x:Type ToggleButton}">
+
+                        <Border  x:Name="border"
+                             BorderThickness="{TemplateBinding BorderThickness}"
+                             Background="{TemplateBinding Background}"
+                             SnapsToDevicePixels="True">
+
+                        </Border>
+
+                        <ControlTemplate.Triggers>
+
+                            <Trigger Property="IsMouseOver" Value="true">
+
+                                <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource tb_mouse_over}"/>
+
+                                <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="{StaticResource tb_mouse_over}"/>
+
+                            </Trigger>
+
+                            <Trigger Property="IsChecked" Value="true">
+
+                                <Setter Property="Background"
+                                    TargetName="border"
+                                    Value="{StaticResource tb_mouse_over}"/>
+
+                                <Setter Property="BorderBrush"
+                                    TargetName="border"
+                                    Value="{StaticResource tb_mouse_over}"/>
+
+                            </Trigger>
+
+                        </ControlTemplate.Triggers>
+
+                    </ControlTemplate>
+
+                </Setter.Value>
+
+            </Setter>
+
+        </Style>
+
+    </Window.Resources>
+
+    <Border BorderThickness="2" BorderBrush="Crimson">
+        <Grid>
+
+            <!--// Background Color //-->
+
+            <Grid Background="Black">
+
+                <!--// Background Image //-->
+
+                <Grid x:Name="BG" PreviewMouseLeftButtonDown="BG_PreviewMouseLeftButtonDown" Background="White">
+                    <Path x:Name="intro"
+                          Data="M2548 6540 c-237 -18 -501 -91 -722 -199 -275 -135 -464 -291 -718 -596 -41 -49 -95 -108 -120 -131 -52 -48 -58 -49 -293 -64 -215 -13 -263 -20 -281 -37 -10 -11 -14 -40 -14 -108 0 -140 17 -546 45 -1055 14 -250 32 -576 40 -725 8 -148 28 -531 45 -850 41 -803 40 -785 56 -930 19 -168 54 -323 99 -433 188 -461 648 -840 1363 -1123 273 -109 557 -189 667 -189 75 0 232 37 423 100 522 173 967 421 1248 696 294 289 420 560 463 995 6 57 22 325 36 594 13 270 27 533 30 585 3 52 23 424 45 825 68 1270 79 1607 51 1624 -18 12 -80 19 -271 31 -247 16 -246 16 -303 69 -27 25 -77 80 -111 121 -326 400 -676 634 -1116 745 -196 50 -451 71 -662 55z m452 -66 c143 -20 266 -50 380 -91 328 -119 591 -307 848 -608 151 -177 211 -234 265 -250 28 -8 137 -19 250 -25 111 -6 212 -15 225 -21 23 -9 23 -11 17 -122 -3 -61 -15 -287 -25 -502 -11 -214 -38 -721 -60 -1125 -22 -404 -51 -958 -65 -1230 -27 -541 -37 -666 -65 -811 -33 -173 -77 -292 -159 -429 -249 -420 -772 -775 -1496 -1014 -361 -120 -448 -119 -820 6 -270 91 -605 242 -795 358 -352 215 -591 458 -734 747 -109 219 -133 378 -171 1138 -18 367 -55 1055 -90 1680 -14 248 -32 583 -40 745 -29 598 -28 548 -8 558 10 5 111 15 226 21 114 7 229 19 255 26 53 16 113 73 268 255 163 192 297 310 489 431 374 235 839 329 1305 263z
+                                M2575 6090 c25 -117 47 -335 52 -500 6 -217 -6 -323 -53 -472 -32 -100 -112 -268 -129 -268 -25 0 -106 73 -150 134 -48 67 -114 202 -136 274 -7 23 -15 42 -19 42 -12 0 -124 -140 -174 -217 -164 -255 -191 -525 -77 -777 16 -36 40 -80 52 -97 11 -16 19 -33 15 -36 -13 -13 -100 32 -150 78 -56 51 -115 149 -136 229 l-13 45 -48 -100 c-64 -132 -125 -321 -151 -470 -27 -158 -21 -424 12 -550 49 -190 134 -352 249 -474 l31 -33 70 75 c99 106 189 160 335 201 11 3 -20 4 -70 2 -105 -4 -170 -26 -260 -86 -33 -22 -62 -35 -63 -30 -6 18 39 153 71 215 19 35 63 92 107 135 71 71 95 87 230 148 24 11 24 11 -5 6 -74 -13 -171 -50 -227 -86 -33 -21 -62 -38 -64 -36 -2 2 10 40 25 85 47 136 175 303 306 401 l30 22 -40 -17 c-22 -9 -62 -32 -88 -50 l-48 -33 22 42 c35 69 143 231 220 330 39 51 82 115 96 143 31 61 40 155 23 240 -23 115 -23 115 -7 115 9 0 26 -14 38 -31 12 -17 62 -66 112 -110 114 -99 213 -149 362 -184 196 -45 238 -58 306 -92 74 -37 92 -59 124 -148 21 -60 22 -60 81 -78 106 -33 140 -47 187 -77 108 -69 132 -175 68 -305 l-35 -70 -13 45 c-27 96 -119 137 -283 127 -156 -10 -298 -75 -340 -157 -59 -116 -65 -320 -15 -480 51 -159 158 -345 268 -465 l46 -50 43 24 c123 69 340 271 425 396 79 117 133 247 170 407 26 114 23 392 -5 524 -68 316 -217 596 -446 839 l-57 60 -36 -68 c-24 -46 -59 -89 -108 -135 -67 -62 -173 -128 -194 -120 -5 2 3 28 16 58 31 67 63 215 63 295 0 329 -210 763 -534 1100 -65 68 -85 84 -81 65z
+                                M3040 4191 c0 -5 18 -27 41 -50 66 -65 147 -76 164 -21 7 23 -9 56 -35 70 -23 12 -170 13 -170 1z
+                                M1440 2295 c0 -25 1 -25 80 -25 l80 0 0 -335 0 -335 30 0 30 0 0 335 0 334 83 3 c76 3 82 5 85 26 l3 22 -195 0 -196 0 0 -25z
+                                M1980 1961 l0 -361 25 0 c25 0 25 1 25 86 l0 85 84 -2 c51 -1 97 -8 116 -17 40 -20 71 -64 77 -112 5 -34 9 -40 29 -40 21 0 24 5 24 35 0 47 -23 99 -56 130 l-27 25 25 28 c51 54 58 81 58 223 0 157 -15 202 -83 247 -38 25 -49 27 -169 30 l-128 4 0 -361z m269 280 c49 -35 61 -74 61 -198 0 -177 -32 -216 -186 -221 l-94 -4 0 227 0 227 93 -4 c78 -2 97 -7 126 -27z
+                                M2620 2298 c-54 -30 -85 -72 -99 -139 -6 -28 -11 -161 -11 -304 l0 -255 29 0 c26 0 29 4 34 40 10 77 60 123 132 123 77 0 145 -64 145 -135 0 -23 4 -28 25 -28 l25 0 0 287 c0 272 -1 289 -21 331 -45 92 -166 129 -259 80z m170 -58 c53 -38 60 -69 60 -280 l0 -192 -37 22 c-59 35 -137 37 -196 7 l-48 -25 3 203 c3 186 5 206 23 231 48 64 132 79 195 34z
+                                M3050 1961 l1 -361 29 0 30 0 0 334 0 334 42 -10 c95 -21 172 -82 211 -167 20 -42 22 -66 25 -268 l4 -223 24 0 24 0 0 360 0 360 -25 0 c-24 0 -25 -2 -25 -77 l0 -76 -47 48 c-61 61 -137 96 -226 103 l-67 4 0 -361z
+                                M3700 2298 c-113 -61 -137 -212 -48 -295 13 -13 67 -41 119 -64 106 -46 133 -67 150 -116 24 -75 -42 -161 -127 -165 -76 -3 -144 58 -144 130 0 29 -3 32 -31 32 -31 0 -31 0 -24 -42 11 -70 49 -125 105 -153 86 -44 176 -24 238 51 75 90 44 228 -61 277 -17 8 -67 29 -109 47 -59 24 -82 39 -98 64 -35 58 -21 130 36 175 64 51 165 27 203 -48 12 -22 21 -52 21 -66 0 -20 5 -25 26 -25 26 0 26 2 22 48 -13 134 -159 213 -278 150z
+                                M1440 1295 l0 -196 102 3 c68 2 103 7 105 15 3 9 -21 13 -89 15 l-93 3 -3 178 c-1 107 -6 177 -12 177 -6 0 -10 -75 -10 -195z
+                                M1732 1298 l3 -193 99 0 c71 0 100 4 103 13 4 9 -18 12 -86 12 l-91 0 -1 173 c-1 94 -1 175 0 180 0 4 -6 7 -14 7 -13 0 -15 -26 -13 -192z
+                                M2073 1478 c-43 -21 -53 -64 -53 -222 0 -123 2 -146 15 -146 8 0 15 8 15 18 1 42 57 76 99 60 29 -10 50 -36 51 -60 0 -10 7 -18 16 -18 14 0 15 19 12 161 l-3 161 -33 29 c-34 31 -78 37 -119 17z m107 -40 c18 -19 20 -35 20 -134 l0 -113 -27 15 c-36 18 -73 18 -101 -2 l-22 -15 0 114 c0 100 2 116 20 135 14 14 33 22 55 22 22 0 41 -8 55 -22z
+                                M2312 1298 l3 -193 103 -2 c82 -1 102 1 102 13 0 11 -19 14 -90 14 l-90 0 0 180 c0 154 -2 180 -15 180 -13 0 -15 -26 -13 -192z
+                                M2600 1301 c1 -218 -9 -200 110 -197 96 3 100 4 100 16 0 5 -39 11 -87 12 l-88 3 -3 178 c-2 147 -5 177 -17 177 -12 0 -15 -30 -15 -189z
+                                M2944 1472 c-39 -31 -44 -55 -44 -211 0 -128 2 -151 15 -151 8 0 15 8 15 18 0 36 29 62 69 62 42 0 65 -19 76 -63 4 -15 12 -26 19 -24 13 4 21 217 11 286 -13 85 -102 131 -161 83z m113 -34 c15 -16 19 -41 21 -130 l4 -111 -24 8 c-24 8 -79 10 -113 4 -19 -4 -20 1 -16 101 2 58 7 113 13 123 20 38 82 41 115 5z
+                                M3224 1459 c-28 -29 -29 -34 -32 -145 -4 -124 5 -164 42 -189 25 -18 97 -20 115 -2 11 10 14 10 18 0 3 -7 11 -13 19 -13 11 0 14 21 14 105 l0 105 -60 0 c-68 0 -82 -17 -17 -22 l42 -3 3 -56 c3 -66 -15 -95 -65 -105 -26 -5 -37 -1 -57 19 -25 25 -26 31 -26 147 0 107 2 122 20 140 24 24 82 27 104 4 9 -8 19 -26 22 -40 3 -13 13 -24 21 -24 29 0 -7 82 -44 99 -45 20 -87 14 -119 -20z
+                                M3480 1346 c0 -80 4 -156 9 -169 33 -85 148 -91 190 -10 7 13 11 81 11 172 0 128 -2 151 -15 151 -13 0 -15 -24 -15 -154 0 -173 -7 -193 -69 -201 -25 -3 -39 2 -57 20 -23 23 -24 29 -24 180 0 131 -2 155 -15 155 -13 0 -15 -23 -15 -144z
+                                M3817 1469 c-15 -11 -31 -37 -37 -57 -15 -50 -9 -304 7 -309 6 -2 14 9 18 25 11 54 54 77 103 57 22 -10 34 -23 39 -46 5 -18 14 -34 21 -37 17 -5 17 296 0 333 -24 53 -104 71 -151 34z m123 -45 c11 -21 14 -55 12 -127 -3 -88 -5 -98 -20 -91 -30 13 -89 16 -96 5 -4 -6 -14 -11 -22 -11 -11 0 -14 20 -14 100 0 54 5 110 11 124 24 52 103 52 129 0z"
+                          Height="546"
+                          Width="420"
+                          StrokeDashOffset="0"
+                          StrokeThickness="6.9"
+                          Stretch="Fill"
+                          StrokeStartLineCap="Triangle"
+                          StrokeEndLineCap="Triangle"
+                          StrokeDashArray="500"
+                          SnapsToDevicePixels="True" Canvas.Left="218" Canvas.Top="142" HorizontalAlignment="Left" VerticalAlignment="Top" RenderTransformOrigin="0.5,0.5" Margin="212,22,0,0">
+                        <Path.RenderTransform>
+                            <TransformGroup>
+                                <ScaleTransform ScaleX="-1"/>
+                                <SkewTransform/>
+                                <RotateTransform Angle="180"/>
+                                <TranslateTransform/>
+                            </TransformGroup>
+                        </Path.RenderTransform>
+                        <Path.Stroke>
+                            <LinearGradientBrush>
+                                <GradientStop x:Name="b1" Color="Crimson" Offset="0.0"/>
+                                <GradientStop x:Name="b2" Color="Crimson" Offset="1.1"/>
+                            </LinearGradientBrush>
+                        </Path.Stroke>
+                        <Path.Triggers>
+                            <EventTrigger RoutedEvent="Path.Loaded">
+                                <BeginStoryboard>
+                                    <Storyboard x:Name="animacion" Completed="animacionCompleta">
+                                        <DoubleAnimation Storyboard.TargetName="intro"
+                                                         Storyboard.TargetProperty="StrokeDashOffset"
+                                                         From="500" To="0"
+                                                         Duration="0:0:7"
+                                                         BeginTime="0:0:0"/>
+                                        <DoubleAnimation Storyboard.TargetName="b1"
+                                                         Storyboard.TargetProperty="Offset"
+                                                         From="0.0" To="1.1"
+                                                         AutoReverse="True"
+                                                         BeginTime="0:0:0"
+                                                         Duration="0:0:5"/>
+                                    </Storyboard>
+                                </BeginStoryboard>
+                            </EventTrigger>
+                        </Path.Triggers>
+                    </Path>
+                </Grid>
+
+                <!--// App Close Button //-->
+
+                <Grid>
+
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*"/>
+                        <ColumnDefinition Width="60"/>
+                        <ColumnDefinition Width="30"/>
+                    </Grid.ColumnDefinitions>
+
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"/>
+                        <RowDefinition Height="60"/>
+                        <RowDefinition Height="*"/>
+                    </Grid.RowDefinitions>
+
+                    <Button x:Name="CloseBtn"
+                Grid.Column="1"
+                Grid.Row="1"
+                Height="40"
+                Width="40"
+                BorderThickness="0"
+                Style="{StaticResource Close_btn}" Click="CloseBtn_Click">
+
+                        <Button.Background>
+
+                            <ImageBrush ImageSource="/Assets/closeBtn_default.png"/>
+
+                        </Button.Background>
+
+                    </Button>
+
+                </Grid>
+
+
+                <!--// Navigation Panel //-->
+
+                <Grid   x:Name="nav_pnl"
+            HorizontalAlignment="Left"
+            Width="65"
+            Background="Crimson">
+
+                    <StackPanel x:Name="st_pnl">
+
+                        <!--// Grid for the Menu Toggle Button //-->
+
+                        <Grid Height="90">
+
+                            <!--// Menu title text //-->
+
+                            <TextBlock  Grid.Row="1"
+                            Grid.Column="0"
+                            Margin="73,-20,0,0"
+                            Text="M E N U"
+                            Foreground="White"
+                            FontSize="22"
+                            Background="Transparent"
+                            HorizontalAlignment="Left"
+                            VerticalAlignment="Center"
+                            Style="{StaticResource font_style}"
+                            >
+                    
+                    <!--// Shadow Effect //-->
+
+                                <TextBlock.Effect>
+
+                                    <DropShadowEffect  BlurRadius="10"
+                                           ShadowDepth="1"
+                                           Direction="-90"
+                                           Color="White"/>
+
+                                </TextBlock.Effect>
+
+                            </TextBlock>
+
+                            <!--// Toggle Button //-->
+
+                            <ToggleButton x:Name="Tg_Btn"
+                              Grid.Column="0"
+                              VerticalAlignment="Center"
+                              HorizontalAlignment="Left"
+                              Margin="18,-20,0,0"
+                              Height="30"
+                              Width="30"
+                              BorderThickness="0"
+                              Style="{StaticResource tb_style}" Unchecked="Tg_Btn_Unchecked" Checked="Tg_Btn_Checked">
+
+                                <!--// Toggle button default background image //-->
+
+                                <ToggleButton.Background>
+
+                                    <ImageBrush ImageSource="/Assets/menu.png"
+                                    Stretch="None"/>
+
+                                </ToggleButton.Background>
+
+                                <!--// Toggle Button - Checked, Unchecked events //-->
+
+                                <ToggleButton.Triggers>
+
+                                    <EventTrigger RoutedEvent="ToggleButton.Unchecked">
+
+                                        <BeginStoryboard>
+
+                                            <Storyboard x:Name="HideStackPanel">
+
+                                                <DoubleAnimation    
+                                        
+                                        Storyboard.TargetName="nav_pnl"
+                                        Storyboard.TargetProperty="Width"
+                                        BeginTime="0:0:0"
+                                        From="230" To="65"
+                                        Duration="0:0:0.2">
+
+                                                </DoubleAnimation>
+
+                                            </Storyboard>
+
+                                        </BeginStoryboard>
+
+                                    </EventTrigger>
+
+                                    <EventTrigger RoutedEvent="ToggleButton.Checked">
+
+                                        <BeginStoryboard>
+
+                                            <Storyboard x:Name="ShowStackPanel">
+
+                                                <DoubleAnimation
+                                        
+                                        Storyboard.TargetName="nav_pnl"
+                                        Storyboard.TargetProperty="Width"
+                                        BeginTime="0:0:0"
+                                        From="65" To="230"
+                                        Duration="0:0:0.3">
+
+                                                </DoubleAnimation>
+
+                                            </Storyboard>
+
+                                        </BeginStoryboard>
+
+                                    </EventTrigger>
+
+                                </ToggleButton.Triggers>
+
+
+                            </ToggleButton>
+
+                        </Grid>
+
+                        <!--// ListView with menu list items //-->
+
+                        <ListView  x:Name="LV"
+                       Background="Transparent"
+                       BorderBrush="Transparent"
+                       ScrollViewer.HorizontalScrollBarVisibility="Disabled" Height="505">
+
+                            <!--// Home //-->
+
+                            <ListViewItem HorizontalAlignment="Left"
+                              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
+                              >
+
+                                <StackPanel Orientation="Horizontal"
+                                Width="230">
+
+                                    <Image Source="/Assets/img_home.png"
+                               Stretch="None"
+                               Margin="12,0,0,0"/>
+
+                                    <TextBlock Text="Home"
+                                   Margin="25,0,0,0"
+                                   Style="{StaticResource font_style}"
+                                    />
+
+                                </StackPanel>
+
+                                <!--// Tooltip //-->
+
+                                <ListViewItem.ToolTip>
+
+                                    <ToolTip x:Name="tt_home"
+                                 Content="Home"
+                                 Style="{StaticResource tt_style}"/>
+
+                                </ListViewItem.ToolTip>
+
+                            </ListViewItem>
+
+                            <!--// Contacts //-->
+
+                            <ListViewItem HorizontalAlignment="Left"
+                              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
+                              >
+
+                                <StackPanel Orientation="Horizontal"
+                                Width="230">
+
+                                    <Image Source="/Assets/employeeTL.png"
+                               Stretch="None"
+                               Margin="12,0,0,0" Width="30" Height="30"/>
+
+                                    <TextBlock Text="Empleados"
+                                   Margin="25,0,0,0"
+                                   Style="{StaticResource font_style}"/>
+
+                                </StackPanel>
+
+                                <!--// Tooltip //-->
+
+                                <ListViewItem.ToolTip>
+
+                                    <ToolTip x:Name="tt_contacts"
+                                 Content="Empleados"
+                                 Style="{StaticResource tt_style}"/>
+
+                                </ListViewItem.ToolTip>
+
+                            </ListViewItem>
+
+                            <!--// Messages //-->
+
+                            <ListViewItem x:Name="lvPasajeros" HorizontalAlignment="Left"
+                              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter" Selected="lvPasajeros_Selected"
+                              >
+
+                                <StackPanel Orientation="Horizontal"
+                                Width="230">
+
+                                    <Image Source="/Assets/userTL.png"
+                               Stretch="None"
+                               Margin="12,0,0,0"/>
+
+                                    <TextBlock Text="Clientes"
+                                   Margin="25,0,0,0"
+                                   Style="{StaticResource font_style}"/>
+
+                                </StackPanel>
+
+                                <!--// Tooltip //-->
+
+                                <ListViewItem.ToolTip>
+
+                                    <ToolTip x:Name="tt_messages"
+                                 Content="Clientes"
+                                 Style="{StaticResource tt_style}"/>
+
+                                </ListViewItem.ToolTip>
+
+                            </ListViewItem>
+
+                            <!--// Maps //-->
+
+                            <ListViewItem HorizontalAlignment="Left"
+                              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
+                              >
+
+                                <StackPanel Orientation="Horizontal"
+                                Width="230">
+
+                                    <Image Source="/Assets/img_map.png"
+                               Stretch="None"
+                               Margin="12,0,0,0"/>
+
+                                    <TextBlock Text="Maps"
+                                   Margin="25,0,0,0"
+                                   Style="{StaticResource font_style}"/>
+
+                                </StackPanel>
+
+                                <!--// Tooltip //-->
+
+                                <ListViewItem.ToolTip>
+
+                                    <ToolTip x:Name="tt_maps"
+                                 Content="Maps"
+                                 Style="{StaticResource tt_style}"/>
+
+                                </ListViewItem.ToolTip>
+
+                            </ListViewItem>
+
+                            <!--// Settings //-->
+
+                            <ListViewItem HorizontalAlignment="Left"
+                              Margin="0,0,0,15" MouseEnter="ListViewItem_MouseEnter"
+                              >
+
+                                <StackPanel Orientation="Horizontal"
+                                Width="230">
+
+                                    <Image Source="/Assets/img_setting.png"
+                               Stretch="None"
+                               Margin="12,0,0,0"/>
+
+                                    <TextBlock Text="Settings"
+                                   Margin="25,0,0,0"
+                                   Style="{StaticResource font_style}"/>
+
+                                </StackPanel>
+
+                                <!--// Tooltip //-->
+
+                                <ListViewItem.ToolTip>
+
+                                    <ToolTip x:Name="tt_settings"
+                                 Content="Settings"
+                                 Style="{StaticResource tt_style}"/>
+
+                                </ListViewItem.ToolTip>
+
+                            </ListViewItem>
+
+                            <!--// Sign Out //-->
+
+                            <ListViewItem x:Name="lvSignout" HorizontalAlignment="Left"
+                              Margin="0,111,0,15" MouseEnter="ListViewItem_MouseEnter" Selected="lvSignout_Selected"
+                              >
+
+                                <StackPanel Orientation="Horizontal"
+                                Width="230">
+
+                                    <Image Source="/Assets/sign_out.png"
+                               Stretch="None"
+                               Margin="12,0,0,0"/>
+
+                                    <TextBlock Text="Cerrar sesion"
+                                   Margin="25,0,0,0"
+                                   Style="{StaticResource font_style}"/>
+
+                                </StackPanel>
+
+                                <!--// Tooltip //-->
+
+                                <ListViewItem.ToolTip>
+
+                                    <ToolTip x:Name="tt_signout"
+                                 Content="Cerrar sesion"
+                                 Style="{StaticResource tt_style}"/>
+
+                                </ListViewItem.ToolTip>
+
+                            </ListViewItem>
+
+                            <!--// Listview items style template //-->
+
+                            <ListView.ItemContainerStyle>
+
+                                <Style TargetType="ListViewItem">
+
+                                    <Setter Property="Template">
+
+                                        <Setter.Value>
+
+                                            <ControlTemplate TargetType="{x:Type ListViewItem}">
+
+                                                <Border x:Name="Bd"
+                                            Height="50"
+                                            BorderBrush="{TemplateBinding BorderBrush}"
+                                            BorderThickness="{TemplateBinding BorderThickness}"
+                                            Background="{TemplateBinding Background}"
+                                            Padding="{TemplateBinding Padding}"
+                                            SnapsToDevicePixels="True">
+
+                                                    <ContentPresenter HorizontalAlignment="{TemplateBinding HorizontalContentAlignment}"
+                                                          SnapsToDevicePixels="{TemplateBinding SnapsToDevicePixels}"
+                                                          VerticalAlignment="{TemplateBinding VerticalContentAlignment}"/>
+
+                                                </Border>
+
+                                                <ControlTemplate.Triggers>
+
+                                                    <MultiTrigger>
+
+                                                        <MultiTrigger.Conditions>
+
+                                                            <Condition Property="IsMouseOver" Value="True"/>
+
+                                                        </MultiTrigger.Conditions>
+
+                                                        <Setter Property="Background"
+                                                    TargetName="Bd"
+                                                    Value="#FFE66781"/>
+
+                                                        <Setter Property="BorderBrush"
+                                                    TargetName="Bd"
+                                                    Value="#FFE66781"/>
+
+                                                    </MultiTrigger>
+
+                                                </ControlTemplate.Triggers>
+
+                                            </ControlTemplate>
+
+                                        </Setter.Value>
+
+                                    </Setter>
+
+                                </Style>
+
+                            </ListView.ItemContainerStyle>
+
+                        </ListView>
+
+                    </StackPanel>
+
+
+                </Grid>
+
+            </Grid>
+
+        </Grid>
+    </Border>
+
+</Window>
