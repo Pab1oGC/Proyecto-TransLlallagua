@@ -19,8 +19,8 @@
             <RowDefinition Height="25"/>
             <RowDefinition Height="*"/>
         </Grid.RowDefinitions>
-        <PasswordBox x:Name="pwbPassword" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="26,356,0,0" VerticalAlignment="Top" Width="292" Height="50" Grid.Row="1" FontSize="20"/>
-        <TextBox x:Name="txtUsername" materialDesign:HintAssist.Hint="Nombre de usuario" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Height="50" Margin="27,291,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" Grid.Row="1" FontSize="20"/>
+        <PasswordBox x:Name="pwbPassword" materialDesign:HintAssist.Hint="Contraseña" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="26,356,0,0" VerticalAlignment="Top" Width="292" Height="50" Grid.Row="1" FontSize="20" PreviewKeyDown="pwbPassword_PreviewKeyDown"/>
+        <TextBox x:Name="txtUsername" materialDesign:HintAssist.Hint="Nombre de usuario" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Height="50" Margin="27,291,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="291" Grid.Row="1" FontSize="20" PreviewKeyDown="txtUsername_PreviewKeyDown"/>
         <Image HorizontalAlignment="Left" Height="280" Margin="-3,425,0,0" Grid.Row="1" VerticalAlignment="Top" Width="544" Source="/Assets/curva-roja-forma.png"/>
         <Image HorizontalAlignment="Left" Height="271" Margin="-40,9,0,0" VerticalAlignment="Top" Width="680" Source="/Assets/curva-roja-forma.png" RenderTransformOrigin="0.5,0.5" Grid.RowSpan="2">
             <Image.RenderTransform>

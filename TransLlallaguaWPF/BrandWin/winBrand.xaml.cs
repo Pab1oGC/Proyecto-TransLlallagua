@@ -29,6 +29,7 @@ namespace TransLlallaguaWPF.BrandWin
         Brand c;
         byte typeSave = 0;
         StringHandling util = new StringHandling();
+        SelectWindow select = new SelectWindow();
         public winBrand()
         {
             InitializeComponent();
@@ -167,9 +168,9 @@ namespace TransLlallaguaWPF.BrandWin
 
         private void btnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            /*winAdminMenu winAdminMenu = new winAdminMenu();
-            winAdminMenu.Show();
-            this.Close();*/
+            Window window = select.GetWindow();
+            window.Show();
+            this.Close();
         }
         
     }

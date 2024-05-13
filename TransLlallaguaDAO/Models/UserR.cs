@@ -14,21 +14,21 @@ namespace TransLlallaguaDAO.Models
         /// <param name="username"></param>
         /// <param name="password"></param>
         /// <param name="role"></param>
-        public UserR(string name, string surname, string secondSurname, string ci, string phone, int userId, string adress, char gender, string username, string password, string role)
-            : base(name, surname, secondSurname, ci, phone, userId,adress,gender)
+        public UserR(string name, string surname, string secondSurname, string email, string phone, int userId, string adress, char gender, string username, string password, string role)
+            : base(name, surname, secondSurname, email, phone, userId,adress,gender)
         {
             Username = username;
             Password = password;
             Role = role;
         }
-        public UserR(int id, string name, string surname, string secondSurname, string ci, string adress, char gender, string phone, string username,string role, byte status, DateTime registerDate, DateTime lastUpdate, int userId)
-            :base(id, name, surname, secondSurname, ci, phone,adress,gender, status, registerDate, lastUpdate, userId)
+        public UserR(int id, string name, string surname, string secondSurname, string email, string adress, char gender, string phone, string username,string role, byte status, DateTime registerDate, DateTime lastUpdate, int userId)
+            :base(id, name, surname, secondSurname, email, phone,adress,gender, status, registerDate, lastUpdate, userId)
         {
             Username=username;
             Role = role;
         }
-        public UserR(string name, string surname, string secondSurname, string ci, string phone, int userId, string adress, char gender, string username, string role)
-            : base(name, surname, secondSurname, ci, phone, userId, adress, gender)
+        public UserR(string name, string surname, string secondSurname, string email, string phone, int userId, string adress, char gender, string username, string role)
+            : base(name, surname, secondSurname, email, phone, userId, adress, gender)
         {
             Username = username;
             Role = role;

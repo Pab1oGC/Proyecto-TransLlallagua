@@ -18,6 +18,8 @@ using TransLlallaguaWPF.Bus;
 using TransLlallaguaWPF.User;
 using TransLlallaguaWPF.ChangePassword;
 using TransLlallaguaWPF.Insurance;
+using TransLlallaguaDAO.Models;
+using TransLlallaguaWPF.BrandWin;
 namespace TransLlallaguaWPF.Menus
 {
     /// <summary>
@@ -28,9 +30,10 @@ namespace TransLlallaguaWPF.Menus
         public winAdminMenu()
         {
             InitializeComponent();
+            miUser.Header = SessionControl.Username;
         }
 
-        private void Close_App_Click(object sender, RoutedEventArgs e)
+        private void close_CLick(object sender, RoutedEventArgs e)
         {
             Close();
         }
@@ -52,6 +55,36 @@ namespace TransLlallaguaWPF.Menus
         {
             winInsurance winInsurance = new winInsurance();
             winInsurance.Show();
+            this.Close();
+        }
+
+        
+
+        private void miAddUser_Click(object sender, RoutedEventArgs e)
+        {
+            winUser winUser = new winUser();
+            winUser.Show();
+            this.Close();
+        }
+
+        private void miAddBrand_Click(object sender, RoutedEventArgs e)
+        {
+            winBrand winBrand = new winBrand();
+            winBrand.Show();
+            this.Close();
+        }
+
+        private void miLogout_Click(object sender, RoutedEventArgs e)
+        {
+            winLogin winLogin = new winLogin();
+            winLogin.Show();
+            this.Close();
+        }
+
+        private void miChangePassword_Click(object sender, RoutedEventArgs e)
+        {
+            winChangePassword winChangePassword = new winChangePassword();
+            winChangePassword.Show();
             this.Close();
         }
     }

@@ -8,6 +8,11 @@
 // </auto-generated>
 //------------------------------------------------------------------------------
 
-[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/img_mobile_app_dropdown.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/addaccount.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/brand.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/logout.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/sortdown.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/sortright.png")]
+[assembly: System.Windows.Resources.AssemblyAssociatedContentFileAttribute("assets/staff.png")]
 
 

@@ -15,7 +15,7 @@ namespace TransLlallaguaDAO.Models
             Name = name;
             Surname = surname;
             SecondSurname = secondSurname;
-            Ci = ci;
+            Email = ci;
             Phone = phone;
         }
         public Person(string name, string surname, string secondSurname, string ci, string phone, int userId)
@@ -24,7 +24,7 @@ namespace TransLlallaguaDAO.Models
             Name = name;
             Surname = surname;
             SecondSurname = secondSurname;
-            Ci = ci;
+            Email = ci;
             Phone = phone;
         }
 
@@ -32,7 +32,7 @@ namespace TransLlallaguaDAO.Models
         public string Name { get; set; }
         public string Surname { get; set; }
         public string SecondSurname { get; set; }
-        public string Ci { get; set; }
+        public string Email { get; set; }
         public string Phone { get; set; }
     }
 }

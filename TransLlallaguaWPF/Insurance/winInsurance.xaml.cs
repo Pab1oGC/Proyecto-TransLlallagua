@@ -31,6 +31,7 @@ namespace TransLlallaguaWPF.Insurance
         byte typeSave = 0;
         StringHandling util = new StringHandling();
         private DispatcherTimer _toastTimer;
+        SelectWindow select = new SelectWindow();
 
         public winInsurance()
         {
@@ -199,8 +200,8 @@ namespace TransLlallaguaWPF.Insurance
 
         private void btnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            winAdminMenu winAdminMenu = new winAdminMenu();
-            winAdminMenu.Show();
+            Window window = select.GetWindow();
+            window.Show();
             this.Close();
         }
         private void ShowToast(string message, int durationSeconds)

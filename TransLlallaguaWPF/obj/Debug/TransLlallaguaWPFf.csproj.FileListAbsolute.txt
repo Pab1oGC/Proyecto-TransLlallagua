@@ -14,7 +14,6 @@ D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\bin\Debug\Microsoft.Xam
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\TransLlallaguaWPFf.csproj.AssemblyReference.cache
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Login\winLogin.g.cs
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Menus\winAdminMenu.g.cs
-D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Menus\winEmployeeMenu.g.cs
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Passengers\winPassengers.g.cs
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\App.g.cs
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\TransLlallaguaWPF_MarkupCompile.cache
@@ -22,7 +21,6 @@ D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\TransLlallagu
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\App.baml
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Login\winLogin.baml
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Menus\winAdminMenu.baml
-D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Menus\winEmployeeMenu.baml
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Passengers\winPassengers.baml
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\TransLlallaguaWPF.g.resources
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\TransLlallaguaWPF.Properties.Resources.resources
@@ -38,9 +36,7 @@ D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Office\winOff
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\User\winUser.g.cs
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\User\winUser.baml
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\ChangePassword\winChangePassword.g.cs
-D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Menus\winManager.g.cs
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\ChangePassword\winChangePassword.baml
-D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Menus\winManager.baml
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Insurance\winInsurance.g.cs
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Insurance\winInsurance.baml
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Model\winModel.g.cs
@@ -96,3 +92,7 @@ D:\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\TransLlallaguaWPF.exe
 D:\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\TransLlallaguaWPF.pdb
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\BrandWin\winBrand.g.cs
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\BrandWin\winBrand.baml
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Menus\winCashierMenu.g.cs
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Menus\winManagerMenu.g.cs
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Menus\winCashierMenu.baml
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Menus\winManagerMenu.baml

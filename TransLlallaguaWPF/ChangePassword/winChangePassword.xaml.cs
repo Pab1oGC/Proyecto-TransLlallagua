@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Controls;
@@ -12,6 +13,7 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TransLlallaguaDAO.Implementation;
+using TransLlallaguaDAO.Utils;
 using TransLlallaguaWPF.Login;
 
 namespace TransLlallaguaWPF.ChangePassword
@@ -22,6 +24,9 @@ namespace TransLlallaguaWPF.ChangePassword
     public partial class winChangePassword : Window
     {
         UserImpl userImpl = new UserImpl();
+        SelectWindow select = new SelectWindow();
+        StringHandling util = new StringHandling();
+        SolidColorBrush colorLabel;
         public winChangePassword()
         {
             InitializeComponent();
@@ -48,9 +53,11 @@ namespace TransLlallaguaWPF.ChangePassword
                             else
                                 MessageBox.Show("No se logro cambiar la contraseña");
                         }
+                        else
+                            MessageBox.Show("Las nuevas contraseñas no coinciden");
                     }
                     else
-                        MessageBox.Show("La seguridad de la contraseña es debil: mínimo 8 caracteres, al menos 1 Mayúsucla, minúscula y carácter especial");
+                        MessageBox.Show("La seguridad de la contraseña no cumple con: mínimo 8 caracteres, al menos 1 Mayúsucla, minúscula y carácter especial");
                 }
                 else
                     MessageBox.Show("Contraseña antigua incorrecta");
@@ -64,7 +71,29 @@ namespace TransLlallaguaWPF.ChangePassword
 
         private void btnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-
+            Window window = select.GetWindow();
+            window.Show();
+            this.Close();
         }
+
+        private void txtNew_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            string password = txtNew.Password;
+            string strength = util.GetPasswordStrength(password);
+            lblStrong.Content = $"La seguridad de la contraseña es: {strength}";
+            switch (strength)
+            {
+                case "Fuerte":
+                    lblStrong.Foreground = Brushes.Green;
+                    break;
+                case "Media":
+                    lblStrong.Foreground = Brushes.Peru;
+                    break;
+                case "Débil":
+                    lblStrong.Foreground= Brushes.Red;
+                    break;
+            }
+        }
+        
     }
 }

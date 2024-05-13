@@ -33,13 +33,13 @@ namespace TransLlallaguaDAO.Implementation
 
         public int Insert(UserR user)
         {
-            query = @"INSERT INTO UserR (names,surname,secondSurname,ci,adress,gender,phone,username,password,role,userId)
-                      VALUES (@names,@surname,@secondSurname,@ci,@adress,@gender,@phone,@username,HASHBYTES('MD5',@password),@role,@userId)";
+            query = @"INSERT INTO UserR (names,surname,secondSurname,email,adress,gender,phone,username,password,role,userId)
+                      VALUES (@names,@surname,@secondSurname,@email,@adress,@gender,@phone,@username,HASHBYTES('MD5',@password),@role,@userId)";
             SqlCommand cmd = CreateBasicCommand(query);
             cmd.Parameters.AddWithValue("@names", user.Name);
             cmd.Parameters.AddWithValue("@surname", user.Surname);
             cmd.Parameters.AddWithValue("@secondSurname", user.SecondSurname);
-            cmd.Parameters.AddWithValue("@ci", user.Ci);
+            cmd.Parameters.AddWithValue("@email", user.Email);
             cmd.Parameters.AddWithValue("@adress", user.Adress);
             cmd.Parameters.AddWithValue("@gender", user.Gender);
             cmd.Parameters.AddWithValue("@phone", user.Phone);
@@ -59,8 +59,8 @@ namespace TransLlallaguaDAO.Implementation
         
         public DataTable Select()
         {
-            query = @"SELECT id,names AS Nombres,surname AS 'Apellido Paterno',secondSurname AS 'Apellido Materno',ci AS CI,
-	                  adress AS 'Dirección',gender AS 'Género',phone AS Celular,username AS 'Nombre de usuario',role AS Rol,userId AS 'Creado-Mod Por'
+            query = @"SELECT id,names AS Nombres,surname AS 'Apellido Paterno',secondSurname AS 'Apellido Materno',email AS 'Correo electrónico',
+	                  adress AS 'Dirección',gender AS 'Género',phone AS Celular,username AS 'Nombre de usuario',role AS Rol
                       FROM UserR
                       WHERE status=1
                       ORDER BY 2";
@@ -78,7 +78,7 @@ namespace TransLlallaguaDAO.Implementation
         public int Update(UserR user)
         {
             query = @"UPDATE UserR SET names=@names, surname=@surname, secondSurname=@secondSurname,
-                                       ci=@ci,adress=@adress,gender=@gender,phone=@phone,username=@username,
+                                       email=@email,adress=@adress,gender=@gender,phone=@phone,username=@username,
                                        role=@role,
 			                           lastUpdate=CURRENT_TIMESTAMP, userId=@userId
                       WHERE id=@id";
@@ -86,7 +86,7 @@ namespace TransLlallaguaDAO.Implementation
             cmd.Parameters.AddWithValue("@names", user.Name);
             cmd.Parameters.AddWithValue("@surname", user.Surname);
             cmd.Parameters.AddWithValue("@secondSurname", user.SecondSurname);
-            cmd.Parameters.AddWithValue("@ci", user.Ci);
+            cmd.Parameters.AddWithValue("@email", user.Email);
             cmd.Parameters.AddWithValue("@adress", user.Adress);
             cmd.Parameters.AddWithValue("@gender", user.Gender);
             cmd.Parameters.AddWithValue("@phone", user.Phone);
@@ -125,18 +125,17 @@ namespace TransLlallaguaDAO.Implementation
                 cmd.Connection.Close();
             }
         }
-        /*public bool SelectP(UserR user)
+        
+        public bool ExistsUsername(string username)
         {
-            string query = @"SELECT username FROM [User] WHERE username=@username AND [password]=HASHBYTES('MD5',@password)";
-            //string query = @"SELECT username FROM [User] WHERE [password]=HASHBYTES('MD5',@password)";
+            query = "SELECT username FROM UserR WHERE username=@username";
             SqlCommand cmd = CreateBasicCommand(query);
-            cmd.Parameters.AddWithValue("@username", user.Username);
-            cmd.Parameters.AddWithValue("@password", user.Password).SqlDbType = SqlDbType.VarChar; 
+            cmd.Parameters.AddWithValue("@username", username);
             try
             {
                 cmd.Connection.Open();
                 SqlDataReader reader = cmd.ExecuteReader();
-                if(reader.HasRows)
+                if (reader.HasRows)
                     return true;
                 else
                     return false;
@@ -149,13 +148,13 @@ namespace TransLlallaguaDAO.Implementation
             {
                 cmd.Connection.Close();
             }
-        }*/
-
-        public bool ExistsUsername(string username)
+        }
+        public bool ExistsUsernameUpdate(string username,int id)
         {
-            query = "SELECT username FROM UserR WHERE username=@username";
+            query = "SELECT username FROM UserR WHERE username=@username AND id<>@id";
             SqlCommand cmd = CreateBasicCommand(query);
             cmd.Parameters.AddWithValue("@username", username);
+            cmd.Parameters.AddWithValue("@id", id);
             try
             {
                 cmd.Connection.Open();
@@ -186,14 +185,14 @@ namespace TransLlallaguaDAO.Implementation
             if (!ExistsUsername(username))
                 return username;
             else
-                return CreateUsername(surname, names, i++);
+                return CreateUsername(surname, names, i+1);
         }
 
         public string CreatePassword()
         {
             string[] abecedario = {"a","b","c","d","e","f","g","h","i","j","k","l","m",
                                    "n","o","p","q","r","s","t","u","v","w","x","y","z"};
-            char[] simbolos = { '!', '#', '$', '%', '&', '¿', '=', '*', '+' };
+            char[] simbolos = { '!', '#','*' };
             Random randomico = new Random();
             int randon = 0;
             string contrasenia = "";
@@ -217,7 +216,7 @@ namespace TransLlallaguaDAO.Implementation
                 }
                 else
                 {
-                    randon = randomico.Next(0, 9);
+                    randon = randomico.Next(0, 5);
                     contrasenia += simbolos[randon];
                 }
             }
@@ -227,7 +226,7 @@ namespace TransLlallaguaDAO.Implementation
         public UserR Get(int id)
         {
             UserR c = null;
-            query = @" SELECT id,names,surname,secondSurname,ci,adress,gender,phone,username,role,status,registerDate,ISNULL(lastUpdate,CURRENT_TIMESTAMP),userId
+            query = @" SELECT id,names,surname,secondSurname,email,adress,gender,phone,username,role,status,registerDate,ISNULL(lastUpdate,CURRENT_TIMESTAMP),userId
                     FROM UserR
                     WHERE id=@id";
             SqlCommand command = CreateBasicCommand(query);
@@ -284,7 +283,7 @@ namespace TransLlallaguaDAO.Implementation
 
         public int UpdatePassword(string password)
         {
-            query = "UPDATE UserR SET password=@password WHERE id=@id";
+            query = "UPDATE UserR SET password=HASHBYTES('MD5',@password) WHERE id=@id";
             SqlCommand cmd = CreateBasicCommand(query);
             cmd.Parameters.AddWithValue("@password",password).SqlDbType=SqlDbType.VarChar;
             cmd.Parameters.AddWithValue("@id", SessionControl.UserID);

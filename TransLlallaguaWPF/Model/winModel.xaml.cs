@@ -31,6 +31,7 @@ namespace TransLlallaguaWPF.Model
         Mode1 c;
         byte typeSave=0;
         Toast toast;
+        SelectWindow select = new SelectWindow();
         public winModel()
         {
             InitializeComponent();
@@ -204,9 +205,9 @@ namespace TransLlallaguaWPF.Model
         }
 
         private void btnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {           
-            winAdminMenu winAdminMenu = new winAdminMenu();
-            winAdminMenu.Show();
+        {
+            Window window = select.GetWindow();
+            window.Show();
             this.Close();
         }
     }

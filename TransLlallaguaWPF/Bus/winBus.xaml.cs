@@ -20,6 +20,7 @@ namespace TransLlallaguaWPF.Bus
     /// </summary>
     public partial class winBus : Window
     {
+        SelectWindow select = new SelectWindow();
         public winBus()
         {
             InitializeComponent();
@@ -43,24 +44,9 @@ namespace TransLlallaguaWPF.Bus
 
         private void btnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            switch (SessionControl.Role)
-            {
-                case "ADMINISTRADOR":
-                    winAdminMenu winAdminMenu = new winAdminMenu();
-                    winAdminMenu.Show();
-                    this.Close();
-                    break;
-                case "CAJERO":
-                    winEmployeeMenu winEmployeeMenu = new winEmployeeMenu();
-                    winEmployeeMenu.Show();
-                    this.Close();
-                    break;
-                case "ENCARGADO SUCURSAL":
-                    winManager winManager = new winManager();
-                    winManager.Show();
-                    this.Close();
-                    break;
-            }
+            Window window = select.GetWindow();
+            window.Show();
+            this.Close();
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)

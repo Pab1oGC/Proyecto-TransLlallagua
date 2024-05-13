@@ -10,11 +10,11 @@ none
 false
 DEBUG;TRACE
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\App.xaml
-12-929688430
+121772955672
 
-171290860462
+18-324898842
 171067673069
-BrandWin\winBrand.xaml;Bus\winBus.xaml;ChangePassword\winChangePassword.xaml;Insurance\winInsurance.xaml;Login\winLogin.xaml;Menus\winAdminMenu.xaml;Menus\winEmployeeMenu.xaml;Menus\winManager.xaml;Model\winModel.xaml;Office\winOffice.xaml;Passengers\winPassengers.xaml;User\winUser.xaml;
+BrandWin\winBrand.xaml;Bus\winBus.xaml;ChangePassword\winChangePassword.xaml;Insurance\winInsurance.xaml;Login\winLogin.xaml;Menus\winAdminMenu.xaml;Menus\winCashierMenu.xaml;Menus\winManagerMenu.xaml;Model\winModel.xaml;Office\winOffice.xaml;Passengers\winPassengers.xaml;User\winUser.xaml;
 
 True
 

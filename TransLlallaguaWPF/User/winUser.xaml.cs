@@ -14,6 +14,7 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TransLlallaguaDAO.Implementation;
 using TransLlallaguaDAO.Models;
+using TransLlallaguaDAO.Utils;
 using TransLlallaguaWPF.Menus;
 
 
@@ -24,72 +25,63 @@ namespace TransLlallaguaWPF.User
     /// </summary>
     public partial class winUser : Window
     {
-        SolidColorBrush colorLbl = new SolidColorBrush();
         UserImpl userImpl = new UserImpl();
         UserR user;
         string username,password;
         byte focus = 0;
+        SelectWindow select = new SelectWindow();
+        StringHandling util = new StringHandling();
+        Toast toast;
         public winUser()
         {
             InitializeComponent();
-            btnSave.IsEnabled = false;
+            btnSave.IsEnabled = true;
             txtUsername.IsEnabled = false;
             btnUpdate.IsEnabled = false;
-            Select();
-        }
-
-        private void lblPassword_MouseEnter(object sender, MouseEventArgs e)
-        {
-            colorLbl.Color = Colors.White;
-            lblPassword.Background = colorLbl;
-        }
-
-        private void lblPassword_MouseLeave(object sender, MouseEventArgs e)
-        {
-            colorLbl.Color = Colors.Black;
-            lblPassword.Background = colorLbl;
+            toast = new Toast(lblToast);
         }
 
         private void btnSave_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                user = new UserR(txtNames.Text.Trim(),
-                             txtSurname.Text.Trim(),
-                             txtSecondSurname.Text.Trim(),
-                             txtCi.Text.Trim(),
-                             txtPhone.Text.Trim(),
-                             SessionControl.UserID,
-                             txtAdress.Text.Trim(),
-                             char.Parse(cmbGender.Text),
-                             username, password, cmbRole.Text
-                             );
-                int res = userImpl.Insert(user);
-                if (res > 0)
+                if (!string.IsNullOrWhiteSpace(txtNames.Text) && !string.IsNullOrWhiteSpace(txtSurname.Text) && !string.IsNullOrWhiteSpace(txtSecondSurname.Text) &&
+                    !string.IsNullOrWhiteSpace(txtEmail.Text) && !string.IsNullOrWhiteSpace(txtAdress.Text) && !string.IsNullOrWhiteSpace(txtPhone.Text) && 
+                    cmbRole.SelectedIndex!=-1 && cmbGender.SelectedIndex!=-1)
                 {
-                    Select();
-                    MessageBox.Show("Registro insertado con exito");
-                    tbControl.SelectedIndex = 1;
-                    btnSave.IsEnabled = false;
+                    string names = util.DeleteExtraSpaces(txtNames.Text.Trim());
+                    string surname = util.DeleteExtraSpaces(txtSurname.Text.Trim());
+                    string secondSurname = util.DeleteExtraSpaces(txtSecondSurname.Text.Trim());
+                    string email = util.StringWithoutSpaces(txtEmail.Text.Trim());
+                    string adress = util.DeleteExtraSpaces(txtAdress.Text.Trim());
+                    username = userImpl.CreateUsername(txtSurname.Text, txtNames.Text, 0);
+                    password = userImpl.CreatePassword();
+                    user = new UserR(names,
+                                     surname,
+                                     secondSurname,
+                                     email,
+                                     txtPhone.Text.Trim(),
+                                     SessionControl.UserID,
+                                     adress,
+                                     char.Parse(cmbGender.Text),
+                                     username, password, cmbRole.Text
+                                     );
+                    int res = userImpl.Insert(user);
+                    if (res > 0)
+                    {
+                        Select();
+                        MessageBox.Show($"Su usuario: {username}\nSu contraseña:{password}","Registro INSERTADO",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                        tbControl.SelectedIndex = 0;
+                    }
+                    else
+                        MessageBox.Show("Ningun registro fue INSERTADO");
                 }
                 else
-                    MessageBox.Show("Ningun registro fue insertado");
+                    MessageBox.Show("Ingrese todos los campos", "Datos inválido", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch(Exception ex) 
             { 
                 MessageBox.Show(ex.Message);
-            }
-        }
-
-        private void btnGenerate_Click(object sender, RoutedEventArgs e)
-        {
-            if(!string.IsNullOrWhiteSpace(txtNames.Text) && !string.IsNullOrWhiteSpace(txtSurname.Text))
-            {
-                username = userImpl.CreateUsername(txtSurname.Text, txtNames.Text, 0);
-                password = userImpl.CreatePassword();
-                txtUsername.Text = username;
-                lblPassword.Content = password;
-                btnSave.IsEnabled = true;
             }
         }
 
@@ -109,7 +101,7 @@ namespace TransLlallaguaWPF.User
                         txtNames.Text = user.Name;
                         txtSurname.Text = user.Surname;
                         txtSecondSurname.Text = user.SecondSurname;
-                        txtCi.Text = user.Ci;
+                        txtEmail.Text = user.Email;
                         txtAdress.Text = user.Adress;
                         cmbGender.Text = user.Gender.ToString();
                         txtPhone.Text = user.Phone;
@@ -122,8 +114,7 @@ namespace TransLlallaguaWPF.User
 
                     MessageBox.Show("Error en el Get" + ex.Message);
                 }
-            }
-                
+            }              
         }
 
 
@@ -131,30 +122,42 @@ namespace TransLlallaguaWPF.User
         {
             try
             {
-                user = new UserR(txtNames.Text.Trim(),
-                             txtSurname.Text.Trim(),
-                             txtSecondSurname.Text.Trim(),
-                             txtCi.Text.Trim(),
-                             txtPhone.Text.Trim(),
-                             SessionControl.UserID,
-                             txtAdress.Text.Trim(),
-                             char.Parse(cmbGender.Text),
-                             username, cmbRole.Text
-                             );
-                int res = userImpl.Update(user);
-                if (res > 0)
+                if (!string.IsNullOrWhiteSpace(txtNames.Text) && !string.IsNullOrWhiteSpace(txtSurname.Text) && !string.IsNullOrWhiteSpace(txtSecondSurname.Text) &&
+                   !string.IsNullOrWhiteSpace(txtEmail.Text) && !string.IsNullOrWhiteSpace(txtAdress.Text) && !string.IsNullOrWhiteSpace(txtPhone.Text) &&
+                   cmbRole.SelectedIndex != -1 && cmbGender.SelectedIndex != -1)
                 {
-                    Select();
-                    MessageBox.Show("Registro insertado con exito");
-                    tbControl.SelectedIndex = 1;
-                    btnSave.IsEnabled = false;
-                    btnModify.IsEnabled = false;
-                    btnGenerate.IsEnabled = true;
-                    txtUsername.IsEnabled = false;
-                    lblPassword.IsEnabled = true;
+                    user.Name = util.DeleteExtraSpaces(txtNames.Text.Trim());
+                    user.Surname = util.DeleteExtraSpaces(txtSurname.Text.Trim());
+                    user.SecondSurname = util.DeleteExtraSpaces(txtSecondSurname.Text.Trim());
+                    user.Email = util.StringWithoutSpaces(txtEmail.Text.Trim());
+                    user.Adress = util.DeleteExtraSpaces(txtAdress.Text.Trim());
+                    user.Phone = util.StringWithoutSpaces(txtPhone.Text);
+                    user.Gender = char.Parse(cmbGender.Text);
+                    user.Role = cmbRole.Text;
+                    username = util.StringWithoutSpaces(txtUsername.Text);
+                    if (userImpl.ExistsUsernameUpdate(username, user.Id))
+                    {
+                        MessageBox.Show("Ingrese otro nombre de usuario", "Usuario existente", MessageBoxButton.OK, MessageBoxImage.Error);
+                        txtUsername.Clear();
+                    }
+                    else
+                    {
+                        int res = userImpl.Update(user);
+                        if (res > 0)
+                        {
+                            Select();
+                            MessageBox.Show("Registro ACTUALIZADO con exito");
+                            tbControl.SelectedIndex = 0;
+                            btnSave.IsEnabled = true;
+                            btnUpdate.IsEnabled = false;
+                            txtUsername.IsEnabled = false;
+                        }
+                        else
+                            MessageBox.Show("Ningun registro fue ACTUALIZADO");
+                    }                 
                 }
                 else
-                    MessageBox.Show("Ningun registro fue insertado");
+                    MessageBox.Show("Ingrese todos los campos", "Datos inválido", MessageBoxButton.OK, MessageBoxImage.Error);
             }
             catch (Exception ex)
             {
@@ -166,11 +169,9 @@ namespace TransLlallaguaWPF.User
         {
             if (focus == 1)
             {
-                lblPassword.IsEnabled = false;
-                tbControl.SelectedIndex = 0;
+                tbControl.SelectedIndex = 1;
                 btnSave.IsEnabled = false;
                 btnUpdate.IsEnabled = true;
-                btnGenerate.IsEnabled = false;
                 txtUsername.IsEnabled = true;
             }
         }
@@ -189,12 +190,12 @@ namespace TransLlallaguaWPF.User
                         txtNames.Clear();
                         txtSurname.Clear();
                         txtSecondSurname.Clear();
-                        txtCi.Clear();
+                        txtEmail.Clear();
                         txtAdress.Clear();
                         txtPhone.Clear();
                         txtUsername.Clear();
-                        cmbGender.SelectedIndex = -1;
-                        cmbRole.SelectedIndex = -1;
+                        cmbGender.SelectedItem = null;
+                        cmbRole.SelectedItem = null;
                     }
                     else
                     {
@@ -210,23 +211,50 @@ namespace TransLlallaguaWPF.User
 
         private void btnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            switch (SessionControl.Role)
+            Window window = select.GetWindow();
+            window.Show();
+            this.Close();
+        }
+
+        private void Window_Loaded(object sender, RoutedEventArgs e)
+        {
+            Select();
+        }
+
+        private void LetterValidation(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsLetter(char.Parse(e.Text)))
             {
-                case "ADMINISTRADOR":
-                    winAdminMenu winAdminMenu = new winAdminMenu();
-                    winAdminMenu.Show();
-                    this.Close();
-                    break;
-                case "CAJERO":
-                    winEmployeeMenu winEmployeeMenu = new winEmployeeMenu();
-                    winEmployeeMenu.Show();
-                    this.Close();
-                    break;
-                case "ENCARGADO SUCURSAL":
-                    winManager winManager = new winManager();
-                    winManager.Show();
-                    this.Close();
-                    break;
+                e.Handled = true;
+                toast.ShowToast("SOLO SE PUEDE INGRESAR LETRAS", 2);
+            }
+        }
+
+        private void txtPhone_PreviewTextInput(object sender, TextCompositionEventArgs e)
+        {
+            if (!char.IsDigit(char.Parse(e.Text)))
+            {
+                e.Handled = true;
+                toast.ShowToast("SOLO SE PUEDE INGRESAR NUMEROS", 2);
+            }
+        }
+
+        private void txtPhone_LostFocus(object sender, RoutedEventArgs e)
+        {
+            string phone = util.StringWithoutSpaces(txtPhone.Text);
+            if (phone.Length != 8)
+            {
+                toast.ShowToast("INGRESE UN NUMERO DE CELULAR VALIDO", 2);
+                txtPhone.Clear();
+            }
+        }
+
+        private void txtEmail_LostFocus(object sender, RoutedEventArgs e)
+        {
+            if (!util.ValidationEmail(txtEmail.Text))
+            {
+                toast.ShowToast("INGRESE UN CORREO ELECTRONICO VALIDO", 2);
+                txtEmail.Clear();
             }
         }
 
@@ -236,7 +264,7 @@ namespace TransLlallaguaWPF.User
             {
                 dvgData.ItemsSource=null;
                 dvgData.ItemsSource = userImpl.Select().DefaultView;
-                //dvgData.Columns[0].Visibility = Visibility.Collapsed;
+                dvgData.Columns[0].Visibility = Visibility.Collapsed;
             }
             catch (Exception ex)
             {

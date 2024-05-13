@@ -6,57 +6,50 @@
         xmlns:local="clr-namespace:TransLlallaguaWPF.User"
         mc:Ignorable="d"
         xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-    TextElement.FontWeight="Regular"
-    TextElement.FontSize="13"
-    TextOptions.TextFormattingMode="Ideal"
-    TextOptions.TextRenderingMode="Auto"
-    Background="{DynamicResource MaterialDesignPaper}"
-    FontFamily="{DynamicResource MaterialDesignFont}"
-    Height="700" Width="1350" WindowStyle="None" ResizeMode="NoResize" >
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        Height="780" Width="1350" WindowStyle="None" ResizeMode="NoResize" Loaded="Window_Loaded" WindowStartupLocation="CenterScreen">
     <Grid>
         <TabControl x:Name="tbControl" Margin="0,80,0,0">
-            <TabItem Header="Agregar usuarios" >
+            <TabItem Header="Lista de usuarios" >
                 <Grid>
-                    
-                    <TextBox x:Name="txtNames" materialDesign:HintAssist.Hint="Nombres" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="38,46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="268" Height="35"/>
-                    <TextBox x:Name="txtSurname" materialDesign:HintAssist.Hint="Primer apellido" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="38,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="268" Height="34"/>
-                    <TextBox x:Name="txtSecondSurname" materialDesign:HintAssist.Hint="Segundo apellido" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="38,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="268" Height="34"/>
-                    <TextBox x:Name="txtCi" materialDesign:HintAssist.Hint="Número de carnet de identidad" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="38,295,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="268" Height="34"/>
-                    <TextBox x:Name="txtPhone" materialDesign:HintAssist.Hint="Celular" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="380,214,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="268" Height="34"/>
-                    <TextBox x:Name="txtUsername" materialDesign:HintAssist.Hint="Nombre de usuario" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="810,100,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="268" Height="34" Grid.ColumnSpan="2"/>
-                    <TextBox x:Name="txtAdress" materialDesign:HintAssist.Hint="Dirección" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="388,63,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="268" Height="34"/>
-                    <Button x:Name="btnSave" Content="GUARDAR" HorizontalAlignment="Left" Margin="426,481,0,0" VerticalAlignment="Top" Height="56" Width="286" Click="btnSave_Click"/>
-                    <ComboBox x:Name="cmbGender" materialDesign:HintAssist.Hint="Género" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Height="38" Margin="382,136,0,0" VerticalAlignment="Top" Width="288">
+                    <DataGrid x:Name="dvgData" HorizontalAlignment="Left" Height="414" Margin="8,24,0,0" VerticalAlignment="Top" Width="1334" IsReadOnly="True" CanUserAddRows="False" SelectionChanged="dvgData_SelectionChanged" />
+                    <Button x:Name="btnModify" Content="Modificar" HorizontalAlignment="Left" Height="74" Margin="742,470,0,0" VerticalAlignment="Top" Width="240" Click="btnUpdate_Click"/>
+                    <Button x:Name="btnDelete" Content="Eliminar" HorizontalAlignment="Left" Height="73" Margin="434,470,0,0" VerticalAlignment="Top" Width="240" Click="btnDelete_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Agregar usuario">
+                <Grid>
+                    <TextBox x:Name="txtNames" materialDesign:HintAssist.Hint="Nombres" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="38,46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" PreviewTextInput="LetterValidation" FontSize="20"/>
+                    <TextBox x:Name="txtSurname" materialDesign:HintAssist.Hint="Primer apellido" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="38,144,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" PreviewTextInput="LetterValidation" FontSize="20"/>
+                    <TextBox x:Name="txtSecondSurname" materialDesign:HintAssist.Hint="Segundo apellido" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="38,243,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" PreviewTextInput="LetterValidation" FontSize="20"/>
+                    <TextBox x:Name="txtEmail" materialDesign:HintAssist.Hint="Correo electrónico" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="38,344,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" LostFocus="txtEmail_LostFocus" FontSize="20"/>
+                    <TextBox x:Name="txtPhone" materialDesign:HintAssist.Hint="Celular" materialDesign:HintAssist.IsFloating="True" MaxLength="8" HorizontalAlignment="Left" Margin="494,243,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" PreviewTextInput="txtPhone_PreviewTextInput" LostFocus="txtPhone_LostFocus" FontSize="20"/>
+                    <TextBox x:Name="txtUsername" materialDesign:HintAssist.Hint="Nombre de usuario" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="944,46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" FontSize="20"/>
+                    <TextBox x:Name="txtAdress" materialDesign:HintAssist.Hint="Dirección" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Center" Margin="0,46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" FontSize="20"/>
+                    <Button x:Name="btnSave" Content="GUARDAR" HorizontalAlignment="Left" Margin="330,537,0,0" VerticalAlignment="Top" Height="56" Width="286" Click="btnSave_Click"/>
+                    <ComboBox x:Name="cmbGender" materialDesign:HintAssist.Hint="Género" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Height="60" Margin="494,144,0,0" VerticalAlignment="Top" Width="366" FontSize="20">
                         <ComboBoxItem Content="F"/>
                         <ComboBoxItem Content="M"/>
                     </ComboBox>
-                    <ComboBox x:Name="cmbRole" materialDesign:HintAssist.Hint="Rol" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Height="38" Margin="388,284,0,0" VerticalAlignment="Top" Width="288">
+                    <ComboBox x:Name="cmbRole" materialDesign:HintAssist.Hint="Rol" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Center" Height="60" Margin="0,348,0,0" VerticalAlignment="Top" Width="366" FontSize="20">
                         <ComboBoxItem Content="ADMINISTRADOR"/>
-                        <ComboBoxItem Content="ENCARGADO SUCURSAL"/>
+                        <ComboBoxItem Content="ENCARGADO DE SUCURSAL"/>
                         <ComboBoxItem Content="CAJERO"/>
                     </ComboBox>
-                    <Label Content="Coloque su cursor encima del cuadro para ver la contraseña" HorizontalAlignment="Left" Height="28" Margin="806,162,0,0" VerticalAlignment="Top" Width="370"/>
-                    <Label x:Name="lblPassword" Content="" Background="Black" HorizontalAlignment="Left" Height="28" Margin="806,213,0,0" VerticalAlignment="Top" Width="346" MouseEnter="lblPassword_MouseEnter" MouseLeave="lblPassword_MouseLeave" Grid.ColumnSpan="2"/>
-                    <Button x:Name="btnGenerate" Content="GENERAR NOMBRE Y CONTRASEÑA" HorizontalAlignment="Left" Margin="851,276,0,0" VerticalAlignment="Top" Height="56" Width="272" Click="btnGenerate_Click" Grid.ColumnSpan="2"/>
-                    <Button x:Name="btnUpdate" Content="ACTUALIZAR" HorizontalAlignment="Left" Margin="743,481,0,0" VerticalAlignment="Top" Height="56" Width="286" Click="btnUpdate_Click_1" Grid.ColumnSpan="2"/>
+                    <Button x:Name="btnUpdate" Content="ACTUALIZAR" HorizontalAlignment="Left" Margin="715,537,0,0" VerticalAlignment="Top" Height="56" Width="286" Click="btnUpdate_Click_1"/>
+                    <Label x:Name="lblToast" Content="" HorizontalAlignment="Center" Height="52" Margin="0,450,0,0" VerticalAlignment="Top" Width="588" HorizontalContentAlignment="Center" FontWeight="Bold" FontSize="16"/>
                 </Grid>
-            </TabItem>
-            <TabItem Header="Lista de usuarios">
-                <Grid>
-                    <DataGrid x:Name="dvgData" HorizontalAlignment="Center" Height="414" Margin="0,24,0,0" VerticalAlignment="Top" Width="1334" IsReadOnly="True" CanUserAddRows="False" SelectionChanged="dvgData_SelectionChanged">
-
-                    </DataGrid>
-                    <Button x:Name="btnModify" Content="Modificar" HorizontalAlignment="Left" Height="73" Margin="400,466,0,0" VerticalAlignment="Top" Width="240" Click="btnUpdate_Click"/>
-                    <Button x:Name="btnDelete" Content="Eliminar" HorizontalAlignment="Left" Height="73" Margin="751,470,0,0" VerticalAlignment="Top" Width="240" Click="btnDelete_Click"/>
-                </Grid>
-
             </TabItem>
         </TabControl>
-        <Grid Margin="0,0,0,623" Background="Red">
-            <Label Content="CONTROL DE USUARIOS" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="36" />
-            <materialDesign:PackIcon x:Name="btnBack" Kind="ArrowBack" Height="50" Width="50" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="White" Cursor="Hand" MouseLeftButtonDown="btnBack_MouseLeftButtonDown" />
-
+        <Grid Margin="0,0,0,705" Background="Red">
+            <Label Content="CONTROL DE USUARIOS" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="36" FontWeight="Bold"/>
+            <materialDesign:PackIcon x:Name="btnBack" Kind="ArrowBack" Height="50" Width="50" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="White" Cursor="Hand" MouseLeftButtonDown="btnBack_MouseLeftButtonDown"  />
         </Grid>
     </Grid>
 </Window>
