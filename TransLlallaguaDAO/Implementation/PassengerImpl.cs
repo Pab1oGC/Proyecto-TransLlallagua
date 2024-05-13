@@ -19,13 +19,12 @@ namespace TransLlallaguaDAO.Implementation
 
         public int Insert(Passenger c)
         {
-            string query = "";
-            if (c.SecondSurname == null)
+            /*if (c.SecondSurname == null)
             {
 
             }
                 
-            SqlCommand cmd = CreateBasicCommand();
+            SqlCommand cmd = CreateBasicCommand();*/
             return 1;
         }
 

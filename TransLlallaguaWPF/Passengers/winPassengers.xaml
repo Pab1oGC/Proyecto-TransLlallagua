@@ -21,6 +21,10 @@
         <TabControl Margin="0,84,0,0">
             <TabItem Header="Agregar clientes" >
                 <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="281*"/>
+                        <ColumnDefinition Width="119*"/>
+                    </Grid.ColumnDefinitions>
                     <TextBox x:Name="txtNames" materialDesign:HintAssist.Hint="Nombres" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="38,46,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="268" Height="35"/>
                     <TextBox x:Name="txtSurname" materialDesign:HintAssist.Hint="Primer apellido" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="38,126,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="268" Height="34"/>
                     <TextBox x:Name="txtSecondSurname" materialDesign:HintAssist.Hint="Segundo apellido" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="38,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="268" Height="34"/>
@@ -35,7 +39,7 @@
                 <Grid Background="#FFE5E5E5"/>
             </TabItem>
         </TabControl>
-        <Grid Margin="0,0,0,605" Background="Crimson">
+        <Grid Margin="0,0,0,605" Background="Red">
             <Label Content="CONTROL DE CLIENTES" HorizontalAlignment="Center" VerticalAlignment="Center" Foreground="White" FontSize="36" FontFamily="{StaticResource fuente}"/>
 
         </Grid>

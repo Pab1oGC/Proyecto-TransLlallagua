@@ -26,7 +26,7 @@ namespace TransLlallaguaWPF.Passengers
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
-
+            
         }
     }
 }

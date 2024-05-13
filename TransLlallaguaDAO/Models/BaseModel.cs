@@ -8,17 +8,22 @@ namespace TransLlallaguaDAO.Models
 {
     public class BaseModel
     {
-        public BaseModel(byte status, DateTime registerDate, DateTime lastUpdate, int employeeId)
+        public BaseModel(int userId)
+        {
+            UserId = userId;
+        }
+
+        public BaseModel(byte status, DateTime registerDate, DateTime lastUpdate, int userId)
         {
             Status = status;
             RegisterDate = registerDate;
             LastUpdate = lastUpdate;
-            EmployeeId = employeeId;
+            UserId = userId;
         }
-
+        public BaseModel() { }
         public byte Status { get; set; }
         public DateTime RegisterDate { get; set; }
         public DateTime LastUpdate { get; set; }
-        public int EmployeeId { get; set; }
+        public int UserId { get; set; }
     }
 }

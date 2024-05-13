@@ -4,3 +4,9 @@ D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaDAO\obj\Debug\TransLlallagu
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaDAO\obj\Debug\TransLlallaguaDAO.csproj.CoreCompileInputs.cache
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaDAO\obj\Debug\TransLlallaguaDAO.dll
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaDAO\obj\Debug\TransLlallaguaDAO.pdb
+D:\ProyectoTransLlallagua\TransLlallaguaDAO\bin\Debug\TransLlallaguaDAO.dll
+D:\ProyectoTransLlallagua\TransLlallaguaDAO\bin\Debug\TransLlallaguaDAO.pdb
+D:\ProyectoTransLlallagua\TransLlallaguaDAO\obj\Debug\TransLlallaguaDAO.csproj.AssemblyReference.cache
+D:\ProyectoTransLlallagua\TransLlallaguaDAO\obj\Debug\TransLlallaguaDAO.csproj.CoreCompileInputs.cache
+D:\ProyectoTransLlallagua\TransLlallaguaDAO\obj\Debug\TransLlallaguaDAO.dll
+D:\ProyectoTransLlallagua\TransLlallaguaDAO\obj\Debug\TransLlallaguaDAO.pdb

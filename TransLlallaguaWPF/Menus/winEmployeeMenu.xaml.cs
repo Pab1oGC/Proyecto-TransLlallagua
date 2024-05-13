@@ -11,6 +11,8 @@ using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
+using TransLlallaguaWPF.Login;
+using TransLlallaguaWPF.ChangePassword;
 
 namespace TransLlallaguaWPF.Menus
 {
@@ -22,6 +24,19 @@ namespace TransLlallaguaWPF.Menus
         public winEmployeeMenu()
         {
             InitializeComponent();
+        }
+        private void off2Image_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            winLogin winLogin = new winLogin();
+            winLogin.Show();
+            this.Close();
+        }
+
+        private void keyImage_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        {
+            winChangePassword winChangePassword = new winChangePassword();
+            winChangePassword.Show();
+            this.Close();
         }
     }
 }

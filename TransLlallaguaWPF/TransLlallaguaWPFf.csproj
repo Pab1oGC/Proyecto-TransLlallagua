@@ -66,6 +66,40 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="BrandWin\winBrand.xaml.cs">
+      <DependentUpon>winBrand.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ChangePassword\winChangePassword.xaml.cs">
+      <DependentUpon>winChangePassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Insurance\winInsurance.xaml.cs">
+      <DependentUpon>winInsurance.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Menus\winManager.xaml.cs">
+      <DependentUpon>winManager.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Model\winModel.xaml.cs">
+      <DependentUpon>winModel.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="User\winUser.xaml.cs">
+      <DependentUpon>winUser.xaml</DependentUpon>
+    </Compile>
+    <Page Include="BrandWin\winBrand.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Bus\winBus.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ChangePassword\winChangePassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Insurance\winInsurance.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Login\winLogin.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
@@ -73,6 +107,9 @@
     <Compile Include="App.xaml.cs">
       <DependentUpon>App.xaml</DependentUpon>
       <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Bus\winBus.xaml.cs">
+      <DependentUpon>winBus.xaml</DependentUpon>
     </Compile>
     <Compile Include="Login\winLogin.xaml.cs">
       <DependentUpon>winLogin.xaml</DependentUpon>
@@ -85,7 +122,23 @@
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
+    <Page Include="Menus\winManager.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Model\winModel.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Office\winOffice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
     <Page Include="Passengers\winPassengers.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="User\winUser.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -96,6 +149,9 @@
     </Compile>
     <Compile Include="Menus\winEmployeeMenu.xaml.cs">
       <DependentUpon>winEmployeeMenu.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Office\winOffice.xaml.cs">
+      <DependentUpon>winOffice.xaml</DependentUpon>
     </Compile>
     <Compile Include="Passengers\winPassengers.xaml.cs">
       <DependentUpon>winPassengers.xaml</DependentUpon>
@@ -156,6 +212,61 @@
   </ItemGroup>
   <ItemGroup>
     <Resource Include="Assets\menu.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\curva-roja-forma.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\back.png" />
+    <Resource Include="Assets\bus1.png" />
+    <Resource Include="Assets\bus2.png" />
+    <Resource Include="Assets\employee.png" />
+    <Resource Include="Assets\history.png" />
+    <Resource Include="Assets\locality.png" />
+    <Resource Include="Assets\off.png" />
+    <Resource Include="Assets\off2.png" />
+    <Resource Include="Assets\office.png" />
+    <Resource Include="Assets\passanger.png" />
+    <Resource Include="Assets\seat.png" />
+    <Resource Include="Assets\ticket.png" />
+    <Resource Include="Assets\travel.png" />
+    <Resource Include="Assets\usuario.jpg" />
+    <Resource Include="Assets\usuario1.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\key.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\keyO.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\bus.png" />
+    <Resource Include="Assets\buy.png" />
+    <Resource Include="Assets\close.png" />
+    <Resource Include="Assets\company.png" />
+    <Resource Include="Assets\home.png" />
+    <Resource Include="Assets\img_mobile_app_dropdown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\img_services_dropdown.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Assets\img_shutdown_def.png" />
+    <Resource Include="Assets\img_shutdown_mo.png" />
+    <Resource Include="Assets\map.png" />
+    <Resource Include="Assets\model.png" />
+    <Resource Include="Assets\password.png" />
+    <Resource Include="Assets\segurity.png" />
+    <Resource Include="Assets\user.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\icons8-shutdown-64.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\icons8-shutdown-24.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <Resource Include="Assets\icons8-shutdown-16.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.8.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.8.0\build\MaterialDesignThemes.targets')" />

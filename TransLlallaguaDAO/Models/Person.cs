@@ -8,15 +8,23 @@ namespace TransLlallaguaDAO.Models
 {
     public class Person:BaseModel
     {
-        public Person(int id, string name, string surname, string secondSurname, string ci, string email, string phone,byte status,DateTime registerDate,DateTime lastUpdate,int employeeId)
-            :base(status,registerDate,lastUpdate,employeeId)
+        public Person(int id, string name, string surname, string secondSurname, string ci, string phone, byte status, DateTime registerDate, DateTime lastUpdate, int userId)
+            :base(status,registerDate,lastUpdate,userId)
         {
             Id = id;
             Name = name;
             Surname = surname;
             SecondSurname = secondSurname;
             Ci = ci;
-            Email = email;
+            Phone = phone;
+        }
+        public Person(string name, string surname, string secondSurname, string ci, string phone, int userId)
+            : base(userId)
+        {
+            Name = name;
+            Surname = surname;
+            SecondSurname = secondSurname;
+            Ci = ci;
             Phone = phone;
         }
 
@@ -25,7 +33,6 @@ namespace TransLlallaguaDAO.Models
         public string Surname { get; set; }
         public string SecondSurname { get; set; }
         public string Ci { get; set; }
-        public string Email { get; set; }
         public string Phone { get; set; }
     }
 }

@@ -48,25 +48,39 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Implementation\BaseImpl.cs" />
+    <Compile Include="Implementation\BrandImpl.cs" />
+    <Compile Include="Implementation\InsuranceImpl.cs" />
+    <Compile Include="Implementation\ModelImpl.cs" />
+    <Compile Include="Implementation\BusImpl.cs" />
     <Compile Include="Implementation\DriverImpl.cs" />
     <Compile Include="Implementation\EmployeeImpl.cs" />
     <Compile Include="Implementation\PassengerImpl.cs" />
     <Compile Include="Implementation\PersonImpl.cs" />
     <Compile Include="Implementation\UserImpl.cs" />
     <Compile Include="Interfaces\IBase.cs" />
+    <Compile Include="Interfaces\IBrand.cs" />
+    <Compile Include="Interfaces\IModel.cs" />
+    <Compile Include="Interfaces\IBus.cs" />
     <Compile Include="Interfaces\IDriver.cs" />
     <Compile Include="Interfaces\IEmployee.cs" />
+    <Compile Include="Interfaces\IInsurance.cs" />
     <Compile Include="Interfaces\IPassenger.cs" />
     <Compile Include="Interfaces\IPerson.cs" />
     <Compile Include="Interfaces\IUser.cs" />
     <Compile Include="Models\BaseModel.cs" />
+    <Compile Include="Models\Brand.cs" />
+    <Compile Include="Models\Insuranc.cs" />
+    <Compile Include="Models\Mode1.cs" />
+    <Compile Include="Models\Bus.cs" />
     <Compile Include="Models\Driver.cs" />
     <Compile Include="Models\Employee.cs" />
     <Compile Include="Models\Passenger.cs" />
     <Compile Include="Models\Person.cs" />
     <Compile Include="Models\SessionControl.cs" />
-    <Compile Include="Models\User.cs" />
+    <Compile Include="Models\UserR.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\StringHandling.cs" />
+    <Compile Include="Utils\Toast.cs" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

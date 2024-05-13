@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace TransLlallaguaDAO.Models
 {
-    public class Driver:Employee
+    public class Driver
     {
         public string noLicense { get; set; }
     }

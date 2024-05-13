@@ -9,8 +9,9 @@ namespace TransLlallaguaDAO.Implementation
 {
     public class BaseImpl
     {
-        //string connectionString = "Server=DESKTOP-6I0OB38;Database=dbTransLlallagua;User Id=pablo;Password=7457405Po;";
-        string connectionString = "Server=DESKTOP-6I0OB38;Database=BDBeatBounce;User Id=pablo;Password=7457405Po;";
+        //string connectionString = "Server=LAPTOP-LQALR3B5;Database=dbTransLlallagua;Trusted_Connection=True;";
+        string connectionString = "Server=DESKTOP-6I0OB38;Database=dbTransLlallagua;User Id=pablo;Password=7457405Po;";
+        protected string query;
         public SqlCommand CreateBasicCommand()
         {
             SqlConnection connection = new SqlConnection(connectionString); 
@@ -18,10 +19,10 @@ namespace TransLlallaguaDAO.Implementation
             cmd.Connection = connection;
             return cmd;
         }
-        public SqlCommand CreateBasicCommand(string query)
+        public SqlCommand CreateBasicCommand(string Query)
         {
             SqlConnection connection = new SqlConnection(connectionString);
-            return new SqlCommand(query,connection);
+            return new SqlCommand(Query,connection);
         }
         public string OpenConnection()
         {
@@ -64,7 +65,10 @@ namespace TransLlallaguaDAO.Implementation
                 command.Connection.Open();
                 SqlDataAdapter adapter = new SqlDataAdapter(command);
                 adapter.Fill(dt);
-                return dt;
+                foreach (DataColumn column in dt.Columns)
+                {
+                    column.ColumnName = column.ColumnName.Trim(); // Eliminar espacios en blanco de los nombres de columna
+                }
             }
             catch(Exception ex)
             {
@@ -74,6 +78,7 @@ namespace TransLlallaguaDAO.Implementation
             {
                 command.Connection.Close();
             }
+            return dt;
         }
     }
 }

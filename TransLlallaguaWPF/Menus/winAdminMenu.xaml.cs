@@ -13,6 +13,11 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TransLlallaguaWPF.Passengers;
 using TransLlallaguaWPF.Login;
+using TransLlallaguaWPF.Model;
+using TransLlallaguaWPF.Bus;
+using TransLlallaguaWPF.User;
+using TransLlallaguaWPF.ChangePassword;
+using TransLlallaguaWPF.Insurance;
 namespace TransLlallaguaWPF.Menus
 {
     /// <summary>
@@ -24,46 +29,8 @@ namespace TransLlallaguaWPF.Menus
         {
             InitializeComponent();
         }
-        private void ListViewItem_MouseEnter(object sender, MouseEventArgs e)
-        {
-            // Set tooltip visibility
 
-            if (Tg_Btn.IsChecked == true)
-            {
-                tt_home.Visibility = Visibility.Collapsed;
-                tt_contacts.Visibility = Visibility.Collapsed;
-                tt_messages.Visibility = Visibility.Collapsed;
-                tt_maps.Visibility = Visibility.Collapsed;
-                tt_settings.Visibility = Visibility.Collapsed;
-                tt_signout.Visibility = Visibility.Collapsed;
-            }
-            else
-            {
-                tt_home.Visibility = Visibility.Visible;
-                tt_contacts.Visibility = Visibility.Visible;
-                tt_messages.Visibility = Visibility.Visible;
-                tt_maps.Visibility = Visibility.Visible;
-                tt_settings.Visibility = Visibility.Visible;
-                tt_signout.Visibility = Visibility.Visible;
-            }
-        }
-
-        private void Tg_Btn_Unchecked(object sender, RoutedEventArgs e)
-        {
-            //img_bg.Opacity = 1;
-        }
-
-        private void Tg_Btn_Checked(object sender, RoutedEventArgs e)
-        {
-            //img_bg.Opacity = 0.3;
-        }
-
-        private void BG_PreviewMouseLeftButtonDown(object sender, MouseButtonEventArgs e)
-        {
-            Tg_Btn.IsChecked = false;
-        }
-
-        private void CloseBtn_Click(object sender, RoutedEventArgs e)
+        private void Close_App_Click(object sender, RoutedEventArgs e)
         {
             Close();
         }
@@ -74,24 +41,18 @@ namespace TransLlallaguaWPF.Menus
             animacion.Begin();
         }
 
-        private void lvPasajeros_Selected(object sender, RoutedEventArgs e)
+        private void model_click(object sender, RoutedEventArgs e)
         {
-            if (Tg_Btn.IsChecked == true)
-            {
-                winPassengers winPassenger = new winPassengers();
-                winPassenger.Show();
-                this.Close();
-            }
+            winModel winModel = new winModel();
+            winModel.Show();
+            this.Close();
         }
 
-        private void lvSignout_Selected(object sender, RoutedEventArgs e)
+        private void security_click(object sender, RoutedEventArgs e)
         {
-            if (Tg_Btn.IsChecked == true)
-            {
-                winLogin winLogin = new winLogin();
-                winLogin.Show();
-                this.Close();
-            }
+            winInsurance winInsurance = new winInsurance();
+            winInsurance.Show();
+            this.Close();
         }
     }
 }

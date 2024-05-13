@@ -5,8 +5,179 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransLlallaguaWPF.Menus"
         mc:Ignorable="d"
-        Title="winEmployeeMenu" Height="450" Width="800">
+        Title="winAdminMenu" Height="600" Width="800" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid>
-        
+        <StackPanel Background="White">
+            <Grid Height="40">
+                <StackPanel HorizontalAlignment="Center" Margin="0,3,0,-3" Width="1500" Background="Red">
+                    <Label Content="TRANS LLALLAGUA" Foreground="White" Width="228" FontSize="25" FontFamily="Valorant Font.ttf"/>
+                </StackPanel>
+            </Grid>
+        </StackPanel>
+        <Image x:Name="keyImage" Source="/Assets/keyO.png" Margin="10,506,711,15" ClipToBounds="True" MouseLeftButtonDown="keyImage_MouseLeftButtonDown">
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard/>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard/>
+                </EventTrigger>
+            </Image.Triggers>
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/Assets/keyO.png"/>
+            </Image.OpacityMask>
+        </Image>
+
+        <Image x:Name="localityImage" Source="/Assets/locality.png" Width="90" Height="90" Margin="276,303,434,57" ClipToBounds="True">
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="localityImage"
+                                  Storyboard.TargetProperty="Opacity"
+                                  To="0.7" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="localityImage"
+                                  Storyboard.TargetProperty="Opacity"
+                                  To="1" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Image.Triggers>
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/Assets/locality.png"/>
+            </Image.OpacityMask>
+        </Image>
+
+        <Image x:Name="off2Image" Source="/Assets/off2.png" Width="90" Height="90" Margin="355,180,355,180" ClipToBounds="True" MouseLeftButtonDown="off2Image_MouseLeftButtonDown">
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="off2Image"
+                           Storyboard.TargetProperty="Opacity"
+                           To="0.7" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="off2Image"
+                           Storyboard.TargetProperty="Opacity"
+                           To="1" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Image.Triggers>
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/Assets/off.png"/>
+            </Image.OpacityMask>
+        </Image>
+        <Image x:Name="ticketImage" Source="/Assets/ticket.png" Width="90" Height="90" Margin="358,148,352,362" ClipToBounds="True">
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="ticketImage"
+                   Storyboard.TargetProperty="Opacity"
+                   To="0.7" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="ticketImage"
+                   Storyboard.TargetProperty="Opacity"
+                   To="1" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Image.Triggers>
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/Assets/ticket.png"/>
+            </Image.OpacityMask>
+        </Image>
+        <Image x:Name="travelImage" Source="/Assets/travel.png" Width="90" Height="90" Margin="518,173,192,187" ClipToBounds="True">
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="travelImage"
+                   Storyboard.TargetProperty="Opacity"
+                   To="0.7" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="travelImage"
+                   Storyboard.TargetProperty="Opacity"
+                   To="1" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Image.Triggers>
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/Assets/travel.png"/>
+            </Image.OpacityMask>
+        </Image>
+        <Image x:Name="passangerImage" Source="/Assets/passanger.png" Width="90" Height="90" Margin="206,252,504,258" ClipToBounds="True">
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="passangerImage"
+                   Storyboard.TargetProperty="Opacity"
+                   To="0.7" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="passangerImage"
+                   Storyboard.TargetProperty="Opacity"
+                   To="1" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Image.Triggers>
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/Assets/passanger.png"/>
+            </Image.OpacityMask>
+        </Image>
+        <Image x:Name="seatImage" Source="/Assets/seat.png" Width="90" Height="90" Margin="447,303,263,57" ClipToBounds="True">
+            <Image.Triggers>
+                <EventTrigger RoutedEvent="MouseEnter">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="seatImage"
+                   Storyboard.TargetProperty="Opacity"
+                   To="0.7" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+                <EventTrigger RoutedEvent="MouseLeave">
+                    <BeginStoryboard>
+                        <Storyboard>
+                            <DoubleAnimation Storyboard.TargetName="seatImage"
+                   Storyboard.TargetProperty="Opacity"
+                   To="1" Duration="0:0:0.3"/>
+                        </Storyboard>
+                    </BeginStoryboard>
+                </EventTrigger>
+            </Image.Triggers>
+            <Image.OpacityMask>
+                <ImageBrush ImageSource="/Assets/seat.png"/>
+            </Image.OpacityMask>
+        </Image>
     </Grid>
 </Window>
