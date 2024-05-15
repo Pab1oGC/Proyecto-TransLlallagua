@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.SqlClient;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -33,12 +35,18 @@ namespace TransLlallaguaDAO.Implementation
 
         public int Insert(UserR user)
         {
-            query = @"INSERT INTO UserR (names,surname,secondSurname,email,adress,gender,phone,username,password,role,userId)
-                      VALUES (@names,@surname,@secondSurname,@email,@adress,@gender,@phone,@username,HASHBYTES('MD5',@password),@role,@userId)";
+            query = @"INSERT INTO UserR (names,surname,email,adress,gender,phone,username,password,role,userId,statusLogin)
+                      VALUES (@names,@surname,@email,@adress,@gender,@phone,@username,HASHBYTES('MD5',@password),@role,@userId,0)";
             SqlCommand cmd = CreateBasicCommand(query);
+            if (user.SecondSurname != "")
+            {
+                query = @"INSERT INTO UserR (names,surname,secondSurname,email,adress,gender,phone,username,password,role,userId,statusLogin)
+                      VALUES (@names,@surname,@secondSurname,@email,@adress,@gender,@phone,@username,HASHBYTES('MD5',@password),@role,@userId,0)";
+                cmd.CommandText = query;
+                cmd.Parameters.AddWithValue("@secondSurname", user.SecondSurname);
+            }
             cmd.Parameters.AddWithValue("@names", user.Name);
             cmd.Parameters.AddWithValue("@surname", user.Surname);
-            cmd.Parameters.AddWithValue("@secondSurname", user.SecondSurname);
             cmd.Parameters.AddWithValue("@email", user.Email);
             cmd.Parameters.AddWithValue("@adress", user.Adress);
             cmd.Parameters.AddWithValue("@gender", user.Gender);
@@ -77,15 +85,24 @@ namespace TransLlallaguaDAO.Implementation
 
         public int Update(UserR user)
         {
-            query = @"UPDATE UserR SET names=@names, surname=@surname, secondSurname=@secondSurname,
+            query = @"UPDATE UserR SET names=@names, surname=@surname,
                                        email=@email,adress=@adress,gender=@gender,phone=@phone,username=@username,
                                        role=@role,
 			                           lastUpdate=CURRENT_TIMESTAMP, userId=@userId
                       WHERE id=@id";
             SqlCommand cmd = CreateBasicCommand(query);
+            if (user.SecondSurname != "")
+            {
+                query = @"UPDATE UserR SET names=@names, surname=@surname, secondSurname=@secondSurname,
+                                       email=@email,adress=@adress,gender=@gender,phone=@phone,username=@username,
+                                       role=@role,
+			                           lastUpdate=CURRENT_TIMESTAMP, userId=@userId
+                      WHERE id=@id";
+                cmd.CommandText = query;
+                cmd.Parameters.AddWithValue("@secondSurname", user.SecondSurname);
+            }
             cmd.Parameters.AddWithValue("@names", user.Name);
             cmd.Parameters.AddWithValue("@surname", user.Surname);
-            cmd.Parameters.AddWithValue("@secondSurname", user.SecondSurname);
             cmd.Parameters.AddWithValue("@email", user.Email);
             cmd.Parameters.AddWithValue("@adress", user.Adress);
             cmd.Parameters.AddWithValue("@gender", user.Gender);
@@ -106,7 +123,7 @@ namespace TransLlallaguaDAO.Implementation
         }
         public DataTable Login(string username,string password)
         {
-            query = @"SELECT id,username,[role],password
+            query = @"SELECT id,username,[role],statusLogin
                       FROM UserR
                       WHERE [status]=1 AND username=@username AND [password]=HASHBYTES('MD5',@password)";
             SqlCommand cmd = CreateBasicCommand(query);
@@ -177,10 +194,11 @@ namespace TransLlallaguaDAO.Implementation
         public string CreateUsername(string surname,string names,int i)
         {
             string username="";
+            string truncatedSurname = surname.Length > 9 ? surname.Substring(0, 9) : surname;
             if (i>0)
-                username= $"{surname.ToLower()}{names.Substring(0, 2).ToLower()}{i}";
+                username= $"{truncatedSurname.ToLower()}{names.Substring(0, 2).ToLower()}{i}";
             else
-                username = $"{surname.ToLower()}{names.Substring(0, 2).ToLower()}";
+                username = $"{truncatedSurname.ToLower()}{names.Substring(0, 2).ToLower()}";
 
             if (!ExistsUsername(username))
                 return username;
@@ -198,7 +216,7 @@ namespace TransLlallaguaDAO.Implementation
             string contrasenia = "";
             for (int i = 0; i < 9; i++)
             {
-                randon = randomico.Next(1, 5);
+                randon = randomico.Next(1, 4);
                 if (randon == 1)
                 {
                     randon = randomico.Next(0, 26);
@@ -214,12 +232,9 @@ namespace TransLlallaguaDAO.Implementation
                     randon = randomico.Next(0, 10);
                     contrasenia += randon;
                 }
-                else
-                {
-                    randon = randomico.Next(0, 5);
-                    contrasenia += simbolos[randon];
-                }
             }
+            randon = randomico.Next(0, 3);
+            contrasenia += simbolos[randon];
             return contrasenia;
         }
 
@@ -283,7 +298,8 @@ namespace TransLlallaguaDAO.Implementation
 
         public int UpdatePassword(string password)
         {
-            query = "UPDATE UserR SET password=HASHBYTES('MD5',@password) WHERE id=@id";
+            query = @"UPDATE UserR SET password=HASHBYTES('MD5',@password),statusLogin=1
+                      WHERE id=@id";
             SqlCommand cmd = CreateBasicCommand(query);
             cmd.Parameters.AddWithValue("@password",password).SqlDbType=SqlDbType.VarChar;
             cmd.Parameters.AddWithValue("@id", SessionControl.UserID);
@@ -294,6 +310,37 @@ namespace TransLlallaguaDAO.Implementation
             catch (Exception ex)
             {
 
+                throw ex;
+            }
+        }
+        public void SendEmail(string to,string username,string password)
+        {
+            string from = "transllallagua@outlook.com";
+            string displayName = "Trans Llallagua";
+            try
+            {
+                MailMessage mail = new MailMessage();
+                mail.From = new MailAddress(from,displayName);
+                mail.To.Add(to);
+
+                mail.Subject = "Credenciales de acceso";
+                mail.Body = @"<div>
+                                <h2>¡Bienvenido a nuestro equipo!</h2>
+                                <p>Estas son tus credenciales de acceso al sistema:</p>
+                                <p>Nombre de Usuario: "+username+@"</p>
+                                <p>Contraseña: "+password+ @"</p>
+                                <p>Se le recomienda no compartir estos datos.</p>
+                              </div>";
+                mail.IsBodyHtml = true;
+
+                SmtpClient client = new SmtpClient("smtp-mail.outlook.com",587);
+                client.Credentials = new NetworkCredential(from, "llallaguaLaGrande123.");
+                client.EnableSsl = true;
+
+                client.Send(mail);
+            }
+            catch (Exception ex)
+            {
                 throw ex;
             }
         }

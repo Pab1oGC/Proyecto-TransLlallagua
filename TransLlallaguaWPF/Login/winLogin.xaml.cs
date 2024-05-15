@@ -14,7 +14,9 @@ using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TransLlallaguaDAO.Implementation;
 using TransLlallaguaDAO.Models;
+using TransLlallaguaWPF.ChangePassword;
 using TransLlallaguaWPF.Menus;
+using TransLlallaguaWPF.Messages;
 
 namespace TransLlallaguaWPF.Login
 {
@@ -25,6 +27,8 @@ namespace TransLlallaguaWPF.Login
     {
         UserImpl userImpl = new UserImpl();
         SelectWindow select = new SelectWindow();
+        Wrong error;
+        Success exito;
         public winLogin()
         {
             InitializeComponent();
@@ -43,13 +47,27 @@ namespace TransLlallaguaWPF.Login
                 SessionControl.UserID = short.Parse(dt.Rows[0][0].ToString());
                 SessionControl.Username = dt.Rows[0][1].ToString();
                 SessionControl.Role = dt.Rows[0][2].ToString();
-                SessionControl.Password = dt.Rows[0][3].ToString();
-                Window window = select.GetWindow();
-                window.Show();
-                this.Close();
+                SessionControl.StatusLogin = byte.Parse(dt.Rows[0][3].ToString());
+                if (SessionControl.StatusLogin == 0)
+                {
+                    exito = new Success("Por seguridad cambie su contraseña");
+                    exito.ShowDialog();
+                    winChangePassword winChangePassword = new winChangePassword();
+                    winChangePassword.Show();
+                    this.Close();
+                }
+                else
+                {
+                    Window window = select.GetWindow();
+                    window.Show();
+                    this.Close();
+                }               
             }
             else
-                MessageBox.Show("Nombre de usuario y/o contraseña incorrecto", "CONTRASEÑA", MessageBoxButton.OK, MessageBoxImage.Warning);
+            {
+                error = new Wrong("Nombre de usuario y/o contraseña incorrecto");
+                error.ShowDialog();
+            }
         }
 
         private void txtUsername_PreviewKeyDown(object sender, KeyEventArgs e)

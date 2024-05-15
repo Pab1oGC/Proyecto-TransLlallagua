@@ -33,10 +33,7 @@ namespace TransLlallaguaWPF.Menus
             miUser.Header = SessionControl.Username;
         }
 
-        private void close_CLick(object sender, RoutedEventArgs e)
-        {
-            Close();
-        }
+        
         private void animacionCompleta(object sender, EventArgs e)
         {
             // Reinicia la animación cuando haya terminado
@@ -85,6 +82,11 @@ namespace TransLlallaguaWPF.Menus
         {
             winChangePassword winChangePassword = new winChangePassword();
             winChangePassword.Show();
+            this.Close();
+        }
+
+        private void cerrar_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
     }

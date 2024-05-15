@@ -96,3 +96,9 @@ D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Menus\winCash
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Menus\winManagerMenu.g.cs
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Menus\winCashierMenu.baml
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Menus\winManagerMenu.baml
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Messages\Caution.g.cs
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Messages\Success.g.cs
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Messages\Wrong.g.cs
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Messages\Caution.baml
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Messages\Success.baml
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Messages\Wrong.baml

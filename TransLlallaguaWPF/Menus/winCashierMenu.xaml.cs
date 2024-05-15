@@ -31,7 +31,7 @@ namespace TransLlallaguaWPF.Menus
         }
         private void Close_App_Click(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Close();
         }
         private void animacionCompleta(object sender, EventArgs e)
         {

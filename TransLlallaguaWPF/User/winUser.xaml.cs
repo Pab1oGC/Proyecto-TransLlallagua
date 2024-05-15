@@ -16,6 +16,7 @@ using TransLlallaguaDAO.Implementation;
 using TransLlallaguaDAO.Models;
 using TransLlallaguaDAO.Utils;
 using TransLlallaguaWPF.Menus;
+using TransLlallaguaWPF.Messages;
 
 
 namespace TransLlallaguaWPF.User
@@ -32,6 +33,9 @@ namespace TransLlallaguaWPF.User
         SelectWindow select = new SelectWindow();
         StringHandling util = new StringHandling();
         Toast toast;
+        Wrong error;
+        Success exito;
+        Caution advertencia;
         public winUser()
         {
             InitializeComponent();
@@ -45,7 +49,7 @@ namespace TransLlallaguaWPF.User
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(txtNames.Text) && !string.IsNullOrWhiteSpace(txtSurname.Text) && !string.IsNullOrWhiteSpace(txtSecondSurname.Text) &&
+                if (!string.IsNullOrWhiteSpace(txtNames.Text) && !string.IsNullOrWhiteSpace(txtSurname.Text) &&
                     !string.IsNullOrWhiteSpace(txtEmail.Text) && !string.IsNullOrWhiteSpace(txtAdress.Text) && !string.IsNullOrWhiteSpace(txtPhone.Text) && 
                     cmbRole.SelectedIndex!=-1 && cmbGender.SelectedIndex!=-1)
                 {
@@ -54,7 +58,7 @@ namespace TransLlallaguaWPF.User
                     string secondSurname = util.DeleteExtraSpaces(txtSecondSurname.Text.Trim());
                     string email = util.StringWithoutSpaces(txtEmail.Text.Trim());
                     string adress = util.DeleteExtraSpaces(txtAdress.Text.Trim());
-                    username = userImpl.CreateUsername(txtSurname.Text, txtNames.Text, 0);
+                    username = userImpl.CreateUsername(util.StringWithoutSpaces(txtSurname.Text), util.StringWithoutSpaces(txtNames.Text), 0);
                     password = userImpl.CreatePassword();
                     user = new UserR(names,
                                      surname,
@@ -68,16 +72,24 @@ namespace TransLlallaguaWPF.User
                                      );
                     int res = userImpl.Insert(user);
                     if (res > 0)
-                    {
-                        Select();
-                        MessageBox.Show($"Su usuario: {username}\nSu contraseña:{password}","Registro INSERTADO",MessageBoxButton.OK,MessageBoxImage.Exclamation);
+                    {       
+                        userImpl.SendEmail(email, username, password);
+                        exito = new Success("Insercion con exito");
+                        exito.ShowDialog();
                         tbControl.SelectedIndex = 0;
+                        Select();
                     }
                     else
-                        MessageBox.Show("Ningun registro fue INSERTADO");
+                    {
+                        error = new Wrong("Ningun registro fue INSERTADO");
+                        error.ShowDialog();
+                    }
                 }
                 else
-                    MessageBox.Show("Ingrese todos los campos", "Datos inválido", MessageBoxButton.OK, MessageBoxImage.Error);
+                {
+                    error = new Wrong("Le falta ingresar campos");
+                    error.ShowDialog();
+                }
             }
             catch(Exception ex) 
             { 
@@ -122,7 +134,7 @@ namespace TransLlallaguaWPF.User
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(txtNames.Text) && !string.IsNullOrWhiteSpace(txtSurname.Text) && !string.IsNullOrWhiteSpace(txtSecondSurname.Text) &&
+                if (!string.IsNullOrWhiteSpace(txtNames.Text) && !string.IsNullOrWhiteSpace(txtSurname.Text) &&
                    !string.IsNullOrWhiteSpace(txtEmail.Text) && !string.IsNullOrWhiteSpace(txtAdress.Text) && !string.IsNullOrWhiteSpace(txtPhone.Text) &&
                    cmbRole.SelectedIndex != -1 && cmbGender.SelectedIndex != -1)
                 {
@@ -137,7 +149,8 @@ namespace TransLlallaguaWPF.User
                     username = util.StringWithoutSpaces(txtUsername.Text);
                     if (userImpl.ExistsUsernameUpdate(username, user.Id))
                     {
-                        MessageBox.Show("Ingrese otro nombre de usuario", "Usuario existente", MessageBoxButton.OK, MessageBoxImage.Error);
+                        error = new Wrong("Ingrese otro nombre de usuario");
+                        error.ShowDialog();
                         txtUsername.Clear();
                     }
                     else
@@ -146,18 +159,25 @@ namespace TransLlallaguaWPF.User
                         if (res > 0)
                         {
                             Select();
-                            MessageBox.Show("Registro ACTUALIZADO con exito");
+                            exito = new Success("Registro ACTUALIZADO con exito");
+                            exito.ShowDialog();
                             tbControl.SelectedIndex = 0;
                             btnSave.IsEnabled = true;
                             btnUpdate.IsEnabled = false;
                             txtUsername.IsEnabled = false;
                         }
                         else
-                            MessageBox.Show("Ningun registro fue ACTUALIZADO");
+                        {
+                            error = new Wrong("Ningun registro fue ACTUALIZADO");
+                            error.ShowDialog();
+                        }
                     }                 
                 }
                 else
-                    MessageBox.Show("Ingrese todos los campos", "Datos inválido", MessageBoxButton.OK, MessageBoxImage.Error);
+                {
+                    error = new Wrong("Le falta ingresar campos");
+                    error.ShowDialog();
+                }
             }
             catch (Exception ex)
             {
@@ -178,7 +198,9 @@ namespace TransLlallaguaWPF.User
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("¿Esta realmente seguro de eliminar el registro?", "Eminacion", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            advertencia = new Caution("¿Esta realmente seguro de eliminar el registro?");
+            advertencia.ShowDialog();
+            if (advertencia.IsConfirmed)
             {
                 if (user != null)
                 {
@@ -186,7 +208,8 @@ namespace TransLlallaguaWPF.User
                     if (n > 0)
                     {
                         Select();
-                        MessageBox.Show("Registro eliminado");
+                        exito = new Success("Registro eliminado");
+                        exito.ShowDialog();
                         txtNames.Clear();
                         txtSurname.Clear();
                         txtSecondSurname.Clear();
@@ -199,12 +222,14 @@ namespace TransLlallaguaWPF.User
                     }
                     else
                     {
-                        MessageBox.Show("No se realizarion cambios");
+                        error = new Wrong("No se realizarion cambios");
+                        error.ShowDialog();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No se seleccionaron registros");
+                    error = new Wrong("No se seleccionaron registros");
+                    error.ShowDialog();
                 }
             }
         }

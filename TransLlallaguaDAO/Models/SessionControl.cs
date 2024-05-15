@@ -11,6 +11,6 @@ namespace TransLlallaguaDAO.Models
         public static short UserID;
         public static string Username;
         public static string Role;
-        public static string Password;
+        public static byte StatusLogin;
     }
 }

@@ -13,8 +13,10 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Shapes;
 using TransLlallaguaDAO.Implementation;
+using TransLlallaguaDAO.Models;
 using TransLlallaguaDAO.Utils;
 using TransLlallaguaWPF.Login;
+using TransLlallaguaWPF.Messages;
 
 namespace TransLlallaguaWPF.ChangePassword
 {
@@ -26,7 +28,8 @@ namespace TransLlallaguaWPF.ChangePassword
         UserImpl userImpl = new UserImpl();
         SelectWindow select = new SelectWindow();
         StringHandling util = new StringHandling();
-        SolidColorBrush colorLabel;
+        Wrong error;
+        Success exito;
         public winChangePassword()
         {
             InitializeComponent();
@@ -45,22 +48,40 @@ namespace TransLlallaguaWPF.ChangePassword
                             int cont = userImpl.UpdatePassword(txtRepeat.Password);
                             if (cont > 0)
                             {
-                                MessageBox.Show("Contraseña actualizada con exito");
+                                exito = new Success("Contraseña actualizada con exito");
+                                exito.ShowDialog();
                                 winLogin winLogin = new winLogin();
                                 winLogin.Show();
                                 this.Close();
                             }
                             else
-                                MessageBox.Show("No se logro cambiar la contraseña");
+                            {
+                                error = new Wrong("No se logro cambiar la contraseña");
+                                error.ShowDialog();
+                            }
                         }
                         else
-                            MessageBox.Show("Las nuevas contraseñas no coinciden");
+                        {
+                            error = new Wrong("Las nuevas contraseñas no coinciden");
+                            error.ShowDialog();
+                            txtNew.Clear();
+                            txtRepeat.Clear();
+                        }
                     }
                     else
-                        MessageBox.Show("La seguridad de la contraseña no cumple con: mínimo 8 caracteres, al menos 1 Mayúsucla, minúscula y carácter especial");
+                    {
+                        error = new Wrong("La seguridad de la contraseña no cumple con: mínimo 8 caracteres, al menos 1 Mayúsucla, minúscula y carácter especial");
+                        error.ShowDialog();
+                        txtNew.Clear();
+                        txtRepeat.Clear();
+                    }
                 }
                 else
-                    MessageBox.Show("Contraseña antigua incorrecta");
+                {
+                    error = new Wrong("Contraseña antigua incorrecta");
+                    error.ShowDialog();
+                    txtOld.Clear();
+                }
             }
             catch (Exception ex)
             {
@@ -71,9 +92,18 @@ namespace TransLlallaguaWPF.ChangePassword
 
         private void btnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
-            Window window = select.GetWindow();
-            window.Show();
-            this.Close();
+            if (SessionControl.StatusLogin==0)
+            {
+                winLogin winLogin=new winLogin();
+                winLogin.Show();
+                this.Close();
+            }
+            else
+            {
+                Window window = select.GetWindow();
+                window.Show();
+                this.Close();
+            }
         }
 
         private void txtNew_PasswordChanged(object sender, RoutedEventArgs e)

@@ -713,9 +713,9 @@ Style="{StaticResource Services_MenuItem_With_Dropdown}">
 
         <!--// Close App Button //-->
 
-        <Button x:Name="Close"
+        <Button x:Name="cerrar"
                 Style="{StaticResource CloseAppStyle}"
-                RenderTransformOrigin="-1.143,0.583" Margin="0,42,80,0" Click="close_CLick"/>
+                RenderTransformOrigin="-1.143,0.583" Margin="0,42,80,0" Click="cerrar_Click"/>
     </Grid>
 
 

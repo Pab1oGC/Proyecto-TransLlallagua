@@ -81,6 +81,15 @@
     <Compile Include="Menus\winManagerMenu.xaml.cs">
       <DependentUpon>winManagerMenu.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Messages\Caution.xaml.cs">
+      <DependentUpon>Caution.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messages\Success.xaml.cs">
+      <DependentUpon>Success.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Messages\Wrong.xaml.cs">
+      <DependentUpon>Wrong.xaml</DependentUpon>
+    </Compile>
     <Compile Include="Model\winModel.xaml.cs">
       <DependentUpon>winModel.xaml</DependentUpon>
     </Compile>
@@ -127,6 +136,18 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Menus\winManagerMenu.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messages\Caution.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messages\Success.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Messages\Wrong.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
@@ -277,6 +298,7 @@
     <Resource Include="Assets\sortRight.png" />
     <Resource Include="Assets\staff.png" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <Import Project="..\packages\MaterialDesignThemes.4.8.0\build\MaterialDesignThemes.targets" Condition="Exists('..\packages\MaterialDesignThemes.4.8.0\build\MaterialDesignThemes.targets')" />
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">

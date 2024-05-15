@@ -53,7 +53,7 @@ namespace TransLlallaguaWPF.Menus
 
         private void close_CLick(object sender, RoutedEventArgs e)
         {
-            Close();
+            this.Close();
         }
 
         private void miBrand_Click(object sender, RoutedEventArgs e)
@@ -74,6 +74,11 @@ namespace TransLlallaguaWPF.Menus
         {
             winChangePassword winChangePassword = new winChangePassword();
             winChangePassword.Show();
+            this.Close();
+        }
+
+        private void cerrar_Click(object sender, RoutedEventArgs e)
+        {
             this.Close();
         }
     }

@@ -17,6 +17,7 @@ using System.Windows.Threading;
 using TransLlallaguaDAO.Implementation;
 using TransLlallaguaDAO.Models;
 using TransLlallaguaDAO.Utils;
+using TransLlallaguaWPF.Messages;
 
 namespace TransLlallaguaWPF.BrandWin
 {
@@ -30,6 +31,9 @@ namespace TransLlallaguaWPF.BrandWin
         byte typeSave = 0;
         StringHandling util = new StringHandling();
         SelectWindow select = new SelectWindow();
+        Wrong error;
+        Success exito;
+        Caution advertencia;
         public winBrand()
         {
             InitializeComponent();
@@ -44,8 +48,8 @@ namespace TransLlallaguaWPF.BrandWin
             }
             catch (Exception ex)
             {
-
-                MessageBox.Show(ex.Message);
+                error = new Wrong(ex.Message);
+                error.ShowDialog();
             }
         }
         void CleanInputs()
@@ -61,43 +65,63 @@ namespace TransLlallaguaWPF.BrandWin
             {
                 if (typeSave == 0)
                 {
-                    string name = util.DeleteExtraSpaces(txtName.Text.Trim());
-                    string description = util.DeleteExtraSpaces(txtDescription.Text.Trim());
-                   
-                    c = new Brand(name, cmbQuality.Text, description);
-
-                    int n = brandImpl.Insert(c);
-                    if (n > 0)
+                    if (!string.IsNullOrWhiteSpace(txtName.Text)&&!string.IsNullOrWhiteSpace(txtDescription.Text)&&cmbQuality.SelectedIndex!=-1)
                     {
-                        Select();
-                        MessageBox.Show("Registro insertado");
-                        tbControl.SelectedIndex = 0;
+                        string name = util.DeleteExtraSpaces(txtName.Text.Trim());
+                        string description = util.DeleteExtraSpaces(txtDescription.Text.Trim());
+
+                        c = new Brand(name, cmbQuality.Text, description);
+
+                        int n = brandImpl.Insert(c);
+                        if (n > 0)
+                        {
+                            Select();
+                            exito = new Success("Insercion con exito");
+                            exito.ShowDialog();
+                            tbControl.SelectedIndex = 0;
+                        }
+                        else
+                        {
+                            error = new Wrong("Ningun registro fue INSERTADO");
+                            error.ShowDialog();
+                        }
+                        CleanInputs();
                     }
                     else
                     {
-                        MessageBox.Show("No se insertaron datos");
-                    }
-                    CleanInputs();
+                        error = new Wrong("Le falta ingresar campos");
+                        error.ShowDialog();
+                    }       
                 }
                 else
                 {
-                    string name = util.DeleteExtraSpaces(txtName.Text.Trim());
-                    string description = util.DeleteExtraSpaces(txtDescription.Text.Trim());                    
-                    c.Name = name;
-                    c.Description = description;
-                    c.Quality = cmbQuality.Text;
-                    int n = brandImpl.Update(c);
-                    if (n > 0)
+                    if (!string.IsNullOrWhiteSpace(txtName.Text) && !string.IsNullOrWhiteSpace(txtDescription.Text) && cmbQuality.SelectedIndex != -1)
                     {
-                        Select();
-                        MessageBox.Show("Registro modificado");
+                        string name = util.DeleteExtraSpaces(txtName.Text.Trim());
+                        string description = util.DeleteExtraSpaces(txtDescription.Text.Trim());
+                        c.Name = name;
+                        c.Description = description;
+                        c.Quality = cmbQuality.Text;
+                        int n = brandImpl.Update(c);
+                        if (n > 0)
+                        {
+                            Select();
+                            exito = new Success("Registro ACTUALIZADO con exito");
+                            exito.ShowDialog();
+                        }
+                        else
+                        {
+                            error = new Wrong("Ningun registro fue ACTUALIZADO");
+                            error.ShowDialog();
+                        }
+                        typeSave = 0;
+                        CleanInputs();
                     }
                     else
                     {
-                        MessageBox.Show("No se registraron cambios");
+                        error = new Wrong("Le falta ingresar campos");
+                        error.ShowDialog();
                     }
-                    typeSave = 0;
-                    CleanInputs();
                 }
             }
             catch (Exception ex)
@@ -114,7 +138,9 @@ namespace TransLlallaguaWPF.BrandWin
 
         private void btnDelete_Click(object sender, RoutedEventArgs e)
         {
-            if (MessageBox.Show("¿Esta realmente seguro de eliminar el registro?", "Eliminacion", MessageBoxButton.YesNo, MessageBoxImage.Warning) == MessageBoxResult.Yes)
+            advertencia = new Caution("¿Esta realmente seguro de eliminar el registro?");
+            advertencia.ShowDialog();
+            if (advertencia.IsConfirmed)
             {
                 if (c != null)
                 {
@@ -122,16 +148,19 @@ namespace TransLlallaguaWPF.BrandWin
                     if (n > 0)
                     {
                         Select();
-                        MessageBox.Show("Registro eliminado");
+                        exito = new Success("Registro eliminado");
+                        exito.ShowDialog();
                     }
                     else
                     {
-                        MessageBox.Show("No se realizarion cambios");
+                        error = new Wrong("No se realizarion cambios");
+                        error.ShowDialog();
                     }
                 }
                 else
                 {
-                    MessageBox.Show("No se seleccionaron registros");
+                    error = new Wrong("No se seleccionaron registros");
+                    error.ShowDialog();                  
                 }
             }
         }
