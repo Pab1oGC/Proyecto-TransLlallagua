@@ -5,39 +5,66 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:TransLlallaguaWPF.Office"
         mc:Ignorable="d"
-            xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
-    TextElement.Foreground="{DynamicResource MaterialDesignBody}"
-    TextElement.FontWeight="Regular"
-    TextElement.FontSize="13"
-    TextOptions.TextFormattingMode="Ideal"
-    TextOptions.TextRenderingMode="Auto"
-    Background="{DynamicResource MaterialDesignPaper}"
-    FontFamily="{DynamicResource MaterialDesignFont}"
-    Title="winBus" Height="640" Width="900" WindowStyle="None">
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes"
+        TextElement.Foreground="{DynamicResource MaterialDesignBody}"
+        TextElement.FontWeight="Regular"
+        TextElement.FontSize="13"
+        TextOptions.TextFormattingMode="Ideal"
+        TextOptions.TextRenderingMode="Auto"
+        Background="{DynamicResource MaterialDesignPaper}"
+        FontFamily="{DynamicResource MaterialDesignFont}"
+        xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+        Title="winBus" Height="800" Width="1080" WindowStyle="None" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
-        <TabControl x:Name="tbControl" Margin="0,76,0,0">
-            <TabItem Header="Agregar sucursal" >
-                <Grid >
-                    <TextBox x:Name="txtName" materialDesign:HintAssist.Hint="Nombre" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="46,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" FontSize="20"/>
-                    <TextBox x:Name="txtPhone" materialDesign:HintAssist.Hint="Telefono" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="490,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" FontSize="20"/>
-                    <TextBox x:Name="txtAdress" materialDesign:HintAssist.Hint="Dirección" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Center" Margin="0,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="570" Height="60" FontSize="20"/>
-                    <Button x:Name="btnRegister" Content="REGISTRAR" HorizontalAlignment="Center" Margin="0,332,0,0" VerticalAlignment="Top" Height="76" Width="286" Click="btnRegister_Click" FontSize="22"/>
-                </Grid>
-            </TabItem>
+        <TabControl x:Name="tbControl" Margin="0,63,0,0" >
             <TabItem Header="Lista de sucursales">
                 <Grid>
-
-                    <DataGrid x:Name="dgvTable" HorizontalAlignment="Left" Height="306" Margin="10,10,0,0" VerticalAlignment="Top" Width="880" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" CanUserAddRows="False" Grid.ColumnSpan="2"/>
-                    <Button x:Name="btnUpdate" HorizontalAlignment="Left" Height="76" Margin="181,340,0,0" VerticalAlignment="Top" Width="200" Grid.ColumnSpan="2" Click="btnUpdate_Click">
-                        <materialDesign:PackIcon Kind="Edit" Height="50" Width="50" FontWeight="Bold"/>
+                    <DataGrid x:Name="dvgData" HorizontalAlignment="Center" Height="442" Margin="0,10,0,0" VerticalAlignment="Top" Width="1060" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" CanUserAddRows="False" SelectionChanged="dvgData_SelectionChanged">
+                        <DataGrid.RowStyle>
+                            <Style TargetType="DataGridRow">
+                                <Style.Triggers>
+                                    <Trigger Property="IsSelected" Value="True">
+                                        <Setter Property="Background" Value="#FFFB7373"/>
+                                        <Setter Property="Foreground" Value="Black"/>
+                                    </Trigger>
+                                </Style.Triggers>
+                            </Style>
+                        </DataGrid.RowStyle>
+                    </DataGrid>
+                    <Button x:Name="btnModify" Content="MODIFICAR" HorizontalAlignment="Left" Height="74" Margin="254,578,0,0" VerticalAlignment="Top" Width="240" FontSize="22" Click="btnModify_Click"/>
+                    <Button x:Name="btnDelete" Content="ELIMINAR" HorizontalAlignment="Left" Height="74" Margin="595,578,0,0" VerticalAlignment="Top" Width="240" FontSize="22" Click="btnDelete_Click"/>
+                </Grid>
+            </TabItem>
+            <TabItem Header="Agregar sucursal">
+                <Grid Margin="0,24,0,0">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="95*"/>
+                        <RowDefinition Height="128*"/>
+                    </Grid.RowDefinitions>
+                    <TextBox x:Name="txtName" materialDesign:HintAssist.Hint="Nombre" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="24,22,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" FontSize="20" LostFocus="txtName_LostFocus"/>
+                    <TextBox x:Name="txtPhone" materialDesign:HintAssist.Hint="Teléfono fijo" MaxLength="7" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="24,116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" FontSize="20" LostFocus="txtPhone_LostFocus" PreviewTextInput="txtPhone_PreviewTextInput"/>
+                    <TextBox x:Name="txtAdress" materialDesign:HintAssist.Hint="Dirección" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="24,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" FontSize="20" LostFocus="txtAdress_LostFocus"/>
+                    <Button x:Name="btnRegister" Content="REGISTRAR" HorizontalAlignment="Left" Margin="222,298,0,0" VerticalAlignment="Top" Height="76" Width="286" Click="btnRegister_Click" FontSize="22" Grid.Row="1"/>
+                    <ComboBox x:Name="cmbLocality" materialDesign:HintAssist.Hint="Localidad" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Height="60" Margin="24,18,0,0" VerticalAlignment="Top" Width="366" FontSize="20" Grid.Row="1" SelectionChanged="cmbLocality_SelectionChanged"/>
+                    <ComboBox x:Name="cmbManager" materialDesign:HintAssist.Hint="Encargado" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Height="60" Margin="24,121,0,0" VerticalAlignment="Top" Width="366" FontSize="20" Grid.Row="1"/>
+                    <m:Map x:Name="map" CredentialsProvider="Aqg07SBXdrLTydH32x-xXiHetpnrjDpAmzLIBvSJo06c9Xup33PM9NucXlmzVFp2" Margin="420,22,76,203" Grid.RowSpan="2" Center="-17.402379, -66.158036" ZoomLevel="16" MouseDoubleClick="map_MouseDoubleClick"/>
+                    <Label x:Name="lblToast" Content="" HorizontalAlignment="Center" Height="62" Margin="0,211,0,0" VerticalAlignment="Top" Width="802" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" FontWeight="Bold" Grid.Row="1"/>
+                    <Button x:Name="btnUpdate" Content="ACTUALIZAR" HorizontalAlignment="Left" Margin="540,298,0,0" VerticalAlignment="Top" Height="76" Width="286" FontSize="22" Click="btnUpdate_Click" Grid.Row="1"/>
+                    <Label x:Name="lblObName" Content="* Campo obligatorio" Foreground="Red" HorizontalAlignment="Left" Height="34" Margin="24,82,0,0" VerticalAlignment="Top" Width="366" VerticalContentAlignment="Center" Visibility="Hidden"/>
+                    <Label x:Name="lblObPhone" Content="* Campo obligatorio" Foreground="Red" HorizontalAlignment="Left" Height="34" Margin="24,176,0,0" VerticalAlignment="Top" Width="366" VerticalContentAlignment="Center" Visibility="Hidden"/>
+                    <Label x:Name="lblObAdress" Content="* Campo obligatorio" Foreground="Red" HorizontalAlignment="Left" Height="34" Margin="24,269,0,0" VerticalAlignment="Top" Width="366" VerticalContentAlignment="Center" Grid.RowSpan="2" Visibility="Hidden"/>
+                    <Button x:Name="btnZoomIn" Content="+" HorizontalAlignment="Left" Height="50" Margin="1020,32,0,0" VerticalAlignment="Top" Width="50" FontSize="35" Click="btnZoomIn_Click"/>
+                    <Button x:Name="btnZoomOut" Content="-" HorizontalAlignment="Left" Height="50" Margin="1020,92,0,0" VerticalAlignment="Top" Width="50" FontSize="35" Click="btnZoomOut_Click"/>
+                    <Button x:Name="btnSpacial" HorizontalAlignment="Left" Height="50" Margin="1020,154,0,0" VerticalAlignment="Top" Width="50" Padding="0" Click="btnSpacial_Click">
+                        <Image Source="/Assets/spacialMap.png" Height="31" Width="25" />
                     </Button>
-                    <Button x:Name="btnDelete" HorizontalAlignment="Left" Height="76" Margin="506,340,0,0" VerticalAlignment="Top" Width="200" Click="btnDelete_Click">
-                        <materialDesign:PackIcon Kind="Delete" Height="50" Width="50" FontWeight="Bold"/>
+                    <Button x:Name="btnStreet" HorizontalAlignment="Left" Height="50" Margin="1020,219,0,0" VerticalAlignment="Top" Width="50" Padding="0" Click="btnStreet_Click">
+                        <Image Source="/Assets/streetMap2.png" Height="38" Width="40" />
                     </Button>
                 </Grid>
             </TabItem>
         </TabControl>
-        <Grid Margin="0,0,0,564" Background="Red">
+        <Grid Margin="0,0,0,737" Background="Red">
             <Grid Margin="10,0,780,0">
                 <materialDesign:PackIcon x:Name="btnBack" Kind="ArrowBack" Height="50" Width="50" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="White" Cursor="Hand" MouseLeftButtonDown="btnBack_MouseLeftButtonDown"/>
             </Grid>

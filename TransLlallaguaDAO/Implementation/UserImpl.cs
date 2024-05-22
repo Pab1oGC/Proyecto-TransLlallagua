@@ -344,5 +344,22 @@ namespace TransLlallaguaDAO.Implementation
                 throw ex;
             }
         }
+
+        public DataTable SelectIDName()
+        {
+            query = @"SELECT id,CONCAT(surname,' ',names) AS Name
+                      FROM UserR
+                      WHERE status=1 AND role<>'CAJERO'
+                      ORDER BY 2";
+            SqlCommand cmd = CreateBasicCommand(query);
+            try
+            {
+                return ExecuteDataTableCommand(cmd);
+            }
+            catch(Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

@@ -7,7 +7,7 @@
         mc:Ignorable="d"
         Title="MainWindow"
         Height="650"
-        Width="1122"
+        Width="1251"
         WindowStartupLocation="CenterScreen"
         WindowStyle="None"
         AllowsTransparency="True"
@@ -67,7 +67,7 @@
                                 Background="Red"
                                 BorderThickness="0"
                                 Height="30"
-                                Width="145">
+                                Width="155">
                             <Grid>
                                 <!--// Icon //-->
                                 <ContentPresenter ContentSource="Icon"
@@ -91,7 +91,7 @@
                                        Stretch="None"
                                        HorizontalAlignment="Right"
                                        VerticalAlignment="Center"
-                                       Margin="0,0,10,0" />
+                                       Margin="0,0,0,0" />
 
                                 <!--// Popup //-->
                                 <Popup x:Name="PART_Popup"
@@ -411,7 +411,7 @@
 
     </Window.Resources>
 
-    <Grid Margin="-9,0,0,0">
+    <Grid Margin="10,0,2,0">
         <!--// Background //-->
         <Border Height="600"
                 CornerRadius="25"
@@ -492,7 +492,7 @@
 
         <!--// Menu Border //-->
         <Border Height="40"
-                Width="822"
+                Width="1029"
                 Background="Red"
                 BorderBrush="#363435"
                 BorderThickness="3"
@@ -503,7 +503,7 @@
 
         <!--// Menu //-->
         <Menu Height="30"
-              Width="821"
+              Width="1024"
               Background="#363435"
               VerticalAlignment="Top"
               HorizontalAlignment="Center"
@@ -512,29 +512,29 @@
             <!--// USUARIO //-->
 
             <MenuItem x:Name="miUser" Header="USUARIO"
-          Style="{StaticResource Services_MenuItem_With_Dropdown}" Width="133">
+          Style="{StaticResource Services_MenuItem_With_Dropdown}" Width="151">
                 <MenuItem.Icon>
                     <Image Source="/Assets/user.png"
                Stretch="Uniform" />
                 </MenuItem.Icon>
 
-                <MenuItem x:Name="miChangePassword" Header="CAMBIO DE CONTRASEÑA"
+                <MenuItem Header="CAMBIO DE CONTRASEÑA"
               Height="35"
               Width="230"
-              Style="{StaticResource Services_Sub_MenuItem}" Click="miChangePassword_Click">
+              Style="{StaticResource Services_Sub_MenuItem}">
                     <MenuItem.Icon>
                         <Image Source="/Assets/password.png"
                    Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
 
-                <MenuItem x:Name="miLogout" Header="CERRAR SESION"
-Height="35"
-Width="230"
-Style="{StaticResource Services_Sub_MenuItem}" Click="miLogout_Click">
+                <MenuItem Header="CERRAR SESION"
+                            Height="35"
+                            Width="230"
+                            Style="{StaticResource Services_Sub_MenuItem}">
                     <MenuItem.Icon>
                         <Image Source="/Assets/logout.png"
-     Stretch="Uniform" />
+                                 Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
@@ -543,29 +543,19 @@ Style="{StaticResource Services_Sub_MenuItem}" Click="miLogout_Click">
 
 
             <MenuItem Header="PERSONAL"
-          Style="{StaticResource Services_MenuItem_With_Dropdown}" Width="140">
+          Style="{StaticResource Services_MenuItem_With_Dropdown}" Width="156">
                 <MenuItem.Icon>
                     <Image Source="/Assets/user.png"
                Stretch="Uniform" />
                 </MenuItem.Icon>
 
-                <MenuItem Header="AGREGAR EMPLEADO"
+                <MenuItem Header="EMPLEADO"
               Height="35"
-              Width="350"
+              Width="450"
               Style="{StaticResource Services_Sub_MenuItem}">
                     <MenuItem.Icon>
                         <Image Source="/Assets/staff.png"
                    Stretch="Uniform" />
-                    </MenuItem.Icon>
-                </MenuItem>
-
-                <MenuItem x:Name="miAddUser" Header="AGREGAR USUARIO"
-Height="35"
-Width="350"
-Style="{StaticResource Services_Sub_MenuItem}" Click="miAddUser_Click">
-                    <MenuItem.Icon>
-                        <Image Source="/Assets/addAccount.png"
-     Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
@@ -592,37 +582,62 @@ Style="{StaticResource Services_Sub_MenuItem}" Click="miAddUser_Click">
                 </MenuItem>
 
                 <MenuItem Header="SEGURO"
-Height="35"
-Width="175"
-Style="{StaticResource Services_Sub_MenuItem}" Click="security_click">
+                            Height="35"
+                            Width="175"
+                            Style="{StaticResource Services_Sub_MenuItem}" Click="security_click">
                     <MenuItem.Icon>
                         <Image Source="/Assets/segurity.png"
-     Stretch="Uniform" />
+                                 Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
 
 
                 <MenuItem Header="MODELO"
-Height="35"
-Width="175"
-Style="{StaticResource Services_Sub_MenuItem}" Click="model_click" >
+                            Height="35"
+                            Width="175"
+                            Style="{StaticResource Services_Sub_MenuItem}" Click="model_click" >
                     <MenuItem.Icon>
                         <Image Source="/Assets/model.png"
-     Stretch="Uniform" />
+                                 Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
 
                 <MenuItem x:Name="miAddBrand" Header="MARCA"
-Height="35"
-Width="175"
-Style="{StaticResource Services_Sub_MenuItem}" Click="miAddBrand_Click"  >
+                Height="35"
+                Width="175"
+                Style="{StaticResource Services_Sub_MenuItem}" Click="miAddBrand_Click"  >
                     <MenuItem.Icon>
                         <Image Source="/Assets/brand.png"
-     Stretch="Uniform" />
+                                 Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
 
             </MenuItem>
+
+
+
+            <!--// SUCURSAL //-->
+
+            <MenuItem Header="SUCURSALES"
+                      Style="{StaticResource Services_MenuItem_With_Dropdown}">
+                <MenuItem.Icon>
+                    <Image Source="/Assets/company.png"
+                           Stretch="Uniform" />
+                </MenuItem.Icon>
+
+                <MenuItem Header="AGREGAR SUCURSAL"
+                 Height="35"
+                 Width="200"
+                 Style="{StaticResource Services_Sub_MenuItem}" Click="clickAddOffice"  >
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/addOffice.png"
+                      Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+
+            </MenuItem>
+
+
 
 
 
@@ -641,19 +656,19 @@ Style="{StaticResource Services_Sub_MenuItem}" Click="miAddBrand_Click"  >
             <!--// VENTA //-->
 
             <MenuItem Header="VENTA"
-Style="{StaticResource Services_MenuItem_With_Dropdown}">
+                            Style="{StaticResource Services_MenuItem_With_Dropdown}">
                 <MenuItem.Icon>
                     <Image Source="/Assets/buy.png"
-     Stretch="Uniform" />
+                                 Stretch="Uniform" />
                 </MenuItem.Icon>
 
                 <MenuItem Header="TICKET"
-    Height="35"
-    Width="175"
-    Style="{StaticResource Services_Sub_MenuItem}">
+                                Height="35"
+                                Width="175"
+                                Style="{StaticResource Services_Sub_MenuItem}">
                     <MenuItem.Icon>
                         <Image Source="/Assets/ticket.png"
-         Stretch="Uniform" />
+                                     Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
@@ -661,12 +676,12 @@ Style="{StaticResource Services_MenuItem_With_Dropdown}">
             <!--// PASAJERO //-->
 
             <MenuItem Header="PASAJERO"
-   Height="30"
-   Width="120"
-   Style="{StaticResource Main_MenuItem}">
+                               Height="30"
+                               Width="116"
+                               Style="{StaticResource Main_MenuItem}">
                 <MenuItem.Icon>
                     <Image Source="/Assets/passanger.png"
-        Stretch="Uniform" />
+                                    Stretch="Uniform" />
                 </MenuItem.Icon>
             </MenuItem>
 
@@ -712,11 +727,10 @@ Style="{StaticResource Services_MenuItem_With_Dropdown}">
         </Border>
 
         <!--// Close App Button //-->
-
-        <Button x:Name="cerrar"
+        <Button x:Name="Close_App"
                 Style="{StaticResource CloseAppStyle}"
-                RenderTransformOrigin="-1.143,0.583" Margin="0,42,80,0" Click="cerrar_Click"/>
-    </Grid>
+                Click="cerrar_Click" RenderTransformOrigin="-1.143,0.583" Margin="0,42,80,0" />
 
+    </Grid>
 
 </Window>

@@ -14,9 +14,9 @@
                 </LinearGradientBrush>
             </Border.BorderBrush>
             <Grid>
-                <Label Content="EXITO" HorizontalAlignment="Center" Height="50" Margin="0,44,0,0" VerticalAlignment="Top" Width="115" FontFamily="Bahnschrift" Foreground="Red" FontSize="40" BorderBrush="Black" />
+                <Label Content="ERROR" HorizontalAlignment="Center" Height="50" Margin="0,44,0,0" VerticalAlignment="Top" Width="151" FontFamily="Bahnschrift" Foreground="Red" FontSize="40" BorderBrush="Black" HorizontalContentAlignment="Center" />
                 <Label Content="TRANS LLALLAGUA" HorizontalAlignment="Center" Height="29" Margin="0,10,0,0" VerticalAlignment="Top" Width="185" Foreground="Red" FontFamily="Bahnschrift" FontSize="20"/>
-                <Label x:Name="lblInfo" Content="" HorizontalAlignment="Center" Height="44" VerticalAlignment="Top" Width="374" Foreground="Black" FontFamily="Bahnschrift" FontSize="16" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,111,0,0"/>
+                <Label x:Name="lblInfo" Content="" HorizontalAlignment="Center" Height="44" VerticalAlignment="Top" Width="374" Foreground="Black" FontFamily="Bahnschrift" FontSize="14" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Margin="0,111,0,0"/>
                 <Button x:Name="btnOk" Content="OK" HorizontalAlignment="Center" Height="40" Margin="0,176,0,0" VerticalAlignment="Top" Width="124" Click="btnOk_Click" />
             </Grid>
         </Border>

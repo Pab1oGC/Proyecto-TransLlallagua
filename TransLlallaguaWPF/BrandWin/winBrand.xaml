@@ -18,6 +18,7 @@ Title="winBrand" Height="600" Width="900" WindowStyle="None" Loaded="Window_Load
         <TabControl x:Name="tbControl" Margin="0,68,0,0">
             <TabItem Header="Lista de marcas" >
                 <Grid>
+                    
                     <DataGrid x:Name="dgvTable" HorizontalAlignment="Left" Height="306" Margin="10,10,0,0" VerticalAlignment="Top" Width="880" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" CanUserAddRows="False" Grid.ColumnSpan="2" SelectionChanged="dgvTable_SelectionChanged">
                         <DataGrid.RowStyle>
                             <Style TargetType="DataGridRow">
@@ -31,13 +32,13 @@ Title="winBrand" Height="600" Width="900" WindowStyle="None" Loaded="Window_Load
                         </DataGrid.RowStyle>
                     </DataGrid>
                     <Button x:Name="btnModify" Content="MODIFICAR" HorizontalAlignment="Left" Height="56" Margin="188,338,0,0" VerticalAlignment="Top" Width="240" Click="btnModify_Click" />
-                    <Button x:Name="btnDelete" Content="ELIMINAR" HorizontalAlignment="Left" Height="56" Margin="510,342,0,0" VerticalAlignment="Top" Width="240" Click="btnDelete_Click" />
+                    <Button x:Name="btnDelete" Content="ELIMINAR" HorizontalAlignment="Left" Height="56" Margin="510,342,0,0" VerticalAlignment="Top" Width="240" Click="btnDelete_Click" Grid.ColumnSpan="2" />
                 </Grid>
             </TabItem>
             <TabItem Header="Agregar marca">
                 <Grid >
                     <TextBox x:Name="txtName" materialDesign:HintAssist.Hint="Nombre" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="46,52,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" FontSize="20" />
-                    
+
                     <TextBox x:Name="txtDescription" materialDesign:HintAssist.Hint="Descripción"  materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Center" Margin="0,181,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" FontSize="20" />
                     <Button x:Name="btnSave" Content="GUARDAR" HorizontalAlignment="Left" Margin="301,369,0,0" VerticalAlignment="Top" Height="56" Width="286" Click="btnSave_Click" />
                     <ComboBox x:Name="cmbQuality" materialDesign:HintAssist.Hint="Calidad"  materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Height="60" Margin="467,54,0,0" VerticalAlignment="Top" Width="366" FontSize="20">

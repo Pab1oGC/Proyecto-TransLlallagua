@@ -31,7 +31,7 @@
                         </DataGrid.RowStyle>
                     </DataGrid>
                     <Button x:Name="btnModify" Content="Modificar" HorizontalAlignment="Left" Height="74" Margin="742,470,0,0" VerticalAlignment="Top" Width="240" Click="btnUpdate_Click"/>
-                    <Button x:Name="btnDelete" Content="Eliminar" HorizontalAlignment="Left" Height="73" Margin="434,470,0,0" VerticalAlignment="Top" Width="240" Click="btnDelete_Click"/>
+                    <Button x:Name="btnDelete" Content="Eliminar" HorizontalAlignment="Left" Height="74" Margin="434,470,0,0" VerticalAlignment="Top" Width="240" Click="btnDelete_Click"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Agregar usuario">

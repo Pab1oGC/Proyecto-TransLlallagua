@@ -102,3 +102,5 @@ D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Messages\Wron
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Messages\Caution.baml
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Messages\Success.baml
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Messages\Wrong.baml
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\bin\Debug\Microsoft.Maps.MapControl.WPF.dll
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\bin\Debug\Microsoft.Maps.MapControl.WPF.xml

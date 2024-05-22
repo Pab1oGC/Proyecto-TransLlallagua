@@ -20,6 +20,7 @@ using TransLlallaguaWPF.ChangePassword;
 using TransLlallaguaWPF.Insurance;
 using TransLlallaguaDAO.Models;
 using TransLlallaguaWPF.BrandWin;
+using TransLlallaguaWPF.Office;
 namespace TransLlallaguaWPF.Menus
 {
     /// <summary>
@@ -87,6 +88,12 @@ namespace TransLlallaguaWPF.Menus
 
         private void cerrar_Click(object sender, RoutedEventArgs e)
         {
+            this.Close();
+        }
+        private void clickAddOffice(object sender, RoutedEventArgs e)
+        {
+            winOffice winOffice = new winOffice();
+            winOffice.Show();
             this.Close();
         }
     }

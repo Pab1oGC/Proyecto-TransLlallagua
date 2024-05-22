@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.AccessControl;
 using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
@@ -69,6 +70,11 @@ namespace TransLlallaguaDAO.Utils
                 return "Media";
             else
                 return "Débil";
+        }
+        public bool ValidationLandlinePhone(string numero)
+        {
+            Regex regex = new Regex(@"^[2-4]\d{6}$");
+            return regex.IsMatch(numero);
         }
     }
 }

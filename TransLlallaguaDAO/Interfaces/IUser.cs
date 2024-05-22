@@ -18,5 +18,6 @@ namespace TransLlallaguaDAO.Interfaces
         bool EqualPassword(string password);
         bool SecurePassword(string password);
         int UpdatePassword(string password);
+        DataTable SelectIDName();
     }
 }
