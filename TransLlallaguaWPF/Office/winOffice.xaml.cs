@@ -132,6 +132,7 @@ namespace TransLlallaguaWPF.Office
                         location.Longitude = office.Longitude;
                         location.Latitude = office.Latitude;
                         pin.Location = location;
+                        map.Center = location;
                         map.Children.Clear();
                         map.Children.Add(pin);
                     }
