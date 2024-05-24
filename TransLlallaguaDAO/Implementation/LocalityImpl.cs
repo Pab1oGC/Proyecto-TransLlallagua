@@ -27,5 +27,23 @@ namespace TransLlallaguaDAO.Implementation
                 throw ex;
             }
         }
+
+        public DataTable SelectLocality(byte id)
+        {
+            query = @"SELECT CONCAT(L.name,' - ',D.name)
+                      FROM Locality L
+                      INNER JOIN Department D ON D.id=L.departmentId
+                      WHERE L.id=@id";
+            SqlCommand cmd = CreateBasicCommand(query);
+            cmd.Parameters.AddWithValue("@id", id);
+            try
+            {
+                return ExecuteDataTableCommand(cmd);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

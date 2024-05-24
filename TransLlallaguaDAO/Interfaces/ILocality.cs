@@ -10,5 +10,6 @@ namespace TransLlallaguaDAO.Interfaces
     public interface ILocality
     {
         DataTable SelectIDName();
+        DataTable SelectLocality(byte id);
     }
 }

@@ -10,5 +10,6 @@ namespace TransLlallaguaDAO.Interfaces
     public interface IOffice:IBase<Off1ce>
     {
         Off1ce Get(byte id);
+        bool ValidateImagePath(string path);
     }
 }

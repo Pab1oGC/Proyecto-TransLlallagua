@@ -503,7 +503,7 @@
 
         <!--// Menu //-->
         <Menu Height="30"
-              Width="1024"
+              Width="1007"
               Background="#363435"
               VerticalAlignment="Top"
               HorizontalAlignment="Center"
@@ -543,23 +543,32 @@
 
 
             <MenuItem Header="PERSONAL"
-          Style="{StaticResource Services_MenuItem_With_Dropdown}" Width="156">
+                      Style="{StaticResource Services_MenuItem_With_Dropdown}" Width="140">
                 <MenuItem.Icon>
                     <Image Source="/Assets/user.png"
-               Stretch="Uniform" />
+                           Stretch="Uniform" />
                 </MenuItem.Icon>
 
-                <MenuItem Header="EMPLEADO"
-              Height="35"
-              Width="450"
-              Style="{StaticResource Services_Sub_MenuItem}">
+                <MenuItem Header="AGREGAR EMPLEADO"
+                          Height="35"
+                          Width="350"
+                          Style="{StaticResource Services_Sub_MenuItem}">
                     <MenuItem.Icon>
                         <Image Source="/Assets/staff.png"
-                   Stretch="Uniform" />
+                               Stretch="Uniform" />
+                    </MenuItem.Icon>
+                </MenuItem>
+
+                <MenuItem x:Name="miAddUser" Header="AGREGAR USUARIO"
+                          Height="35"
+                          Width="350"
+                          Style="{StaticResource Services_Sub_MenuItem}" Click="miAddUser_Click">
+                    <MenuItem.Icon>
+                        <Image Source="/Assets/addAccount.png"
+                               Stretch="Uniform" />
                     </MenuItem.Icon>
                 </MenuItem>
             </MenuItem>
-
             <!--// BUS //-->
 
             <MenuItem Header="BUS"

@@ -361,5 +361,22 @@ namespace TransLlallaguaDAO.Implementation
                 throw ex;
             }
         }
+
+        public DataTable SelectManager(int id)
+        {
+            query = @"SELECT CONCAT(surname,' ',names)
+                      FROM UserR
+                      WHERE id=@id";
+            SqlCommand cmd = CreateBasicCommand(query);
+            cmd.Parameters.AddWithValue("@id", id);
+            try
+            {
+                return ExecuteDataTableCommand(cmd);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+        }
     }
 }

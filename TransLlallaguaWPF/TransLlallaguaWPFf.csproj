@@ -96,6 +96,9 @@
     <Compile Include="Model\winModel.xaml.cs">
       <DependentUpon>winModel.xaml</DependentUpon>
     </Compile>
+    <Compile Include="Office\winOfficeInformation.xaml.cs">
+      <DependentUpon>winOfficeInformation.xaml</DependentUpon>
+    </Compile>
     <Compile Include="SelectWindow.cs" />
     <Compile Include="User\winUser.xaml.cs">
       <DependentUpon>winUser.xaml</DependentUpon>
@@ -159,6 +162,10 @@
       <Generator>MSBuild:Compile</Generator>
     </Page>
     <Page Include="Office\winOffice.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="Office\winOfficeInformation.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

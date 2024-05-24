@@ -3,32 +3,72 @@
   "WorkspaceRootPath": "D:\\VisualStudio\\ProyectoTransLlallagua\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|d:\\visualstudio\\proyectotransllallagua\\transllallaguawpf\\office\\winoffice.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|solutionrelative:transllallaguawpf\\office\\winoffice.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|d:\\visualstudio\\proyectotransllallagua\\transllallaguawpf\\office\\winofficeinformation.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|solutionrelative:transllallaguawpf\\office\\winofficeinformation.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|d:\\visualstudio\\proyectotransllallagua\\transllallaguawpf\\office\\winofficeinformation.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|solutionrelative:transllallaguawpf\\office\\winofficeinformation.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguawpf\\office\\winoffice.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|solutionrelative:transllallaguawpf\\office\\winoffice.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguawpf\\menus\\winadminmenu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|solutionrelative:transllallaguawpf\\menus\\winadminmenu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|d:\\visualstudio\\proyectotransllallagua\\transllallaguawpf\\office\\winoffice.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|solutionrelative:transllallaguawpf\\office\\winoffice.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguawpf\\menus\\winadminmenu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|solutionrelative:transllallaguawpf\\menus\\winadminmenu.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguawpf\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|solutionrelative:transllallaguawpf\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguadao\\implementation\\userimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|solutionrelative:transllallaguadao\\implementation\\userimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguadao\\implementation\\localityimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|solutionrelative:transllallaguadao\\implementation\\localityimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguadao\\implementation\\userimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|solutionrelative:transllallaguadao\\implementation\\userimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguadao\\interfaces\\iuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|solutionrelative:transllallaguadao\\interfaces\\iuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguawpf\\login\\winlogin.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|solutionrelative:transllallaguawpf\\login\\winlogin.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|d:\\visualstudio\\proyectotransllallagua\\transllallaguadao\\interfaces\\ilocality.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|solutionrelative:transllallaguadao\\interfaces\\ilocality.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguawpf\\user\\winuser.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|solutionrelative:transllallaguawpf\\user\\winuser.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguawpf\\menus\\winadminmenu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|solutionrelative:transllallaguawpf\\menus\\winadminmenu.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|d:\\visualstudio\\proyectotransllallagua\\transllallaguadao\\interfaces\\ioffice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|solutionrelative:transllallaguadao\\interfaces\\ioffice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguadao\\implementation\\officeimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|solutionrelative:transllallaguadao\\implementation\\officeimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|d:\\visualstudio\\proyectotransllallagua\\transllallaguadao\\models\\off1ce.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|solutionrelative:transllallaguadao\\models\\off1ce.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguawpf\\selectwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|solutionrelative:transllallaguawpf\\selectwindow.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguawpf\\changepassword\\winchangepassword.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|solutionrelative:transllallaguawpf\\changepassword\\winchangepassword.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguadao\\models\\sessioncontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|solutionrelative:transllallaguadao\\models\\sessioncontrol.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguawpf\\brandwin\\winbrand.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
@@ -39,20 +79,12 @@
       "RelativeMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|solutionrelative:transllallaguadao\\utils\\stringhandling.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguadao\\implementation\\officeimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|solutionrelative:transllallaguadao\\implementation\\officeimpl.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguawpf\\user\\winuser.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|solutionrelative:transllallaguawpf\\user\\winuser.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguawpf\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|solutionrelative:transllallaguawpf\\app.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguawpf\\user\\winuser.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{C369F511-1C97-493C-BB9A-5079578557D0}|TransLlallaguaWPF\\TransLlallaguaWPFf.csproj|solutionrelative:transllallaguawpf\\user\\winuser.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|D:\\VisualStudio\\ProyectoTransLlallagua\\transllallaguadao\\interfaces\\iuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{BC28A28D-229C-4ABD-87A6-45B990B3C70E}|TransLlallaguaDAO\\TransLlallaguaDAO.csproj|solutionrelative:transllallaguadao\\interfaces\\iuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -62,7 +94,7 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
@@ -70,37 +102,41 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "winAdminMenu.xaml",
-              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Menus\\winAdminMenu.xaml",
-              "RelativeDocumentMoniker": "TransLlallaguaWPF\\Menus\\winAdminMenu.xaml",
-              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Menus\\winAdminMenu.xaml",
-              "RelativeToolTip": "TransLlallaguaWPF\\Menus\\winAdminMenu.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-22T05:43:39.413Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "winBrand.xaml",
-              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\BrandWin\\winBrand.xaml",
-              "RelativeDocumentMoniker": "TransLlallaguaWPF\\BrandWin\\winBrand.xaml",
-              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\BrandWin\\winBrand.xaml",
-              "RelativeToolTip": "TransLlallaguaWPF\\BrandWin\\winBrand.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-22T04:03:06.634Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "UserImpl.cs",
-              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Implementation\\UserImpl.cs",
-              "RelativeDocumentMoniker": "TransLlallaguaDAO\\Implementation\\UserImpl.cs",
-              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Implementation\\UserImpl.cs",
-              "RelativeToolTip": "TransLlallaguaDAO\\Implementation\\UserImpl.cs",
-              "ViewState": "AQIAANgAAAAAAAAAAAAswF0BAABBAAAA",
+              "DocumentIndex": 8,
+              "Title": "ILocality.cs",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Interfaces\\ILocality.cs",
+              "RelativeDocumentMoniker": "TransLlallaguaDAO\\Interfaces\\ILocality.cs",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Interfaces\\ILocality.cs",
+              "RelativeToolTip": "TransLlallaguaDAO\\Interfaces\\ILocality.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAAAAAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T02:20:55.314Z"
+              "WhenOpened": "2024-05-24T05:55:30.248Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "winOfficeInformation.xaml.cs",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Office\\winOfficeInformation.xaml.cs",
+              "RelativeDocumentMoniker": "TransLlallaguaWPF\\Office\\winOfficeInformation.xaml.cs",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Office\\winOfficeInformation.xaml.cs",
+              "RelativeToolTip": "TransLlallaguaWPF\\Office\\winOfficeInformation.xaml.cs",
+              "ViewState": "AQIAAC4AAAAAAAAAAAAvwEAAAAAcAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T05:43:16.201Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "winOfficeInformation.xaml",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Office\\winOfficeInformation.xaml",
+              "RelativeDocumentMoniker": "TransLlallaguaWPF\\Office\\winOfficeInformation.xaml",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Office\\winOfficeInformation.xaml",
+              "RelativeToolTip": "TransLlallaguaWPF\\Office\\winOfficeInformation.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-24T04:16:02.797Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -110,62 +146,53 @@
               "RelativeDocumentMoniker": "TransLlallaguaDAO\\Implementation\\LocalityImpl.cs",
               "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Implementation\\LocalityImpl.cs",
               "RelativeToolTip": "TransLlallaguaDAO\\Implementation\\LocalityImpl.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAAA8AAABGAAAA",
+              "ViewState": "AQIAABIAAAAAAAAAAAAAACUAAAAzAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T02:45:17.804Z"
+              "WhenOpened": "2024-05-22T02:45:17.804Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "StringHandling.cs",
-              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Utils\\StringHandling.cs",
-              "RelativeDocumentMoniker": "TransLlallaguaDAO\\Utils\\StringHandling.cs",
-              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Utils\\StringHandling.cs",
-              "RelativeToolTip": "TransLlallaguaDAO\\Utils\\StringHandling.cs",
-              "ViewState": "AQIAACUAAAAAAAAAAAA4wEsAAAAwAAAA",
+              "DocumentIndex": 7,
+              "Title": "winLogin.xaml.cs",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Login\\winLogin.xaml.cs",
+              "RelativeDocumentMoniker": "TransLlallaguaWPF\\Login\\winLogin.xaml.cs",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Login\\winLogin.xaml.cs",
+              "RelativeToolTip": "TransLlallaguaWPF\\Login\\winLogin.xaml.cs",
+              "ViewState": "AQIAACMAAAAAAAAAAAAQwC8AAABDAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T00:54:09.972Z"
+              "WhenOpened": "2024-05-22T06:59:46.336Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "OfficeImpl.cs",
-              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Implementation\\OfficeImpl.cs",
-              "RelativeDocumentMoniker": "TransLlallaguaDAO\\Implementation\\OfficeImpl.cs",
-              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Implementation\\OfficeImpl.cs",
-              "RelativeToolTip": "TransLlallaguaDAO\\Implementation\\OfficeImpl.cs",
-              "ViewState": "AQIAAEQAAAAAAAAAAAAwwFMAAAAAAAAA",
+              "DocumentIndex": 6,
+              "Title": "IUser.cs",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Interfaces\\IUser.cs",
+              "RelativeDocumentMoniker": "TransLlallaguaDAO\\Interfaces\\IUser.cs",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Interfaces\\IUser.cs",
+              "RelativeToolTip": "TransLlallaguaDAO\\Interfaces\\IUser.cs",
+              "ViewState": "AQIAAAoAAAAAAAAAAADgvxUAAAAmAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-21T04:11:15.63Z"
+              "WhenOpened": "2024-05-22T02:05:54.045Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 4,
-              "Title": "App.xaml",
-              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\App.xaml",
-              "RelativeDocumentMoniker": "TransLlallaguaWPF\\App.xaml",
-              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\App.xaml",
-              "RelativeToolTip": "TransLlallaguaWPF\\App.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2024-05-07T22:49:07.24Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "winOffice.xaml.cs",
-              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Office\\winOffice.xaml.cs",
-              "RelativeDocumentMoniker": "TransLlallaguaWPF\\Office\\winOffice.xaml.cs",
-              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Office\\winOffice.xaml.cs",
-              "RelativeToolTip": "TransLlallaguaWPF\\Office\\winOffice.xaml.cs",
-              "ViewState": "AQIAAG0AAAAAAAAAAAAcwIsAAAAMAAAA",
+              "Title": "UserImpl.cs",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Implementation\\UserImpl.cs",
+              "RelativeDocumentMoniker": "TransLlallaguaDAO\\Implementation\\UserImpl.cs",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Implementation\\UserImpl.cs",
+              "RelativeToolTip": "TransLlallaguaDAO\\Implementation\\UserImpl.cs",
+              "ViewState": "AQIAAFsBAAAAAAAAAAAxwHQBAAANAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-07T22:49:54.191Z",
+              "WhenOpened": "2024-05-22T02:20:55.314Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 2,
               "Title": "winOffice.xaml",
               "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Office\\winOffice.xaml",
               "RelativeDocumentMoniker": "TransLlallaguaWPF\\Office\\winOffice.xaml",
@@ -178,18 +205,19 @@
             {
               "$type": "Document",
               "DocumentIndex": 3,
-              "Title": "winAdminMenu.xaml.cs",
-              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Menus\\winAdminMenu.xaml.cs",
-              "RelativeDocumentMoniker": "TransLlallaguaWPF\\Menus\\winAdminMenu.xaml.cs",
-              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Menus\\winAdminMenu.xaml.cs",
-              "RelativeToolTip": "TransLlallaguaWPF\\Menus\\winAdminMenu.xaml.cs",
-              "ViewState": "AQIAADkAAAAAAAAAAAAIwGAAAAAZAAAA",
+              "Title": "winOffice.xaml.cs",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Office\\winOffice.xaml.cs",
+              "RelativeDocumentMoniker": "TransLlallaguaWPF\\Office\\winOffice.xaml.cs",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Office\\winOffice.xaml.cs",
+              "RelativeToolTip": "TransLlallaguaWPF\\Office\\winOffice.xaml.cs",
+              "ViewState": "AQIAAHQBAAAAAAAAAAAAAI4BAABgAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T05:48:53.456Z"
+              "WhenOpened": "2024-05-07T22:49:54.191Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
+              "DocumentIndex": 9,
               "Title": "winUser.xaml.cs",
               "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\User\\winUser.xaml.cs",
               "RelativeDocumentMoniker": "TransLlallaguaWPF\\User\\winUser.xaml.cs",
@@ -197,23 +225,134 @@
               "RelativeToolTip": "TransLlallaguaWPF\\User\\winUser.xaml.cs",
               "ViewState": "AQIAAIcAAAAAAAAAAAAIwKwAAAAZAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-08T03:38:27.617Z"
+              "WhenOpened": "2024-05-08T03:38:27.617Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "IUser.cs",
-              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Interfaces\\IUser.cs",
-              "RelativeDocumentMoniker": "TransLlallaguaDAO\\Interfaces\\IUser.cs",
-              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Interfaces\\IUser.cs",
-              "RelativeToolTip": "TransLlallaguaDAO\\Interfaces\\IUser.cs",
-              "ViewState": "AQIAAAAAAAAAAAAAAAAAABQAAAAhAAAA",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-05-22T02:05:54.045Z"
+              "DocumentIndex": 10,
+              "Title": "winAdminMenu.xaml",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Menus\\winAdminMenu.xaml",
+              "RelativeDocumentMoniker": "TransLlallaguaWPF\\Menus\\winAdminMenu.xaml",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\Menus\\winAdminMenu.xaml",
+              "RelativeToolTip": "TransLlallaguaWPF\\Menus\\winAdminMenu.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-22T05:43:39.413Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
+              "Title": "IOffice.cs",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Interfaces\\IOffice.cs",
+              "RelativeDocumentMoniker": "TransLlallaguaDAO\\Interfaces\\IOffice.cs",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Interfaces\\IOffice.cs",
+              "RelativeToolTip": "TransLlallaguaDAO\\Interfaces\\IOffice.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAwAAAAsAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T03:07:36.456Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "Off1ce.cs",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Models\\Off1ce.cs",
+              "RelativeDocumentMoniker": "TransLlallaguaDAO\\Models\\Off1ce.cs",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Models\\Off1ce.cs",
+              "RelativeToolTip": "TransLlallaguaDAO\\Models\\Off1ce.cs",
+              "ViewState": "AQIAABkAAAAAAAAAAAAgwDcAAAAaAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-24T02:26:16.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "SelectWindow.cs",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\SelectWindow.cs",
+              "RelativeDocumentMoniker": "TransLlallaguaWPF\\SelectWindow.cs",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\SelectWindow.cs",
+              "RelativeToolTip": "TransLlallaguaWPF\\SelectWindow.cs",
+              "ViewState": "AQIAAAYAAAAAAAAAAAAAABgAAAANAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T07:05:25.699Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "OfficeImpl.cs",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Implementation\\OfficeImpl.cs",
+              "RelativeDocumentMoniker": "TransLlallaguaDAO\\Implementation\\OfficeImpl.cs",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Implementation\\OfficeImpl.cs",
+              "RelativeToolTip": "TransLlallaguaDAO\\Implementation\\OfficeImpl.cs",
+              "ViewState": "AQIAABcAAAAAAAAAAAAwwH8AAABOAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-21T04:11:15.63Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "StringHandling.cs",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Utils\\StringHandling.cs",
+              "RelativeDocumentMoniker": "TransLlallaguaDAO\\Utils\\StringHandling.cs",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Utils\\StringHandling.cs",
+              "RelativeToolTip": "TransLlallaguaDAO\\Utils\\StringHandling.cs",
+              "ViewState": "AQIAADYAAAAAAAAAAAAuwEgAAAAJAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T00:54:09.972Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "winBrand.xaml",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\BrandWin\\winBrand.xaml",
+              "RelativeDocumentMoniker": "TransLlallaguaWPF\\BrandWin\\winBrand.xaml",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\BrandWin\\winBrand.xaml",
+              "RelativeToolTip": "TransLlallaguaWPF\\BrandWin\\winBrand.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-22T04:03:06.634Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "winChangePassword.xaml.cs",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\ChangePassword\\winChangePassword.xaml.cs",
+              "RelativeDocumentMoniker": "TransLlallaguaWPF\\ChangePassword\\winChangePassword.xaml.cs",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\ChangePassword\\winChangePassword.xaml.cs*",
+              "RelativeToolTip": "TransLlallaguaWPF\\ChangePassword\\winChangePassword.xaml.cs*",
+              "ViewState": "AQIAAFcAAAAAAAAAAAAowFAAAABEAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T06:41:21.331Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "SessionControl.cs",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Models\\SessionControl.cs",
+              "RelativeDocumentMoniker": "TransLlallaguaDAO\\Models\\SessionControl.cs",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaDAO\\Models\\SessionControl.cs",
+              "RelativeToolTip": "TransLlallaguaDAO\\Models\\SessionControl.cs",
+              "ViewState": "AQIAAAAAAAAAAAAAAAAAAAAAAAAAAAAA",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-05-22T06:58:22.167Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "App.xaml",
+              "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\App.xaml",
+              "RelativeDocumentMoniker": "TransLlallaguaWPF\\App.xaml",
+              "ToolTip": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\App.xaml",
+              "RelativeToolTip": "TransLlallaguaWPF\\App.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2024-05-07T22:49:07.24Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
               "Title": "winUser.xaml",
               "DocumentMoniker": "D:\\VisualStudio\\ProyectoTransLlallagua\\TransLlallaguaWPF\\User\\winUser.xaml",
               "RelativeDocumentMoniker": "TransLlallaguaWPF\\User\\winUser.xaml",

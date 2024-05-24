@@ -18,13 +18,14 @@ namespace TransLlallaguaDAO.Models
         /// <param name="phone"></param>
         /// <param name="localityId"></param>
         /// <param name="managerId"></param>
-        public Off1ce(string name, string adress, double latitude, double longitude, string phone, byte localityId, short managerId)
+        public Off1ce(string name, string adress, double latitude, double longitude, string phone,string image, byte localityId, short managerId)
         {
             Name = name;
             Adress = adress;
             Latitude = latitude;
             Longitude = longitude;
             Phone = phone;
+            Image = image;
             LocalityId = localityId;
             ManagerId = managerId;
         }
@@ -43,7 +44,7 @@ namespace TransLlallaguaDAO.Models
         /// <param name="registerDate"></param>
         /// <param name="lastUpdate"></param>
         /// <param name="userId"></param>
-        public Off1ce(byte id, string name, string adress, double latitude, double longitude, string phone, byte localityId, short managerId, byte status, DateTime registerDate, DateTime lastUpdate, int userId)
+        public Off1ce(byte id, string name, string adress, double latitude, double longitude, string phone,string image ,byte localityId, short managerId, byte status, DateTime registerDate, DateTime lastUpdate, int userId)
             :base(status,registerDate,lastUpdate,userId)
         {
             Id = id;
@@ -52,6 +53,7 @@ namespace TransLlallaguaDAO.Models
             Latitude = latitude;
             Longitude = longitude;
             Phone = phone;
+            Image = image;
             LocalityId = localityId;
             ManagerId = managerId;
         }
@@ -62,6 +64,7 @@ namespace TransLlallaguaDAO.Models
         public double Latitude { get; set; }
         public double Longitude { get; set; }
         public string Phone { get; set; }
+        public string Image { get; set; }
         public byte LocalityId { get; set; }
         public short ManagerId { get; set; }
     }

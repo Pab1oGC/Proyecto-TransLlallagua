@@ -17,6 +17,7 @@ using TransLlallaguaDAO.Utils;
 using TransLlallaguaDAO.Models;
 using TransLlallaguaWPF.Messages;
 using Microsoft.Maps.MapControl.WPF;
+using Microsoft.Win32;
 namespace TransLlallaguaWPF.Office
 {
     /// <summary>
@@ -24,7 +25,7 @@ namespace TransLlallaguaWPF.Office
     /// </summary>
     public partial class winOffice : Window
     {
-        Toast toast;
+        Toast toast,toast2;
         OfficeImpl officeImpl = new OfficeImpl();
         SelectWindow select = new SelectWindow();
         byte focus = 0;
@@ -35,21 +36,23 @@ namespace TransLlallaguaWPF.Office
         StringHandling util = new StringHandling();
         Location location = new Location();
         Pushpin pin = new Pushpin();
+        string rutaImagen;
         public winOffice()
         {
             InitializeComponent();
             toast = new Toast(lblToast);
+            toast2 = new Toast(lblToast2);
         }
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(txtName.Text) && !string.IsNullOrWhiteSpace(txtAdress.Text) && !string.IsNullOrWhiteSpace(txtPhone.Text) && location.Longitude!=0 && location.Latitude!=0)
+                if (!string.IsNullOrWhiteSpace(txtName.Text) && !string.IsNullOrWhiteSpace(txtAdress.Text) && !string.IsNullOrWhiteSpace(txtPhone.Text) && location.Longitude!=0 && location.Latitude!=0 && rutaImagen!=null)
                 {
                     string name = util.DeleteExtraSpaces(txtName.Text.Trim());
                     string adress = util.DeleteExtraSpaces(txtAdress.Text.Trim());
-                    office = new Off1ce(name, adress, location.Latitude, location.Longitude, txtPhone.Text, byte.Parse(cmbLocality.SelectedValue.ToString()), short.Parse(cmbManager.SelectedValue.ToString()));
+                    office = new Off1ce(name, adress, location.Latitude, location.Longitude, txtPhone.Text, rutaImagen,byte.Parse(cmbLocality.SelectedValue.ToString()), short.Parse(cmbManager.SelectedValue.ToString()));
                     int res = officeImpl.Insert(office);
                     if (res > 0)
                     {
@@ -73,7 +76,9 @@ namespace TransLlallaguaWPF.Office
                     if(string.IsNullOrWhiteSpace(txtAdress.Text))
                         lblObAdress.Visibility = Visibility.Visible;
                     if (location.Longitude == 0 || location.Latitude == 0)
-                        toast.ShowToast("INGRESE UNA UBICACION VALIDA EN EL MAPA", 4);
+                        toast.ShowToast("INGRESE UNA UBICACION VALIDA EN EL MAPA", 6);
+                    if (rutaImagen == null)
+                        toast.ShowToast("DEBE CARGAR UNA IMAGEN", 6);
                 }
             }
             catch (Exception ex)
@@ -131,6 +136,8 @@ namespace TransLlallaguaWPF.Office
                         cmbManager.SelectedValue = office.ManagerId;
                         location.Longitude = office.Longitude;
                         location.Latitude = office.Latitude;
+                        rutaImagen = office.Image;
+                        imgPhoto.Source = new BitmapImage(new Uri(rutaImagen, UriKind.RelativeOrAbsolute));
                         pin.Location = location;
                         map.Center = location;
                         map.Children.Clear();
@@ -149,7 +156,7 @@ namespace TransLlallaguaWPF.Office
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(txtName.Text) && !string.IsNullOrWhiteSpace(txtAdress.Text) && !string.IsNullOrWhiteSpace(txtPhone.Text) && location.Longitude != 0 && location.Latitude != 0)
+                if (!string.IsNullOrWhiteSpace(txtName.Text) && !string.IsNullOrWhiteSpace(txtAdress.Text) && !string.IsNullOrWhiteSpace(txtPhone.Text) && location.Longitude != 0 && location.Latitude != 0 && rutaImagen!=null)
                 {
                     office.Name = util.DeleteExtraSpaces(txtName.Text.Trim());
                     office.Adress = util.DeleteExtraSpaces(txtAdress.Text.Trim());
@@ -158,6 +165,7 @@ namespace TransLlallaguaWPF.Office
                     office.Longitude = location.Longitude;
                     office.LocalityId = byte.Parse(cmbLocality.SelectedValue.ToString());
                     office.ManagerId = short.Parse(cmbManager.SelectedValue.ToString());
+                    office.Image = rutaImagen;
                     int res = officeImpl.Update(office);
                     if (res > 0)
                     {
@@ -184,7 +192,9 @@ namespace TransLlallaguaWPF.Office
                     if (string.IsNullOrWhiteSpace(txtAdress.Text))
                         lblObAdress.Visibility = Visibility.Visible;
                     if (location.Longitude == 0 || location.Latitude == 0)
-                        toast.ShowToast("INGRESE UNA UBICACION VALIDA EN EL MAPA", 4);
+                        toast.ShowToast("INGRESE UNA UBICACION VALIDA EN EL MAPA", 6);
+                    if (rutaImagen == null)
+                        toast.ShowToast("DEBE CARGAR UNA IMAGEN", 6);
                 }
             }
             catch (Exception ex)
@@ -223,6 +233,8 @@ namespace TransLlallaguaWPF.Office
                         txtPhone.Clear();
                         cmbLocality.SelectedIndex = 0;
                         cmbManager.SelectedIndex = 0;
+                        imgPhoto.Source = null;
+                        rutaImagen = null;
                     }
                     else
                     {
@@ -254,7 +266,7 @@ namespace TransLlallaguaWPF.Office
                 if (!util.ValidationLandlinePhone(txtPhone.Text))
                 {
                     txtPhone.Clear();
-                    toast.ShowToast("INGRESE UN NUMERO DE TELEFONO FIJO VALIDO",4);
+                    toast.ShowToast("INGRESE UN NUMERO DE TELEFONO FIJO VALIDO",6);
                 }
             }
             else
@@ -274,7 +286,7 @@ namespace TransLlallaguaWPF.Office
             if (!char.IsDigit(char.Parse(e.Text)))
             {
                 e.Handled = true;
-                toast.ShowToast("SOLO SE PUEDE INGRESAR NUMEROS", 4);
+                toast.ShowToast("SOLO SE PUEDE INGRESAR NUMEROS", 6);
             }
         }
         void LoadComboBoxLocality()
@@ -359,6 +371,32 @@ namespace TransLlallaguaWPF.Office
         {
             map.Focus();
             map.Mode = new RoadMode();
+        }
+
+        private void btnUploadImage_Click(object sender, RoutedEventArgs e)
+        {
+            OpenFileDialog openFileDialog = new OpenFileDialog();
+            openFileDialog.Filter = "Archivos de imagen|*.jpg;*.jpeg;*.png;*.gif;*.bmp|Todos los archivos|*.*";
+            openFileDialog.InitialDirectory = @"C:\imagenesTransLlallagua";
+            if (openFileDialog.ShowDialog() == true)
+            {
+                rutaImagen = openFileDialog.FileName;
+                if (!officeImpl.ValidateImagePath(rutaImagen))
+                    imgPhoto.Source = new BitmapImage(new Uri(rutaImagen, UriKind.RelativeOrAbsolute));
+                else
+                    toast.ShowToast("IMAGEN YA EXISTENTE, CARGUE OTRA", 6);
+            }
+        }
+
+        private void btnInfo_Click(object sender, RoutedEventArgs e)
+        {
+            if (office != null)
+            {
+                winOfficeInformation info = new winOfficeInformation(office);
+                info.ShowDialog();
+            }
+            else
+                toast2.ShowToast("DEBE SELECCIONAR UN REGISTRO PARA MOSTRAR SU INFORMACION", 6);
         }
     }
 }

@@ -32,7 +32,7 @@ namespace TransLlallaguaDAO.Implementation
         public Off1ce Get(byte id)
         {
             Off1ce c = null;
-            query = @"SELECT id,name,adress,latitude,longitude,phone,localityId,managerId,status,registerDate,ISNULL(lastUpdate,CURRENT_TIMESTAMP),userId
+            query = @"SELECT id,name,adress,latitude,longitude,phone,image,localityId,managerId,status,registerDate,ISNULL(lastUpdate,CURRENT_TIMESTAMP),userId
                       FROM Office
                       WHERE id=@id";
             SqlCommand cmd = CreateBasicCommand(query);
@@ -43,9 +43,9 @@ namespace TransLlallaguaDAO.Implementation
                 if (table.Rows.Count > 0)
                 {
                     c = new Off1ce(byte.Parse(table.Rows[0][0].ToString()), table.Rows[0][1].ToString(), table.Rows[0][2].ToString(), double.Parse(table.Rows[0][3].ToString()),
-                                   double.Parse(table.Rows[0][4].ToString()), table.Rows[0][5].ToString(), byte.Parse(table.Rows[0][6].ToString()), short.Parse(table.Rows[0][7].ToString()),
-                                   byte.Parse(table.Rows[0][8].ToString()), DateTime.Parse(table.Rows[0][9].ToString()), DateTime.Parse(table.Rows[0][10].ToString()),
-                                   int.Parse(table.Rows[0][11].ToString()));
+                                   double.Parse(table.Rows[0][4].ToString()), table.Rows[0][5].ToString(), table.Rows[0][6].ToString(),byte.Parse(table.Rows[0][7].ToString()), short.Parse(table.Rows[0][8].ToString()),
+                                   byte.Parse(table.Rows[0][9].ToString()), DateTime.Parse(table.Rows[0][10].ToString()), DateTime.Parse(table.Rows[0][11].ToString()),
+                                   int.Parse(table.Rows[0][12].ToString()));
                 }
             }
             catch (Exception ex)
@@ -57,14 +57,15 @@ namespace TransLlallaguaDAO.Implementation
 
         public int Insert(Off1ce c)
         {
-            query = @"INSERT INTO Office (name,adress,latitude,longitude,phone,userId,localityId,managerId)
-                      VALUES (@name,@adress,@latitude,@longitude,@phone,@userId,@localityId,@managerId)";
+            query = @"INSERT INTO Office (name,adress,latitude,longitude,phone,image,userId,localityId,managerId)
+                      VALUES (@name,@adress,@latitude,@longitude,@phone,@image,@userId,@localityId,@managerId)";
             SqlCommand cmd = CreateBasicCommand(query);
             cmd.Parameters.AddWithValue("@name", c.Name);
             cmd.Parameters.AddWithValue("@adress", c.Adress);
             cmd.Parameters.AddWithValue("@latitude", c.Latitude);
             cmd.Parameters.AddWithValue("@longitude", c.Longitude);
             cmd.Parameters.AddWithValue("@phone", c.Phone);
+            cmd.Parameters.AddWithValue("@image", c.Image);
             cmd.Parameters.AddWithValue("@userId", SessionControl.UserID);
             cmd.Parameters.AddWithValue("@localityId", c.LocalityId);
             cmd.Parameters.AddWithValue("@managerId", c.ManagerId);
@@ -98,7 +99,7 @@ namespace TransLlallaguaDAO.Implementation
 
         public int Update(Off1ce c)
         {
-            query = @"UPDATE Office SET name=@name,adress=@adress,latitude=@latitude,longitude=@longitude,phone=@phone,localityId=@localityId,managerId=@managerId,
+            query = @"UPDATE Office SET name=@name,adress=@adress,latitude=@latitude,longitude=@longitude,phone=@phone,image=@image,localityId=@localityId,managerId=@managerId,
                       lastUpdate=CURRENT_TIMESTAMP,userId=@userId
                       WHERE id=@id";
             SqlCommand cmd = CreateBasicCommand(query);
@@ -108,6 +109,7 @@ namespace TransLlallaguaDAO.Implementation
             cmd.Parameters.AddWithValue("@latitude", c.Latitude);
             cmd.Parameters.AddWithValue("@longitude", c.Longitude);
             cmd.Parameters.AddWithValue("@phone", c.Phone);
+            cmd.Parameters.AddWithValue("@image", c.Image);
             cmd.Parameters.AddWithValue("@userId", SessionControl.UserID);
             cmd.Parameters.AddWithValue("@localityId", c.LocalityId);
             cmd.Parameters.AddWithValue("@managerId", c.ManagerId);
@@ -118,6 +120,30 @@ namespace TransLlallaguaDAO.Implementation
             catch (Exception ex) 
             { 
                 throw ex;
+            }
+        }
+
+        public bool ValidateImagePath(string path)
+        {
+            query = "SELECT image FROM Office WHERE image=@image AND status = 1";
+            SqlCommand cmd = CreateBasicCommand(query);
+            cmd.Parameters.AddWithValue("@image", path);
+            try
+            {
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                cmd.Connection.Close();
             }
         }
     }
