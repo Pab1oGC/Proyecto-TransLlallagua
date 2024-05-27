@@ -32,7 +32,7 @@ namespace TransLlallaguaDAO.Implementation
         public Off1ce Get(byte id)
         {
             Off1ce c = null;
-            query = @"SELECT id,name,adress,latitude,longitude,phone,image,localityId,managerId,status,registerDate,ISNULL(lastUpdate,CURRENT_TIMESTAMP),userId
+            query = @"SELECT id,name,adress,latitude,longitude,phone,image,photo,localityId,managerId,status,registerDate,ISNULL(lastUpdate,CURRENT_TIMESTAMP),userId
                       FROM Office
                       WHERE id=@id";
             SqlCommand cmd = CreateBasicCommand(query);
@@ -43,9 +43,9 @@ namespace TransLlallaguaDAO.Implementation
                 if (table.Rows.Count > 0)
                 {
                     c = new Off1ce(byte.Parse(table.Rows[0][0].ToString()), table.Rows[0][1].ToString(), table.Rows[0][2].ToString(), double.Parse(table.Rows[0][3].ToString()),
-                                   double.Parse(table.Rows[0][4].ToString()), table.Rows[0][5].ToString(), table.Rows[0][6].ToString(),byte.Parse(table.Rows[0][7].ToString()), short.Parse(table.Rows[0][8].ToString()),
-                                   byte.Parse(table.Rows[0][9].ToString()), DateTime.Parse(table.Rows[0][10].ToString()), DateTime.Parse(table.Rows[0][11].ToString()),
-                                   int.Parse(table.Rows[0][12].ToString()));
+                                   double.Parse(table.Rows[0][4].ToString()), table.Rows[0][5].ToString(), table.Rows[0][6].ToString(),table.Rows[0][7].ToString(), byte.Parse(table.Rows[0][8].ToString()),
+                                   short.Parse(table.Rows[0][9].ToString()), byte.Parse(table.Rows[0][10].ToString()), DateTime.Parse(table.Rows[0][11].ToString()),
+                                   DateTime.Parse(table.Rows[0][12].ToString()),int.Parse(table.Rows[0][13].ToString()));
                 }
             }
             catch (Exception ex)
@@ -57,8 +57,8 @@ namespace TransLlallaguaDAO.Implementation
 
         public int Insert(Off1ce c)
         {
-            query = @"INSERT INTO Office (name,adress,latitude,longitude,phone,image,userId,localityId,managerId)
-                      VALUES (@name,@adress,@latitude,@longitude,@phone,@image,@userId,@localityId,@managerId)";
+            query = @"INSERT INTO Office (name,adress,latitude,longitude,phone,image,photo,userId,localityId,managerId)
+                      VALUES (@name,@adress,@latitude,@longitude,@phone,@image,@photo,@userId,@localityId,@managerId)";
             SqlCommand cmd = CreateBasicCommand(query);
             cmd.Parameters.AddWithValue("@name", c.Name);
             cmd.Parameters.AddWithValue("@adress", c.Adress);
@@ -66,6 +66,7 @@ namespace TransLlallaguaDAO.Implementation
             cmd.Parameters.AddWithValue("@longitude", c.Longitude);
             cmd.Parameters.AddWithValue("@phone", c.Phone);
             cmd.Parameters.AddWithValue("@image", c.Image);
+            cmd.Parameters.AddWithValue("@photo", c.Photo);
             cmd.Parameters.AddWithValue("@userId", SessionControl.UserID);
             cmd.Parameters.AddWithValue("@localityId", c.LocalityId);
             cmd.Parameters.AddWithValue("@managerId", c.ManagerId);
@@ -81,10 +82,11 @@ namespace TransLlallaguaDAO.Implementation
 
         public DataTable Select()
         {
-            query = @"SELECT O.id,O.name AS Nombre,O.adress AS 'Dirección',O.latitude AS Latitud,O.longitude AS Longitud,O.phone AS 'Teléfono',L.name AS Localidad,CONCAT(U.surname,' ',U.names) AS Encargado
+            query = @"SELECT O.id,O.name AS Nombre,O.adress AS 'Dirección',O.latitude AS Latitud,O.longitude AS Longitud,O.phone AS 'Teléfono',L.name AS Localidad,CONCAT(P.surname,' ',P.names) AS Encargado
                     FROM Office O
                     INNER JOIN Locality L ON L.id=O.localityId
-                    INNER JOIN UserR U ON U.id=O.managerId
+                    INNER JOIN Employee E ON E.id=O.managerId
+                    INNER JOIN Person P ON P.id=E.id
                     WHERE O.status=1";
             SqlCommand cmd = CreateBasicCommand(query);
             try
@@ -99,7 +101,7 @@ namespace TransLlallaguaDAO.Implementation
 
         public int Update(Off1ce c)
         {
-            query = @"UPDATE Office SET name=@name,adress=@adress,latitude=@latitude,longitude=@longitude,phone=@phone,image=@image,localityId=@localityId,managerId=@managerId,
+            query = @"UPDATE Office SET name=@name,adress=@adress,latitude=@latitude,longitude=@longitude,phone=@phone,image=@image,photo=@photo,localityId=@localityId,managerId=@managerId,
                       lastUpdate=CURRENT_TIMESTAMP,userId=@userId
                       WHERE id=@id";
             SqlCommand cmd = CreateBasicCommand(query);
@@ -110,6 +112,7 @@ namespace TransLlallaguaDAO.Implementation
             cmd.Parameters.AddWithValue("@longitude", c.Longitude);
             cmd.Parameters.AddWithValue("@phone", c.Phone);
             cmd.Parameters.AddWithValue("@image", c.Image);
+            cmd.Parameters.AddWithValue("@photo", c.Photo);
             cmd.Parameters.AddWithValue("@userId", SessionControl.UserID);
             cmd.Parameters.AddWithValue("@localityId", c.LocalityId);
             cmd.Parameters.AddWithValue("@managerId", c.ManagerId);
@@ -144,6 +147,102 @@ namespace TransLlallaguaDAO.Implementation
             finally
             {
                 cmd.Connection.Close();
+            }
+        }
+        public bool FirstRegister()
+        {
+            query = "SELECT * FROM Office";
+            SqlCommand cmd = CreateBasicCommand(query);
+            try
+            {
+                cmd.Connection.Open();
+                SqlDataReader reader = cmd.ExecuteReader();
+                if (reader.HasRows)
+                    return true;
+                else
+                    return false;
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+        }
+        public byte ScalarId()
+        {
+            query = "SELECT MAX(id) FROM Office";
+            SqlCommand cmd = CreateBasicCommand(query);
+            try
+            {
+                cmd.Connection.Open();
+                return (byte)cmd.ExecuteScalar();
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+        }
+
+        public DataTable UpdateImg(byte id)
+        {
+            query = "SELECT image FROM Office WHERE id=@id";
+            SqlCommand cmd = CreateBasicCommand(query);
+            cmd.Parameters.AddWithValue("@id", id);
+            try
+            {
+                return ExecuteDataTableCommand(cmd);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+        }
+        public DataTable UpdatePhoto(byte id)
+        {
+            query = "SELECT photo FROM Office WHERE id=@id";
+            SqlCommand cmd = CreateBasicCommand(query);
+            cmd.Parameters.AddWithValue("@id", id);
+            try
+            {
+                return ExecuteDataTableCommand(cmd);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            finally
+            {
+                cmd.Connection.Close();
+            }
+        }
+        public DataTable SelectFilter(string search)
+        {
+            query = @"SELECT O.id,O.name AS Nombre,O.adress AS 'Dirección',O.latitude AS Latitud,O.longitude AS Longitud,O.phone AS 'Teléfono',L.name AS Localidad,CONCAT(P.surname,' ',P.names) AS Encargado
+                    FROM Office O
+                    INNER JOIN Locality L ON L.id=O.localityId
+                    INNER JOIN Employee E ON E.id=O.managerId
+                    INNER JOIN Person P ON P.id=E.id
+                    WHERE O.status=1 AND O.name COLLATE SQL_Latin1_General_CP1_CI_AS LIKE CONCAT('%',@search,'%')";
+            SqlCommand cmd = CreateBasicCommand(query);
+            cmd.Parameters.AddWithValue("@search", search);
+            try
+            {
+                return ExecuteDataTableCommand(cmd);
+            }
+            catch (Exception ex)
+            {
+                throw ex;
             }
         }
     }

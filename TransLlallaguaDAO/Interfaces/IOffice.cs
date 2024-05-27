@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,5 +12,6 @@ namespace TransLlallaguaDAO.Interfaces
     {
         Off1ce Get(byte id);
         bool ValidateImagePath(string path);
+        DataTable UpdateImg(byte id);
     }
 }

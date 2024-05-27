@@ -106,3 +106,12 @@ D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\bin\Debug\Microsoft.Map
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\bin\Debug\Microsoft.Maps.MapControl.WPF.xml
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Office\winOfficeInformation.g.cs
 D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\obj\Debug\Office\winOfficeInformation.baml
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\bin\Debug\AForge.dll
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\bin\Debug\AForge.Video.DirectShow.dll
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\bin\Debug\AForge.Video.dll
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\bin\Debug\AForge.xml
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\bin\Debug\AForge.Video.xml
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\bin\Debug\AForge.Video.DirectShow.xml
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\bin\Debug\System.Drawing.Common.dll
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\bin\Debug\System.Drawing.Common.pdb
+D:\VisualStudio\ProyectoTransLlallagua\TransLlallaguaWPF\bin\Debug\System.Drawing.Common.xml

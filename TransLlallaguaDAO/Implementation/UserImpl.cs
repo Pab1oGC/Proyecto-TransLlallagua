@@ -347,9 +347,10 @@ namespace TransLlallaguaDAO.Implementation
 
         public DataTable SelectIDName()
         {
-            query = @"SELECT id,CONCAT(surname,' ',names) AS Name
-                      FROM UserR
-                      WHERE status=1 AND role<>'CAJERO'
+            query = @"SELECT E.id,CONCAT(P.surname,' ',P.names) AS Name
+                      FROM Person P
+                      INNER JOIN Employee E ON E.id = P.id
+                      WHERE E.status=1
                       ORDER BY 2";
             SqlCommand cmd = CreateBasicCommand(query);
             try
@@ -365,7 +366,7 @@ namespace TransLlallaguaDAO.Implementation
         public DataTable SelectManager(int id)
         {
             query = @"SELECT CONCAT(surname,' ',names)
-                      FROM UserR
+                      FROM Person
                       WHERE id=@id";
             SqlCommand cmd = CreateBasicCommand(query);
             cmd.Parameters.AddWithValue("@id", id);

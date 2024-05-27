@@ -14,12 +14,12 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
-        Title="winBus" Height="800" Width="1443" WindowStyle="None" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
+        Title="winBus" Height="800" Width="1743" WindowStyle="None" Loaded="Window_Loaded" ResizeMode="NoResize" WindowStartupLocation="CenterScreen">
     <Grid>
         <TabControl x:Name="tbControl" Margin="0,63,0,0" >
             <TabItem Header="Lista de sucursales">
                 <Grid>
-                    <DataGrid x:Name="dvgData" HorizontalAlignment="Center" Height="442" Margin="0,10,0,0" VerticalAlignment="Top" Width="1060" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" CanUserAddRows="False" SelectionChanged="dvgData_SelectionChanged">
+                    <DataGrid x:Name="dvgData" HorizontalAlignment="Center" Height="361" Margin="0,126,0,0" VerticalAlignment="Top" Width="1136" d:ItemsSource="{d:SampleData ItemCount=5}" IsReadOnly="True" CanUserAddRows="False" SelectionChanged="dvgData_SelectionChanged">
                         <DataGrid.RowStyle>
                             <Style TargetType="DataGridRow">
                                 <Style.Triggers>
@@ -31,10 +31,11 @@
                             </Style>
                         </DataGrid.RowStyle>
                     </DataGrid>
-                    <Button x:Name="btnModify" Content="MODIFICAR" HorizontalAlignment="Left" Height="74" Margin="278,578,0,0" VerticalAlignment="Top" Width="240" FontSize="22" Click="btnModify_Click"/>
+                    <Button x:Name="btnModify" Content="MODIFICAR" HorizontalAlignment="Left" Height="74" Margin="252,578,0,0" VerticalAlignment="Top" Width="240" FontSize="22" Click="btnModify_Click"/>
                     <Button x:Name="btnDelete" Content="ELIMINAR" HorizontalAlignment="Center" Height="74" Margin="0,578,0,0" VerticalAlignment="Top" Width="240" FontSize="22" Click="btnDelete_Click"/>
-                    <Button x:Name="btnInfo" Content="VER INFORMACION" HorizontalAlignment="Left" Height="74" Margin="920,578,0,0" VerticalAlignment="Top" Width="240" FontSize="22" Click="btnInfo_Click"/>
-                    <Label x:Name="lblToast2" Content="" HorizontalAlignment="Center" Height="62" Margin="0,457,0,0" VerticalAlignment="Top" Width="1137" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" FontWeight="Bold"/>
+                    <Button x:Name="btnInfo" Content="VER INFORMACION" HorizontalAlignment="Left" Height="74" Margin="1240,578,0,0" VerticalAlignment="Top" Width="240" FontSize="22" Click="btnInfo_Click"/>
+                    <Label x:Name="lblToast2" Content="" HorizontalAlignment="Center" Height="62" Margin="0,487,0,0" VerticalAlignment="Top" Width="1137" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" FontWeight="Bold"/>
+                    <TextBox x:Name="txtSearch" materialDesign:HintAssist.Hint="Buscar" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Center" Margin="0,31,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="504" Height="60" FontSize="20" TextChanged="txtSearch_TextChanged"/>
                 </Grid>
             </TabItem>
             <TabItem Header="Agregar sucursal">
@@ -46,12 +47,12 @@
                     <TextBox x:Name="txtName" materialDesign:HintAssist.Hint="Nombre" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="24,22,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" FontSize="20" LostFocus="txtName_LostFocus"/>
                     <TextBox x:Name="txtPhone" materialDesign:HintAssist.Hint="Teléfono fijo" MaxLength="7" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="24,116,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" FontSize="20" LostFocus="txtPhone_LostFocus" PreviewTextInput="txtPhone_PreviewTextInput"/>
                     <TextBox x:Name="txtAdress" materialDesign:HintAssist.Hint="Dirección" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Margin="24,210,0,0" TextWrapping="Wrap" Text="" VerticalAlignment="Top" Width="366" Height="60" FontSize="20" LostFocus="txtAdress_LostFocus"/>
-                    <Button x:Name="btnRegister" Content="REGISTRAR" HorizontalAlignment="Left" Margin="132,289,0,0" VerticalAlignment="Top" Height="76" Width="286" Click="btnRegister_Click" FontSize="22" Grid.Row="1"/>
+                    <Button x:Name="btnRegister" Content="REGISTRAR" HorizontalAlignment="Left" Margin="104,289,0,0" VerticalAlignment="Top" Height="76" Width="286" Click="btnRegister_Click" FontSize="22" Grid.Row="1"/>
                     <ComboBox x:Name="cmbLocality" materialDesign:HintAssist.Hint="Localidad" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Height="60" Margin="24,18,0,0" VerticalAlignment="Top" Width="366" FontSize="20" Grid.Row="1" SelectionChanged="cmbLocality_SelectionChanged"/>
                     <ComboBox x:Name="cmbManager" materialDesign:HintAssist.Hint="Encargado" materialDesign:HintAssist.IsFloating="True" HorizontalAlignment="Left" Height="60" Margin="24,121,0,0" VerticalAlignment="Top" Width="366" FontSize="20" Grid.Row="1"/>
-                    <m:Map x:Name="map" CredentialsProvider="Aqg07SBXdrLTydH32x-xXiHetpnrjDpAmzLIBvSJo06c9Xup33PM9NucXlmzVFp2" Margin="418,24,578,201" Grid.RowSpan="2" Center="-17.402379, -66.158036" ZoomLevel="16" MouseDoubleClick="map_MouseDoubleClick"/>
+                    <m:Map x:Name="map" CredentialsProvider="Aqg07SBXdrLTydH32x-xXiHetpnrjDpAmzLIBvSJo06c9Xup33PM9NucXlmzVFp2" Margin="418,24,864,201" Grid.RowSpan="2" Center="-17.402379, -66.158036" ZoomLevel="16" MouseDoubleClick="map_MouseDoubleClick"/>
                     <Label x:Name="lblToast" Content="" HorizontalAlignment="Center" Height="62" Margin="0,211,0,0" VerticalAlignment="Top" Width="1137" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" FontSize="28" FontWeight="Bold" Grid.Row="1"/>
-                    <Button x:Name="btnUpdate" Content="ACTUALIZAR" HorizontalAlignment="Center" Margin="0,289,0,0" VerticalAlignment="Top" Height="76" Width="286" FontSize="22" Click="btnUpdate_Click" Grid.Row="1"/>
+                    <Button x:Name="btnUpdate" Content="ACTUALIZAR" HorizontalAlignment="Left" Margin="532,289,0,0" VerticalAlignment="Top" Height="76" Width="286" FontSize="22" Click="btnUpdate_Click" Grid.Row="1"/>
                     <Label x:Name="lblObName" Content="* Campo obligatorio" Foreground="Red" HorizontalAlignment="Left" Height="34" Margin="24,82,0,0" VerticalAlignment="Top" Width="366" VerticalContentAlignment="Center" Visibility="Hidden"/>
                     <Label x:Name="lblObPhone" Content="* Campo obligatorio" Foreground="Red" HorizontalAlignment="Left" Height="34" Margin="24,176,0,0" VerticalAlignment="Top" Width="366" VerticalContentAlignment="Center" Visibility="Hidden"/>
                     <Label x:Name="lblObAdress" Content="* Campo obligatorio" Foreground="Red" HorizontalAlignment="Left" Height="34" Margin="24,269,0,0" VerticalAlignment="Top" Width="366" VerticalContentAlignment="Center" Grid.RowSpan="2" Visibility="Hidden"/>
@@ -63,8 +64,11 @@
                     <Button x:Name="btnStreet" HorizontalAlignment="Left" Height="50" Margin="884,215,0,0" VerticalAlignment="Top" Width="50" Padding="0" Click="btnStreet_Click">
                         <Image Source="/Assets/streetMap2.png" Height="38" Width="40" />
                     </Button>
-                    <Button x:Name="btnUploadImage" Content="CARGAR IMAGEN" HorizontalAlignment="Left" Margin="1004,296,0,0" VerticalAlignment="Top" Height="76" Width="286" FontSize="22" Click="btnUploadImage_Click" Grid.Row="1"/>
-                    <Image x:Name="imgPhoto" HorizontalAlignment="Left" Height="440" Margin="960,24,0,0" VerticalAlignment="Top" Width="440" Grid.RowSpan="2"/>
+                    <Button x:Name="btnUploadImage" Content="CARGAR IMAGEN" HorizontalAlignment="Left" Margin="1380,289,0,0" VerticalAlignment="Top" Height="76" Width="286" FontSize="22" Click="btnUploadImage_Click" Grid.Row="1"/>
+                    <Image x:Name="imgPhoto" HorizontalAlignment="Left" Height="195" Margin="1354,146,0,0" VerticalAlignment="Top" Width="364" Grid.RowSpan="2" Stretch="Fill"/>
+                    <Image x:Name="imgFinalPhoto" HorizontalAlignment="Left" Height="195" Margin="956,265,0,0" VerticalAlignment="Top" Width="364" Grid.RowSpan="2"/>
+                    <Image x:Name="imgPreviewPhoto" HorizontalAlignment="Left" Height="195" Margin="956,24,0,0" VerticalAlignment="Top" Width="364"/>
+                    <Button x:Name="btnPhoto" Content="TOMAR FOTO" HorizontalAlignment="Left" Margin="956,289,0,0" VerticalAlignment="Top" Height="76" Width="286" FontSize="22" Grid.Row="1" Click="btnPhoto_Click"/>
                 </Grid>
             </TabItem>
         </TabControl>

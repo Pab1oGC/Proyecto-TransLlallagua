@@ -18,6 +18,11 @@ using TransLlallaguaDAO.Models;
 using TransLlallaguaWPF.Messages;
 using Microsoft.Maps.MapControl.WPF;
 using Microsoft.Win32;
+using System.IO;
+using AForge.Video;
+using AForge.Video.DirectShow;
+using System.Drawing;
+using System.Xml.Linq;
 namespace TransLlallaguaWPF.Office
 {
     /// <summary>
@@ -37,22 +42,85 @@ namespace TransLlallaguaWPF.Office
         Location location = new Location();
         Pushpin pin = new Pushpin();
         string rutaImagen;
+        BitmapImage bitmap;
+        string search="";
+        FilterInfoCollection devices;
+        VideoCaptureDevice videoSource;
+        Bitmap imagenCapturada = null;
+        string photoPath = "";
+        byte updatePhoto = 0;
         public winOffice()
         {
             InitializeComponent();
+            StartCamera();
             toast = new Toast(lblToast);
             toast2 = new Toast(lblToast2);
+        }
+        void StartCamera()
+        {
+            devices = new FilterInfoCollection(FilterCategory.VideoInputDevice);
+            if (devices.Count == 0)
+            {
+                error = new Wrong("No se encontraron cámaras disponibles");
+                error.ShowDialog();
+            }
+            else
+            {
+                videoSource = new VideoCaptureDevice(devices[0].MonikerString);
+                videoSource.NewFrame += new NewFrameEventHandler(CapturarFrame);
+                videoSource.Start();
+            }
+            
+        }
+        private void CapturarFrame(object sender, NewFrameEventArgs eventArgs)
+        {
+            imagenCapturada = (Bitmap)eventArgs.Frame.Clone();
+            BitmapImage bitmapImage = BitmapToBitmapImage(imagenCapturada);
+
+            if (imgPreviewPhoto.Dispatcher.CheckAccess())
+            {
+                imgPreviewPhoto.Source = bitmapImage;
+            }
+            else
+            {
+                imgPreviewPhoto.Dispatcher.Invoke(() =>
+                {
+                    imgPreviewPhoto.Source = bitmapImage;
+                });
+            }
+        }
+        private BitmapImage BitmapToBitmapImage(Bitmap bitmap)
+        {
+            BitmapImage bitmapImage = null;
+
+            Dispatcher.Invoke(() =>
+            {
+                using (var memory = new System.IO.MemoryStream())
+                {
+                    bitmap.Save(memory, System.Drawing.Imaging.ImageFormat.Bmp);
+                    memory.Position = 0;
+
+                    bitmapImage = new BitmapImage();
+                    bitmapImage.BeginInit();
+                    bitmapImage.StreamSource = memory;
+                    bitmapImage.CacheOption = BitmapCacheOption.OnLoad;
+                    bitmapImage.EndInit();
+                }
+            });
+
+            return bitmapImage;
         }
 
         private void btnRegister_Click(object sender, RoutedEventArgs e)
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(txtName.Text) && !string.IsNullOrWhiteSpace(txtAdress.Text) && !string.IsNullOrWhiteSpace(txtPhone.Text) && location.Longitude!=0 && location.Latitude!=0 && rutaImagen!=null)
+                if (!string.IsNullOrWhiteSpace(txtName.Text) && !string.IsNullOrWhiteSpace(txtAdress.Text) && !string.IsNullOrWhiteSpace(txtPhone.Text) && location.Longitude!=0 && location.Latitude!=0 && rutaImagen!=null && imgFinalPhoto.Source!=null)
                 {
                     string name = util.DeleteExtraSpaces(txtName.Text.Trim());
                     string adress = util.DeleteExtraSpaces(txtAdress.Text.Trim());
-                    office = new Off1ce(name, adress, location.Latitude, location.Longitude, txtPhone.Text, rutaImagen,byte.Parse(cmbLocality.SelectedValue.ToString()), short.Parse(cmbManager.SelectedValue.ToString()));
+                    string path = SaveImage(util.StringWithoutSpaces(name));
+                    office = new Off1ce(name, adress, location.Latitude, location.Longitude, txtPhone.Text, path,photoPath,byte.Parse(cmbLocality.SelectedValue.ToString()), short.Parse(cmbManager.SelectedValue.ToString()));
                     int res = officeImpl.Insert(office);
                     if (res > 0)
                     {
@@ -79,6 +147,8 @@ namespace TransLlallaguaWPF.Office
                         toast.ShowToast("INGRESE UNA UBICACION VALIDA EN EL MAPA", 6);
                     if (rutaImagen == null)
                         toast.ShowToast("DEBE CARGAR UNA IMAGEN", 6);
+                    if(imgFinalPhoto.Source==null)
+                        toast.ShowToast("DEBE TOMAR UNA FOTO", 6);
                 }
             }
             catch (Exception ex)
@@ -87,11 +157,25 @@ namespace TransLlallaguaWPF.Office
             }
         }
 
-        private void btnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
+        private async void btnBack_MouseLeftButtonDown(object sender, MouseButtonEventArgs e)
         {
+            if (videoSource != null && videoSource.IsRunning)
+            {
+                await StopVideoSourceAsync();
+            }
             Window window = select.GetWindow();
             window.Show();
             this.Close();
+        }
+        private Task StopVideoSourceAsync()
+        {
+            return Task.Run(() =>
+            {
+                videoSource.SignalToStop();
+                videoSource.WaitForStop();
+                videoSource.NewFrame -= new NewFrameEventHandler(CapturarFrame);
+                videoSource = null;
+            });
         }
         void Select()
         {
@@ -137,7 +221,9 @@ namespace TransLlallaguaWPF.Office
                         location.Longitude = office.Longitude;
                         location.Latitude = office.Latitude;
                         rutaImagen = office.Image;
-                        imgPhoto.Source = new BitmapImage(new Uri(rutaImagen, UriKind.RelativeOrAbsolute));
+                        bitmap = new BitmapImage(new Uri(rutaImagen, UriKind.RelativeOrAbsolute));
+                        imgPhoto.Source = bitmap;
+                        imgFinalPhoto.Source = new BitmapImage(new Uri(office.Photo, UriKind.RelativeOrAbsolute));
                         pin.Location = location;
                         map.Center = location;
                         map.Children.Clear();
@@ -156,7 +242,7 @@ namespace TransLlallaguaWPF.Office
         {
             try
             {
-                if (!string.IsNullOrWhiteSpace(txtName.Text) && !string.IsNullOrWhiteSpace(txtAdress.Text) && !string.IsNullOrWhiteSpace(txtPhone.Text) && location.Longitude != 0 && location.Latitude != 0 && rutaImagen!=null)
+                if (!string.IsNullOrWhiteSpace(txtName.Text) && !string.IsNullOrWhiteSpace(txtAdress.Text) && !string.IsNullOrWhiteSpace(txtPhone.Text) && location.Longitude != 0 && location.Latitude != 0 && rutaImagen!=null && imgFinalPhoto.Source!=null)
                 {
                     office.Name = util.DeleteExtraSpaces(txtName.Text.Trim());
                     office.Adress = util.DeleteExtraSpaces(txtAdress.Text.Trim());
@@ -165,7 +251,17 @@ namespace TransLlallaguaWPF.Office
                     office.Longitude = location.Longitude;
                     office.LocalityId = byte.Parse(cmbLocality.SelectedValue.ToString());
                     office.ManagerId = short.Parse(cmbManager.SelectedValue.ToString());
-                    office.Image = rutaImagen;
+                    if (rutaImagen != office.Image)
+                    {
+                        string path = UpdateImageUpload(util.StringWithoutSpaces(office.Name));
+                        office.Image = path;
+                    }
+                    else
+                    {
+                        office.Image = rutaImagen;
+                    }
+                    office.Photo=photoPath;
+                    
                     int res = officeImpl.Update(office);
                     if (res > 0)
                     {
@@ -175,6 +271,7 @@ namespace TransLlallaguaWPF.Office
                         tbControl.SelectedIndex = 0;
                         btnRegister.IsEnabled = true;
                         btnUpdate.IsEnabled = false;
+                        updatePhoto = 0;
                     }
                     else
                     {
@@ -195,6 +292,8 @@ namespace TransLlallaguaWPF.Office
                         toast.ShowToast("INGRESE UNA UBICACION VALIDA EN EL MAPA", 6);
                     if (rutaImagen == null)
                         toast.ShowToast("DEBE CARGAR UNA IMAGEN", 6);
+                    if (imgFinalPhoto.Source == null)
+                        toast.ShowToast("DEBE TOMAR UNA FOTO", 6);
                 }
             }
             catch (Exception ex)
@@ -205,6 +304,7 @@ namespace TransLlallaguaWPF.Office
 
         private void btnModify_Click(object sender, RoutedEventArgs e)
         {
+            updatePhoto = 1;
             if (focus == 1)
             {
                 tbControl.SelectedIndex = 1;
@@ -381,10 +481,8 @@ namespace TransLlallaguaWPF.Office
             if (openFileDialog.ShowDialog() == true)
             {
                 rutaImagen = openFileDialog.FileName;
-                if (!officeImpl.ValidateImagePath(rutaImagen))
-                    imgPhoto.Source = new BitmapImage(new Uri(rutaImagen, UriKind.RelativeOrAbsolute));
-                else
-                    toast.ShowToast("IMAGEN YA EXISTENTE, CARGUE OTRA", 6);
+                bitmap = new BitmapImage(new Uri(rutaImagen,UriKind.RelativeOrAbsolute));
+                imgPhoto.Source = bitmap;
             }
         }
 
@@ -398,5 +496,160 @@ namespace TransLlallaguaWPF.Office
             else
                 toast2.ShowToast("DEBE SELECCIONAR UN REGISTRO PARA MOSTRAR SU INFORMACION", 6);
         }
+        private string SaveImage(string name)
+        {
+            string principalDirectory = @"C:\imagenesGuardadasTransLlallagua";
+            string imagesDirectory = @"C:\imagenesGuardadasTransLlallagua\imagenesCargadas";
+            string destination = "";
+            try
+            {
+                if (!Directory.Exists(principalDirectory))
+                {
+                    Directory.CreateDirectory(principalDirectory);
+                    Directory.CreateDirectory(imagesDirectory);
+                }
+                else
+                {
+                    if (!Directory.Exists(imagesDirectory))
+                    {
+                        Directory.CreateDirectory(imagesDirectory);
+                    }
+                }
+                if (!officeImpl.FirstRegister())
+                {
+                    destination = $"{imagesDirectory}\\1{name}1.png";
+                }
+                else
+                {
+                    byte id = officeImpl.ScalarId();
+                    destination = $"{imagesDirectory}\\{id + 1}{name}1.png";
+                }
+                BitmapEncoder encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(bitmap));
+                using (FileStream fileStream = new FileStream(destination, FileMode.Create))
+                {
+                    encoder.Save(fileStream);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return destination;
+        }
+
+        private void txtSearch_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            TextBox textBox = sender as TextBox;
+            search = textBox.Text;
+            try
+            {
+                dvgData.ItemsSource = null;
+                dvgData.ItemsSource = officeImpl.SelectFilter(search).DefaultView;
+                dvgData.Columns[0].Visibility = Visibility.Collapsed;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private string UpdateImageUpload(string name)
+        {
+            string destination = "";
+            try
+            {
+                DataTable dt = officeImpl.UpdateImg(office.Id);
+                string originalPath = dt.Rows[0][0].ToString();
+                int idNuevo = int.Parse(originalPath.Substring(originalPath.Length - 5, 1));
+                string imagesDirectory = @"C:\imagenesGuardadasTransLlallagua\imagenesCargadas";
+                destination = $"{imagesDirectory}\\{office.Id}{name}{idNuevo + 1}.png";
+                BitmapEncoder encoder = new PngBitmapEncoder();
+                encoder.Frames.Add(BitmapFrame.Create(bitmap));
+                using (FileStream fileStream = new FileStream(destination, FileMode.Create))
+                {
+                    encoder.Save(fileStream);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            return destination;
+        }
+        private void UpdatePhotoUpload()
+        {
+            try
+            {
+                DataTable dt = officeImpl.UpdatePhoto(office.Id);
+                string originalPath = dt.Rows[0][0].ToString();
+                int idNuevo = int.Parse(originalPath.Substring(originalPath.Length - 5, 1));
+                string imagesDirectory = @"C:\imagenesGuardadasTransLlallagua\fotosTomadas";
+                photoPath = $"{imagesDirectory}\\{office.Id}Foto{idNuevo + 1}.png";
+                imagenCapturada.Save(photoPath, System.Drawing.Imaging.ImageFormat.Png);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        private void btnPhoto_Click(object sender, RoutedEventArgs e)
+        {
+            if (videoSource.IsRunning)
+            {
+                if (imagenCapturada != null)
+                {
+                    if (updatePhoto == 1)
+                    {
+                        UpdatePhotoUpload();
+                    }
+                    else
+                    {
+                        GuardarImagen(imagenCapturada);
+                    }
+                    imgFinalPhoto.Source = BitmapToBitmapImage(imagenCapturada);
+                }
+            }
+            else
+            {
+                error = new Wrong("La cámara no esta funcionamiento");
+            }
+        }
+
+        private void GuardarImagen(Bitmap imagen)
+        {
+            try
+            {
+                string principalDirectory = @"C:\imagenesGuardadasTransLlallagua";
+                string photosDirectory = @"C:\imagenesGuardadasTransLlallagua\fotosTomadas";
+                if (!Directory.Exists(principalDirectory))
+                {
+                    Directory.CreateDirectory(principalDirectory);
+                    Directory.CreateDirectory(photosDirectory);
+                }
+                else
+                {
+                    if (!Directory.Exists(photosDirectory))
+                    {
+                        Directory.CreateDirectory(photosDirectory);
+                    }
+                }
+                byte id = officeImpl.ScalarId();
+                if (imagen != null)
+                {
+                    photoPath = $"{photosDirectory}\\{id + 1}Foto1.png";
+                    imagen.Save(photoPath, System.Drawing.Imaging.ImageFormat.Png);
+                }
+                else
+                {
+                    MessageBox.Show("La imagen para guardar es nula.", "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show("Error al guardar la imagen: " + ex.Message, "Error", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+
     }
 }

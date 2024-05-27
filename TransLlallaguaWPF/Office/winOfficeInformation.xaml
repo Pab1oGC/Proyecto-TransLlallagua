@@ -14,7 +14,7 @@
         Background="{DynamicResource MaterialDesignPaper}"
         FontFamily="{DynamicResource MaterialDesignFont}"
         xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
-        Title="winOfficeInformation" Height="650" Width="1251" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
+        Title="winOfficeInformation" Height="650" Width="1351" WindowStyle="None" WindowStartupLocation="CenterScreen" ResizeMode="NoResize">
     <Grid Margin="10,0,2,0">
 
         <!--// Background //-->
@@ -32,25 +32,26 @@
 
         <Grid Margin="-10,0,0,0" Grid.RowSpan="2" >
 
-            <Label Content="NOMBRE:" HorizontalAlignment="Left" Height="54" Margin="30,114,0,0"  FontSize="20" VerticalAlignment="Top" Width="188"/>
+            <Label Content="NOMBRE:" HorizontalAlignment="Left" Height="54" Margin="30,114,0,0"  FontSize="20" VerticalAlignment="Top" Width="188" FontWeight="Bold"/>
             <Label x:Name="lblName" Content="NOMBRE:" HorizontalAlignment="Left" Height="54" Margin="223,114,0,0" FontSize="20" VerticalAlignment="Top" Width="345"/>
-            <Label Content="TELÉFONO FIJO:" HorizontalAlignment="Left" Height="54" Margin="30,204,0,0" FontSize="20" VerticalAlignment="Top" Width="188"/>
-            <Label x:Name="lblPhone" Content="NOMBRE:" HorizontalAlignment="Left" Height="54" Margin="224,200,0,0" FontSize="20" VerticalAlignment="Top" Width="344"/>
-            <Label Content="DIRECCIÓN:" HorizontalAlignment="Left" Height="54" Margin="30,0,0,0" FontSize="20" VerticalAlignment="Center" Width="188"/>
-            <Label x:Name="lblAddress" Content="NOMBRE:" HorizontalAlignment="Left" Height="54" Margin="224,0,0,0" FontSize="20" VerticalAlignment="Center" Width="344"/>
-            <Label Content="LOCALIDAD:" HorizontalAlignment="Left" Height="54" Margin="30,395,0,0" FontSize="20" VerticalAlignment="Top" Width="188"/>
-            <Label x:Name="lblLocation" Content="NOMBRE:" HorizontalAlignment="Left" Height="54" Margin="223,395,0,0" FontSize="20" VerticalAlignment="Top" Width="350"/>
-            <Label Content="ENCARGADO:" HorizontalAlignment="Left" Height="54" Margin="30,496,0,0" FontSize="20" VerticalAlignment="Top" Width="188"/>
-            <Label x:Name="lblCharge" Content="NOMBRE:" HorizontalAlignment="Left" Height="54" Margin="223,496,0,0" FontSize="20" VerticalAlignment="Top" Width="350"/>
-            <Image x:Name="imgLocation" HorizontalAlignment="Left" Height="247" Margin="573,370,0,0"  VerticalAlignment="Top" Width="604"/>
-            <m:Map x:Name="map" CredentialsProvider="Aqg07SBXdrLTydH32x-xXiHetpnrjDpAmzLIBvSJo06c9Xup33PM9NucXlmzVFp2" Margin="573,95,72,308" Center="-17.402379, -66.158036" ZoomLevel="16"/>
+            <Label Content="TELÉFONO FIJO:" HorizontalAlignment="Left" Height="54" Margin="30,230,0,0" FontSize="20" VerticalAlignment="Top" Width="188" FontWeight="Bold"/>
+            <Label x:Name="lblPhone" Content="NOMBRE:" HorizontalAlignment="Left" Height="54" Margin="224,226,0,0" FontSize="20" VerticalAlignment="Top" Width="344"/>
+            <Label Content="DIRECCIÓN:" HorizontalAlignment="Left" Height="54" Margin="30,343,0,0" FontSize="20" VerticalAlignment="Top" Width="188" FontWeight="Bold"/>
+            <Label x:Name="lblAddress" Content="NOMBRE:" HorizontalAlignment="Left" Height="54" Margin="224,343,0,0" FontSize="20" VerticalAlignment="Top" Width="344"/>
+            <Label Content="LOCALIDAD:" HorizontalAlignment="Left" Height="54" Margin="30,454,0,0" FontSize="20" VerticalAlignment="Top" Width="188" FontWeight="Bold"/>
+            <Label x:Name="lblLocation" Content="NOMBRE:" HorizontalAlignment="Left" Height="54" Margin="221,454,0,0" FontSize="20" VerticalAlignment="Top" Width="350"/>
+            <Label Content="ENCARGADO:" HorizontalAlignment="Left" Height="54" Margin="30,563,0,0" FontSize="20" VerticalAlignment="Top" Width="188" FontWeight="Bold"/>
+            <Label x:Name="lblCharge" Content="NOMBRE:" HorizontalAlignment="Left" Height="54" Margin="224,563,0,0" FontSize="20" VerticalAlignment="Top" Width="350"/>
+            <Image x:Name="imgLocation" HorizontalAlignment="Left" Height="247" Margin="573,370,0,0"  VerticalAlignment="Top" Width="352" Stretch="Fill"/>
+            <m:Map x:Name="map" CredentialsProvider="Aqg07SBXdrLTydH32x-xXiHetpnrjDpAmzLIBvSJo06c9Xup33PM9NucXlmzVFp2" Margin="573,95,83,308" Center="-17.402379, -66.158036" ZoomLevel="16"/>
 
             <Grid Background="Red" Margin="0,0,0,587">
-                <Label Content="INFORMACION DE LA OFICINA" HorizontalAlignment="Center" Height="54" Foreground="White" Background="Transparent"  FontSize="35" VerticalAlignment="Center" Width="497"/>
+                <Label Content="INFORMACION DE LA OFICINA" HorizontalAlignment="Center" Height="54" Foreground="White" Background="Transparent"  FontSize="35" VerticalAlignment="Center" Width="497" FontWeight="Bold"/>
                 <materialDesign:PackIcon x:Name="btnBack" Kind="ArrowBack" Height="50" Width="50" FontWeight="Bold" Margin="10,0,0,0" VerticalAlignment="Center" Foreground="White" Cursor="Hand" MouseLeftButtonDown="btnBack_MouseLeftButtonDown"/>
             </Grid>
-            <Button x:Name="btnZoomIn" Content="+" HorizontalAlignment="Left" Height="50" Margin="1182,95,0,0" VerticalAlignment="Top" Width="50" FontSize="35" Click="btnZoomIn_Click"/>
-            <Button x:Name="btnZoomOut" Content="-" HorizontalAlignment="Left" Height="50" Margin="1182,163,0,0" VerticalAlignment="Top" Width="50" FontSize="35" Click="btnZoomOut_Click"/>
+            <Button x:Name="btnZoomIn" Content="+" HorizontalAlignment="Left" Height="50" Margin="1271,95,0,0" VerticalAlignment="Top" Width="50" FontSize="35" Click="btnZoomIn_Click"/>
+            <Button x:Name="btnZoomOut" Content="-" HorizontalAlignment="Left" Height="50" Margin="1271,163,0,0" VerticalAlignment="Top" Width="50" FontSize="35" Click="btnZoomOut_Click"/>
+            <Image x:Name="imgPhoto" HorizontalAlignment="Left" Height="247" Margin="969,370,0,0"  VerticalAlignment="Top" Width="352" Stretch="Fill"/>
         </Grid>
 
 

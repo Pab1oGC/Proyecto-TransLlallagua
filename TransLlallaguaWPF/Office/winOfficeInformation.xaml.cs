@@ -39,6 +39,7 @@ namespace TransLlallaguaWPF.Office
             lblAddress.Content=c.Adress;
             lblPhone.Content = c.Phone;
             imgLocation.Source = new BitmapImage(new Uri(c.Image,UriKind.RelativeOrAbsolute));
+            imgPhoto.Source = new BitmapImage(new Uri(c.Photo, UriKind.RelativeOrAbsolute));
             Location location = new Location(c.Latitude, c.Longitude);
             Pushpin pin = new Pushpin();
             pin.Location = location;
